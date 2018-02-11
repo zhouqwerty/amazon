@@ -165,7 +165,7 @@
       <version>${mybatis.version}</version>
     </dependency>
 
-    <!--taglib的jar包-->
+    <!--taglib标签库的jar包-->
     <dependency>
       <groupId>maven-taglib</groupId>
       <artifactId>maven-taglib-plugin</artifactId>
