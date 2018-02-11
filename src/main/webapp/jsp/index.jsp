@@ -41,17 +41,17 @@
 			<div id="wrapper">
 				<div id="focus">
 					<ul>
-						<li><a href="#"><img src="images/T1.jpg" /></a></li>
-						<li><a href="#"><img src="images/T2.jpg" /></a></li>
-						<li><a href="#"><img src="images/T3.jpg" /></a></li>
-						<li><a href="#"><img src="images/T4.jpg" /></a></li>
-						<li><a href="#"><img src="images/T5.jpg" /></a></li>
+						<li><a href="#"><img src="../images/T1.jpg" /></a></li>
+						<li><a href="#"><img src="../images/T2.jpg" /></a></li>
+						<li><a href="#"><img src="../images/T3.jpg" /></a></li>
+						<li><a href="#"><img src="../images/T4.jpg" /></a></li>
+						<li><a href="#"><img src="../images/T5.jpg" /></a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="p_list">
 				<div class="p_info">
-					<img src="images/icon_sale.png"/>商品列表 
+					<img src="../images/icon_sale.png"/>商品列表
 				</div>
 			</div>
 

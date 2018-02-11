@@ -17,7 +17,7 @@
 <body>
 <%@ include file="index_top.jsp"  %>
 <div id="position" class="wrap">
-	您现在的位置：<a href="${pageContext.request.contextPath}/index.jsp">亚马逊</a> &gt; 在线留言
+	您现在的位置：<a href="${pageContext.request.contextPath}/jsp/index.jsp.jsp">亚马逊</a> &gt; 在线留言
 </div>
 <div id="main" class="wrap">
 	<div class="lefter">

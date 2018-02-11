@@ -53,8 +53,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="footer">
 	Copyright &copy; 2016  上海海文 All Rights Reserved
 </div>
-
-	
-</script>
 </body>
 </html>

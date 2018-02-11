@@ -68,7 +68,7 @@ function checkStock(){
 
 function remaind() {
 	alert("请先登录亚马逊！")
-	window.location.href="login.jsp"
+	window.location.href="../jsp/login.jsp"
 }
 
 

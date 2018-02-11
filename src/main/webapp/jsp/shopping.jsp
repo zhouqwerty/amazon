@@ -13,7 +13,7 @@
 <script src="${pageContext.request.contextPath}/scripts/adv.js" type="text/javascript"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/function.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/index.js"></script>
-<script type="text/javascript" src="scripts/shopping.js"></script>
+<script type="text/javascript" src="../scripts/shopping.js"></script>
 </head>
 <body>
 <%@ include file="index_top.jsp"  %>

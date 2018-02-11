@@ -13,7 +13,7 @@
 <script src="${pageContext.request.contextPath}/scripts/adv.js" type="text/javascript"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/function.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/index.js"></script>
-<script type="text/javascript" src="scripts/shopping.js"></script>
+<script type="text/javascript" src="../scripts/shopping.js"></script>
 <style type="text/css">#oderview{font-size: 14px}</style>
 
 </head>

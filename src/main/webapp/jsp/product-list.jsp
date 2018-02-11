@@ -11,8 +11,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>亚马逊 - 产品列表</title>
-<link type="text/css" rel="stylesheet" href="css/style.css" />
-<script type="text/javascript" src="scripts/function.js"></script>
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<script type="text/javascript" src="../scripts/function.js"></script>
 </head>
 <body>
 	<%@ include file="index_top.jsp"%>
@@ -29,7 +29,7 @@
 				<dl class="clearfix">
 
 					<dt>
-						<img style="width: 54px; height: 54px;" src="images/product/0.jpg" />
+						<img style="width: 54px; height: 54px;" src="../images/product/0.jpg" />
 					</dt>
 					<dd>
 						<a href="#">商品名称</a>
@@ -58,7 +58,7 @@
 					<li>
 						<dl>
 							<dt>
-								<a href="#" target="_self"><img src="images/product/0.jpg" /></a>
+								<a href="#" target="_self"><img src="../images/product/0.jpg" /></a>
 							</dt>
 							<dd class="title">
 								<a href="#" target="_self">商品名称</a>
@@ -70,7 +70,7 @@
 					<li>
 						<dl>
 							<dt>
-								<a href="#" target="_self"><img src="images/product/0.jpg" /></a>
+								<a href="#" target="_self"><img src="../images/product/0.jpg" /></a>
 							</dt>
 							<dd class="title">
 								<a href="#" target="_self">商品名称</a>

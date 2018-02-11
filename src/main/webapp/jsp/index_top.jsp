@@ -27,24 +27,24 @@
 			<ul class="m_right">
 				<c:choose>
 					<c:when test="${user!=null }">
-						<li><img src="images/icon_3.png"><a href="shopping"
-							class="c_red">购物车</a></li>
+						<li><img src="../images/icon_3.png"><a href="shopping"
+															   class="c_red">购物车</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><img src="images/icon_3.png"><a
+						<li><img src="../images/icon_3.png"><a
 							href="javascript:tips()" class="c_red">购物车</a></li>
 					</c:otherwise>
 				</c:choose>
-				<li><img src="images/icon_4.png"><a
+				<li><img src="../images/icon_4.png"><a
 					href="javascript:AddFavorite('我的网站',location.href)">收藏</a></li>
-				<li><img src="images/icon_2.png"><a href="guestbook.jsp">留言</a></li>
-				<li><img src="images/icon_1.png"><a href="index.jsp">首页</a></li>
+				<li><img src="../images/icon_2.png"><a href="guestbook.jsp">留言</a></li>
+				<li><img src="../images/icon_1.png"><a href="index.jsp">首页</a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="logo_search">
 		<div class="logo">
-			<img src="images/LOGO.png">
+			<img src="../images/LOGO.png">
 		</div>
 		<div class="search">
 			<input type="text" placeholder="输入宝贝" id="qname" />

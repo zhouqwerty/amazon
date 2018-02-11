@@ -12,7 +12,7 @@
 <script src="${pageContext.request.contextPath}/scripts/adv.js" type="text/javascript"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/function.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/scripts/index.js"></script>
-<script type="text/javascript" src="scripts/product_view.js"></script>
+<script type="text/javascript" src="../scripts/product_view.js"></script>
 
 
 </head>
@@ -59,8 +59,8 @@
 						<c:when test="${sessionScope.user==null }">
 							<div class="button">
 								<input type="button" name="button" value="" onclick="remaind();"
-									style="background: url(images/buyNow.png)" /> <input type="image"
-									name="imageField" src="images/cartbutton.png" onclick="remaind()" />
+									style="background: url(../images/buyNow.png)" /> <input type="image"
+																							name="imageField" src="../images/cartbutton.png" onclick="remaind()" />
 							</div>
 
 						</c:when>
@@ -68,8 +68,8 @@
 							<div class="button">
 								<input type="button" name="button" value=""
 									onclick="goingToBuy(${p.hpId });"
-									style="background: url(images/buyNow.png)" /> <input type="image"
-									name="imageField" src="images/cartbutton.png"
+									style="background: url(../images/buyNow.png)" /> <input type="image"
+									name="imageField" src="../images/cartbutton.png"
 									onclick="addToCart(${p.hpId });" />
 							</div>
 						</c:otherwise>
