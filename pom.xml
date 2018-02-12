@@ -151,7 +151,7 @@
       <version>${commons-logging.version}</version>
     </dependency>
 
-   <!-- oracle数据库的驱动包 &ndash;&gt;-->
+   <!-- oracle数据库的驱动包-->
     <dependency>
       <groupId>ojdbc</groupId>
       <artifactId>ojdbc</artifactId>
