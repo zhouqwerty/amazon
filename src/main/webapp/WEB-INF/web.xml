@@ -48,6 +48,6 @@
     </servlet>
     <servlet-mapping>
       <servlet-name>dispatcherServlet</servlet-name>
-      <url-pattern>/</url-pattern>
+      <url-pattern>/core/*</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -1,0 +1,24 @@
+	*{margin:0px;padding:0px}/*ulĬ����paddingֵ*/
+	 img{border:0px}/*ie�����ӵ�ͼƬĬ���б߿�*/
+	 ul,li{list-style-type:none;}
+	 /*wrapper��Ҫ���þ���ˮƽ���У��߶ȿ���ʡ��,��Ϊ�����ڲ���������Ӧ*/
+	 #wrapper{width:520px;height:280px;margin:0px auto;}
+	 /*�ڲ���ul�����focus�����ƶ�,������������,����ͼ��,span��Ҳ���մ˷�*/
+	 #focus{width:520px;height:280px;position:relative;overflow:hidden}
+	 /*����Ӧ���Ƕ���ͼƬ�Ŀ�ȣ���������,����position:absolute��Ŀ���ǲ���focus�������ƶ�,���Ƿ��float:left*/
+	 #focus ul{height:280px;position:absolute;}
+	 /*�󸡶���ͼƬ��һ������ʾ*/
+	 #focus ul li{float:left;}
+	 /**********************��������**********************/
+	 /*����focus�ĵײ�*/
+	 #focus .icon{width:520px;height:20px;position:absolute;left:0px;top:260px;text-align:center;padding:2px 0px}
+	 /*����С����display:inline-block;һ����ʾ�����鼶��ǩʹ�ã��������øߺͿ�*/
+	 #focus span{display:inline-block;width:25px;height:12px;cursor:pointer;background:orange;margin-left:5px}
+	 /*�������Ƶ�span��ʱ�����ʽ���õ���ʱ��������*/
+	 #focus span.on{background:blue;}
+	 /*���Ұ�ť���Ե�����,��Ⱥ͸߶ȣ����focus��λ������*/
+	 #focus .prenext{width:180px;height:280px;position:absolute;top:0px;cursor:pointer}
+	 /*���ñ���ͼƬ�����ظ���������*/
+	 #focus .pre{left:0px;background:url("../../images/spritel.png") no-repeat left center}
+	  /*���ñ���ͼƬ�����ظ���������*/
+	 #focus .next{right:0px;background:url("../../images/spriter.png") no-repeat right center}

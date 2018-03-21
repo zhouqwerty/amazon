@@ -9,8 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>亚马逊 - 注册结果</title>
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
-<script type="text/javascript" src="../scripts/function.js"></script>
+<link type="text/css" rel="stylesheet" href="../css/customcss/style.css" />
+<script type="text/javascript" src="../scripts/customjs/function.js"></script>
 </head>
 <body>
 <%@ include file="index_top.jsp"  %>

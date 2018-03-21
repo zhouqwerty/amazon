@@ -9,13 +9,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>亚马逊 - 购物车</title>
-<link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/css/adv.css" rel="stylesheet" type="text/css" />
-<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
-<script src="${pageContext.request.contextPath}/scripts/jquery-2.1.0.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/scripts/adv.js" type="text/javascript"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/function.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/index.js"></script>
+<link href="${pageContext.request.contextPath}/css/customcss/index.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/customcss/adv.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/css/customcss/style.css" rel="stylesheet" type="text/css" />
+<script src="${pageContext.request.contextPath}/scripts/framejs/jquery-2.1.0.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/scripts/customjs/adv.js" type="text/javascript"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/customjs/function.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/scripts/customjs/index.js"></script>
 </head>
 <body>
 <%@ include file="index_top.jsp"  %>
