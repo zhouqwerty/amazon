@@ -15,8 +15,8 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <!--&lt;!&ndash; 配置数据源  &ndash;&gt;
-    &lt;!&ndash; 配置C3P0连接池&ndash;&gt;
+    <!-- 配置数据源  -->
+    <!-- 配置C3P0连接池-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${jdbc.driver}"/>
         <property name="jdbcUrl" value="${jdbc.url}"/>
@@ -24,27 +24,26 @@
         <property name="password" value="${jdbc.pass}"/>
     </bean>
 
-    &lt;!&ndash;配置sqlSessionFactory&ndash;&gt;
+    <!--配置sqlSessionFactory-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        &lt;!&ndash; 数据库连接池 &ndash;&gt;
+        <!-- 数据库连接池 -->
         <property name="dataSource" ref="dataSource"/>
-        &lt;!&ndash; 加载mybatis的全局配置文件 &ndash;&gt;
+        <!-- 加载mybatis的全局配置文件 -->
         <property name="configLocation" value="classpath:database/mybatis-config.xml" />
     </bean>
 
-    &lt;!&ndash; mapper扫描器 &ndash;&gt;
+    <!-- mapper扫描器 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        &lt;!&ndash; 扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 &ndash;&gt;
+        <!-- 扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 -->
         <property name="basePackage" value="com.amazon.base.dao.mapper"></property>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 
-    &lt;!&ndash;配置事务管理器&ndash;&gt;
+    <!--配置事务管理器-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-    &lt;!&ndash;基于注解的事务&ndash;&gt;
+    <!--基于注解的事务-->
     <tx:annotation-driven transaction-manager="transactionManager"/>
--->
 
 </beans>
