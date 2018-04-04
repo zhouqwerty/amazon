@@ -1,15 +1,13 @@
-
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	double num = Math.random();
 %>
-
 <div id="header">
-	<div class="login_menu">
+	<nav class="navbar navbar-default navbar-fixed-top header-nav">
 		<div class="login_container">
 			<c:set value="${sessionScope.user }" var="user"></c:set>
-			<ul class="m_left">
+			<ul class="m_left nav navbar-nav">
 				<c:choose>
 					<c:when test="${user!=null }">
 						<li><a href="#" class="c_red">${user.HU_USER_NAME}</a>&nbsp;&nbsp;&nbsp;</li>
@@ -18,17 +16,17 @@
 					</c:when>
 
 					<c:otherwise>
-						<li><a href="login.jsp" class="c_red">请登录</a>&nbsp;&nbsp;&nbsp;</li>
-						<li><a href="register.jsp">请注册</a></li>
+						<li>
+							<button class="btn btn-primary btn-small" data-toggle="modal" data-target="#loginModal">请登录</button>&nbsp;&nbsp;&nbsp
+						</li>
+						<li><button class="btn btn-primary btn-small" data-toggle="modal" data-target="#registerModal">请注册</button></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
-
 			<ul class="m_right">
 				<c:choose>
 					<c:when test="${user!=null }">
-						<li><img src="../images/icon_3.png"><a href="shopping"
-															   class="c_red">购物车</a></li>
+						<li><img src="../images/icon_3.png"><a href="shopping" class="c_red">购物车</a></li>
 					</c:when>
 					<c:otherwise>
 						<li><img src="../images/icon_3.png"><a
@@ -40,6 +38,24 @@
 				<li><img src="../images/icon_2.png"><a href="guestbook.jsp">留言</a></li>
 				<li><img src="../images/icon_1.png"><a href="index.jsp">首页</a></li>
 			</ul>
+		</div>
+	</nav>
+	<!-- 登录框 -->
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">登录</h4>
+				</div>
+				<div class="modal-body">
+					登录信息
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">登录</button>
+					<button type="button" class="btn btn-default">找回密码</button>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="logo_search">

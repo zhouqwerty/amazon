@@ -10,11 +10,9 @@ body {
     color: #333;
 }
 
-/*top��ʼ*/
-.login_menu {
-    height: 30px;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.07);
+.header-nav{
+    height: 0px;
+    padding-top: 5px;
 }
 
 .login_container {
@@ -29,7 +27,6 @@ body {
     position: relative;
     top: 5px;
 }
-
 .m_left li {
     float: left;
 }
@@ -47,6 +44,7 @@ body {
     float: right;
     position: relative;
     top: 5px;
+    padding-top: 6px;
 }
 
 .m_right li {
