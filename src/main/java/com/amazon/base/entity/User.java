@@ -1,6 +1,6 @@
 package com.amazon.base.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class User {
     private long user_id;	//用户id
@@ -10,7 +10,7 @@ public class User {
     private Date birthday;//时间
     private String id_code;//身份证号
     private String email;	//电子邮件
-    private String moblie;	//电话
+    private String mobile;	//电话
     private String address;//地址
     private int status;	//状态
 
@@ -70,12 +70,12 @@ public class User {
         this.email = email;
     }
 
-    public String getMoblie() {
-        return moblie;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setMoblie(String moblie) {
-        this.moblie = moblie;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getAddress() {
@@ -93,4 +93,5 @@ public class User {
     public void setStatus(int status) {
         this.status = status;
     }
+
 }

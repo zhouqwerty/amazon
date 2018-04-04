@@ -1,5 +1,7 @@
 package com.amazon.base.dao;
 
-public interface UserDao {
+import com.amazon.base.entity.User;
 
+public interface UserDao {
+    int addUser(User u);
 }

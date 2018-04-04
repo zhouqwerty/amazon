@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!--通过properties文件配置属性-->
     <context:property-placeholder location="classpath:config/amazon.properties"/>
@@ -30,12 +32,15 @@
         <property name="dataSource" ref="dataSource"/>
         <!-- 加载mybatis的全局配置文件 -->
         <property name="configLocation" value="classpath:database/mybatis-config.xml" />
+        <!--加载mapper映射文件（在mybatis的配置文件中加载mapper映射文件貌似无效）-->
+        <property name="mapperLocations" value="classpath*:com/amazon/base/dao/mapper/*.xml"/>
     </bean>
 
-    <!-- mapper扫描器 -->
+    <!--mapper扫描器 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!-- 扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 -->
-        <property name="basePackage" value="com.amazon.base.dao.mapper"></property>
+        <!-- 扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开
+        注意：这里扫描的是dao接口，而不是mapper的xml文件-->
+        <property name="basePackage" value="com.amazon.base.dao"></property>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 

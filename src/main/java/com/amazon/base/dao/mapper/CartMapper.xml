@@ -1,8 +1,7 @@
-<span style="font-family:'KaiTi_GB2312';font-size:18px;"><?xml version="1.0" encoding="UTF-8" ?>
-    <!DOCTYPE mapper
-    PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
-    "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
-    <!-- mapper 为根元素节点， 一个namespace对应一个dao -->
-    <mapper namespace="com.amazon.base.dao.CartDao">
-    </mapper>
-</span>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amazon.base.dao.CartDao">
+
+</mapper>
