@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>亚马逊-首页</title>
-<link href="${pageContext.request.contextPath}/css/framecss/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/lib/bootstrap/bootstrap.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/css/customcss/index.css" rel="stylesheet" type="text/css" />
 <link href="${pageContext.request.contextPath}/css/customcss/adv.css" rel="stylesheet" type="text/css" />
 <script src="${pageContext.request.contextPath}/scripts/customjs/adv.js" type="text/javascript"></script>
