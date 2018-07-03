@@ -3,34 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="images/icon/logo.png"/>
-    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="lib/iview/iview.css">
     <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+    <!--框架-->
     <script src='lib/vue/vue.js'></script>
     <script src="lib/iview/iview.min.js"></script>
     <script src="lib/util/gl.js"></script>
+    <!--<script src="lib/util/loadhtml.js"></script>-->
+    <!--模块-->
     <script src="module/topUserInfo/topUserInfo.js"></script>
+    <script src="module/headerSearch/headerSearch.js"></script>
+    <script src="module/news/news.js"></script>
+    <script src="module/category/category.js"></script>
     <title>亚马逊</title>
 </head>
-<body>
-<div id="index">
-    <demo></demo>
-<div class="top_user_info">
-    <div class="container-fluid">
+<body style="overflow-y: auto">
+<div id="index11">
+    <top-user-info></top-user-info>
+    <div class="container-fluid" style="margin-top: 100px">
         <div class="row">
             <div class="col-lg-6 col-md-6">
-                1
+
             </div>
             <div class="col-lg-6 col-md-6">
-                2
+
             </div>
         </div>
     </div>
 </div>
-</div>
 <script>
-    let app=new Vue({
-        el:'#index',
+    var app=new Vue({
+        el:'#index11',
         data:{
 
         },

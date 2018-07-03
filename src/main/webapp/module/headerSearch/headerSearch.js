@@ -1,5 +1,5 @@
-Vue.component('top-user-info', function (resolve, reject) {
-    GL.Http.load('./module/topUserInfo/topUserInfo.html', function (responseText) {
+Vue.component('header-search', function (resolve, reject) {
+    GL.Http.load('./module/headerSearch/headerSearch.html', function (responseText) {
         resolve({
             template: responseText,
             props: {},
@@ -12,4 +12,3 @@ Vue.component('top-user-info', function (resolve, reject) {
         });
     });
 });
-

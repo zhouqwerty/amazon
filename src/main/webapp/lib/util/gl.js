@@ -8095,10 +8095,6 @@ var mapBak;
     window.GL = GL;
     var loader = __webpack_require__(96);
     loader.preload();
-    if (_version2.default.isVerification) {
-        mapBak = GL.Map;
-        delete GL.Map;
-    }
     GL.Http.load = function (url, params, callback, context) {
         var type = 'get';
         if (typeof params === 'function') {
@@ -33100,4 +33096,3 @@ module.exports = __webpack_require__(136);
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=gl.js.map
