@@ -5875,7 +5875,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function preload() {
     shortNamespace();
-    delete window.L;
+    // delete window.L;
     delete window.Http;
     delete window.CE;
     window.Vue = Vue;
