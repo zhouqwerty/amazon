@@ -5,8 +5,8 @@
     <link rel="shortcut icon" href="images/icon/logo.png"/>
     <link rel="stylesheet" href="lib/iview/iview.css">
     <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/index.css">
     <!--框架-->
-    <!--<script src='lib/vue/vue.js'></script>-->
     <script src="lib/util/gl.js"></script>
     <script src="lib/iview/iview.min.js"></script>
     <!--模块-->
@@ -17,15 +17,23 @@
     <title>亚马逊</title>
 </head>
 <body style="overflow-y: auto">
-<div id="index11">
+<div id="index">
     <top-user-info></top-user-info>
-    <br><br><gaea-button>111</gaea-button>
-    <div class="container-fluid" style="margin-top: 100px">
+    <div class="container-fluid index_content">
         <div class="row">
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-1">
 
             </div>
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-2">
+                <qwe-category></qwe-category>
+            </div>
+            <div class="col-lg-6">
+                <!--主题内容-->
+            </div>
+            <div class="col-lg-2">
+                <qwe-news></qwe-news>
+            </div>
+            <div class="col-lg-1">
 
             </div>
         </div>
@@ -33,10 +41,12 @@
 </div>
 <script>
     var app=new Vue({
-        el:'#index11',
+        el:'#index',
         data:{
 
         },
+        methods:{
+        }
     });
 </script>
 </body>

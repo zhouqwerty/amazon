@@ -5,3 +5,25 @@
     position: fixed;
     top: 0px;
 }
+
+.top_left_nav{
+    overflow: hidden;
+}
+
+.top_left_nav li{
+    float: left;
+    list-style-type: none;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 20px;
+}
+
+.top_left_nav a{
+    color: white;
+}
+
+.top_left_nav a:hover{
+    text-decoration: none;
+    color: #c3c0e4;
+}
+

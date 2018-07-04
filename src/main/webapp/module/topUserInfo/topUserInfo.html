@@ -2,12 +2,54 @@
     <link rel="stylesheet" href="./module/topUserInfo/topUserInfo.css">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6 col-md-6">
-
+            <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center;padding-top: 5px">
+                <gaea-button type="primary" style="background: #4d91d94a" @click="showLogin">登录</gaea-button>
+                <gaea-button type="primary" style="background: #4d91d94a">注册</gaea-button>
             </div>
-            <div class="col-lg-6 col-md-6">
-
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <ul class="top_left_nav">
+                    <li>
+                        <gaea-dropdown @on-click="selectMyShop">
+                            <a href="javascript:void(0)">
+                                我的购物
+                                <gaea-icon type="arrow-down-b" style="color: white"></gaea-icon>
+                            </a>
+                            <gaea-dropdownMenu slot="list" >
+                                <gaea-dropdownItem name="product">已买到的宝贝</gaea-dropdownItem>
+                                <gaea-dropdownItem name="browser">我的足迹</gaea-dropdownItem>
+                                <gaea-dropdownItem name="info">个人信息</gaea-dropdownItem>
+                            </gaea-dropdownMenu>
+                        </gaea-dropdown>
+                    </li>
+                    <li><a href="#">购物车</a></li>
+                    <li><a href="#">收藏夹</a></li>
+                </ul>
             </div>
         </div>
     </div>
+    <gaea-modal v-model="loginModal" width="360">
+        <p slot="header" style="color:black;text-align:center">
+            <span>登录</span>
+        </p>
+        <div style="text-align:center">
+            <gaea-form ref="loginInfo" :model="loginInfo" :rules="loginRule" :label-width="150">
+                <gaea-formItem label="用户名" prop="username">
+                    <gaea-input type="text" v-model="loginInfo.username"></gaea-input>
+                </gaea-formItem>
+                <gaea-formItem label="密码" prop="password">
+                    <gaea-input type="password" v-model="loginInfo.password"></gaea-input>
+                </gaea-formItem>
+                <gaea-formItem label="验证码" prop="vaild">
+                    <gaea-input type="text" v-model="loginInfo.vaild" number></gaea-input>
+                </gaea-formItem>
+                <gaea-formItem>
+                    <gaea-button type="primary" @click="handleSubmit('formCustom')">登录</gaea-button>
+                    <gaea-button type="ghost" @click="handleReset('formCustom')" style="margin-left: 8px">重置</gaea-button>
+                </gaea-formItem>
+            </gaea-form>
+        </div>
+        <div slot="footer">
+            <gaea-button type="primary" size="large" long :loading="loginFlag" @click="login">登录</gaea-button>
+        </div>
+    </gaea-modal>
 </div>
