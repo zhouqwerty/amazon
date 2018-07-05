@@ -3,8 +3,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center;padding-top: 5px">
-                <gaea-button type="primary" style="background: #4d91d94a" @click="showLogin">登录</gaea-button>
-                <gaea-button type="primary" style="background: #4d91d94a">注册</gaea-button>
+                <gaea-button type="primary" style="background: #4d91d94a" @click="login.loginModal=true">登录</gaea-button>
+                <gaea-button type="primary" style="background: #4d91d94a" @click="register.registerModal=true">注册</gaea-button>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <ul class="top_left_nav">
@@ -27,29 +27,75 @@
             </div>
         </div>
     </div>
-    <gaea-modal v-model="loginModal" width="360">
+    <!--登录-->
+    <gaea-modal v-model="login.loginModal" width="360" @on-cancel="lrEnd('loginInfo')">
         <p slot="header" style="color:black;text-align:center">
             <span>登录</span>
         </p>
         <div style="text-align:center">
-            <gaea-form ref="loginInfo" :model="loginInfo" :rules="loginRule" :label-width="150">
+            <gaea-form ref="loginInfo" :model="login.loginInfo" :rules="login.loginRule" :label-width="60">
                 <gaea-formItem label="用户名" prop="username">
-                    <gaea-input type="text" v-model="loginInfo.username"></gaea-input>
+                    <gaea-input type="text" v-model="login.loginInfo.username"></gaea-input>
                 </gaea-formItem>
                 <gaea-formItem label="密码" prop="password">
-                    <gaea-input type="password" v-model="loginInfo.password"></gaea-input>
+                    <gaea-input type="password" v-model="login.loginInfo.password"></gaea-input>
                 </gaea-formItem>
-                <gaea-formItem label="验证码" prop="vaild">
-                    <gaea-input type="text" v-model="loginInfo.vaild" number></gaea-input>
+                <gaea-formItem label="验证码" prop="valid">
+                    <gaea-row>
+                        <gaea-col span="10">
+                            <gaea-input type="text" v-model="login.loginInfo.valid"></gaea-input>
+                        </gaea-col>
+                        <gaea-col span="9" offset="1">
+                            <img src="images/icon/logo.png" alt="" style="width: 150px;height: 30px;background: #eee">
+                        </gaea-col>
+                    </gaea-row>
                 </gaea-formItem>
                 <gaea-formItem>
-                    <gaea-button type="primary" @click="handleSubmit('formCustom')">登录</gaea-button>
-                    <gaea-button type="ghost" @click="handleReset('formCustom')" style="margin-left: 8px">重置</gaea-button>
+                    <gaea-button type="primary" @click="loginSubmit('loginInfo')" :loading="login.loginFlag">登录</gaea-button>
+                    <gaea-button type="ghost" @click="lrReset('loginInfo')" style="margin-left: 8px">重置</gaea-button>
                 </gaea-formItem>
             </gaea-form>
         </div>
-        <div slot="footer">
-            <gaea-button type="primary" size="large" long :loading="loginFlag" @click="login">登录</gaea-button>
+        <div slot="footer"></div>
+    </gaea-modal>
+    <!--注册-->
+    <gaea-modal v-model="register.registerModal" width="360" @on-cancel="lrEnd('registerInfo')">
+        <p slot="header" style="color:black;text-align:center">
+            <span>注册</span>
+        </p>
+        <div style="text-align:center">
+            <gaea-form ref="registerInfo" :model="register.registerInfo" :rules="register.registerRule" :label-width="60">
+                <gaea-formItem label="用户名" prop="username">
+                    <gaea-input type="text" v-model="register.registerInfo.username"></gaea-input>
+                </gaea-formItem>
+                <gaea-formItem label="密码" prop="password">
+                    <gaea-input type="password" v-model="register.registerInfo.password"></gaea-input>
+                </gaea-formItem>
+                <gaea-formItem label="再次输入" prop="password2">
+                    <gaea-input type="password" v-model="register.registerInfo.password2"></gaea-input>
+                </gaea-formItem>
+                <gaea-formItem label="邮箱" prop="email">
+                    <gaea-input type="text" v-model="register.registerInfo.email"></gaea-input>
+                </gaea-formItem>
+                <gaea-formItem label="手机号" prop="phone">
+                    <gaea-row>
+                        <gaea-col span="15">
+                            <gaea-input type="text" v-model="register.registerInfo.phone"></gaea-input>
+                        </gaea-col>
+                        <gaea-col span="5" offset="1">
+                            <gaea-button>获取验证码</gaea-button>
+                        </gaea-col>
+                    </gaea-row>
+                </gaea-formItem>
+                <gaea-formItem label="验证码" prop="valid">
+                    <gaea-input type="password" v-model="register.registerInfo.valid"></gaea-input>
+                </gaea-formItem>
+                <gaea-formItem>
+                    <gaea-button type="primary" @click="registerSubmit('registerInfo')" :loading="register.registerFlag">注册</gaea-button>
+                    <gaea-button type="ghost" @click="lrReset('registerInfo')" style="margin-left: 8px">重置</gaea-button>
+                </gaea-formItem>
+            </gaea-form>
         </div>
+        <div slot="footer"></div>
     </gaea-modal>
 </div>
