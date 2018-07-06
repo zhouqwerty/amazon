@@ -60,7 +60,7 @@
 	</div>
 	<div class="logo_search">
 		<div class="logo">
-			<img src="../images/LOGO.png">
+			<img src="../images/use/index.png">
 		</div>
 		<div class="search">
 			<input type="text" placeholder="输入宝贝" id="qname" />

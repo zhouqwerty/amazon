@@ -4,11 +4,25 @@ Vue.component('header-search', function (resolve, reject) {
             template: responseText,
             props: {},
             data: function () {
-                return {}
+                return {
+                    searchContent:'',
+                    searchTip:'台式机',
+                    categoryTips:[
+                        {name:'数码电器'},
+                        {name:'台式机'},
+                        {name:'鲜花'},
+                        {name:'书籍'},
+                        {name:'时尚新品'},
+                        {name:'海外代购'}],
+                }
             },
             watch: {},
             created: function () {},
-            methods: {}
+            methods: {
+                searchGoods:function (name) {
+                    console.log(name)
+                },
+            }
         });
     });
 });

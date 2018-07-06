@@ -4,6 +4,7 @@
     background-color: rgba(44,176,232,0.9);
     position: fixed;
     top: 0px;
+    z-index: 10;
 }
 
 .top_left_nav{

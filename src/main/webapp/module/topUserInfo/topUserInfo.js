@@ -29,7 +29,15 @@ Vue.component('top-user-info', function (resolve, reject) {
                     }
                 };
                 const validateCode =(rule,value,callback)=>{
-                    callback(new Error("1111"));
+                    //可以发送异步请求
+                    setTimeout(()=>{
+                        let i=Math.random();
+                        if(i<0.5){
+                            callback(new Error("验证码错误"))
+                        }else{
+                            callback();
+                        }
+                    },2000)
                 };
                 return {
                     login:{
@@ -105,6 +113,7 @@ Vue.component('top-user-info', function (resolve, reject) {
                                 this.login.loginModal = false;
                                 this.login.loginFlag = false;
                                 this.$Message.success('登录成功');
+                                this.lrReset("loginInfo");
                             }, 2000);
                         }
                     });
@@ -117,6 +126,7 @@ Vue.component('top-user-info', function (resolve, reject) {
                                 this.register.registerModal = false;
                                 this.register.registerFlag = false;
                                 this.$Message.success('注册成功');
+                                this.lrReset("registerInfo");
                             }, 2000);
                         }
                     });

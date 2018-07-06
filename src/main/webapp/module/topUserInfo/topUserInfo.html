@@ -8,6 +8,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <ul class="top_left_nav">
+                    <li><a href="#">商城首页</a></li>
                     <li>
                         <gaea-dropdown @on-click="selectMyShop">
                             <a href="javascript:void(0)">
@@ -28,7 +29,7 @@
         </div>
     </div>
     <!--登录-->
-    <gaea-modal v-model="login.loginModal" width="360" @on-cancel="lrEnd('loginInfo')">
+    <gaea-modal v-model="login.loginModal" width="360" @on-cancel="lrEnd('loginInfo')" :mask-closable="false">
         <p slot="header" style="color:black;text-align:center">
             <span>登录</span>
         </p>
@@ -59,7 +60,7 @@
         <div slot="footer"></div>
     </gaea-modal>
     <!--注册-->
-    <gaea-modal v-model="register.registerModal" width="360" @on-cancel="lrEnd('registerInfo')">
+    <gaea-modal v-model="register.registerModal" width="360" @on-cancel="lrEnd('registerInfo')" :mask-closable="false">
         <p slot="header" style="color:black;text-align:center">
             <span>注册</span>
         </p>

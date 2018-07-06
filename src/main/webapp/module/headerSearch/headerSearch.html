@@ -1,3 +1,25 @@
 <div class="header_search">
     <link rel="stylesheet" href="./module/headerSearch/headerSearch.css">
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 30px">
+            <div class="col-lg-4">
+                <img src="images/use/index.png" alt="" class="pull-right">
+            </div>
+            <div class="col-lg-4 search_div" style="padding-top: 10px">
+                <gaea-input v-model="searchContent" :placeholder="searchTip">
+                    <gaea-button slot="append" style="font-size: 16px;color: white;letter-spacing: 4px" @click="searchGoods">搜索</gaea-button>
+                </gaea-input>
+            </div>
+        </div>
+        <div class="row category_header">
+            <div class="col-lg-4">
+                <div class="pull-right all_category_text">所有分类</div>
+            </div>
+            <div class="col-lg-6">
+                <ul class="category_tip">
+                    <li v-for="item in categoryTips"><a  @click="searchGoods(item.name)">{{item.name}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
