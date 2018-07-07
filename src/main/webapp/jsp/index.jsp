@@ -39,11 +39,11 @@
 			<div id="wrapper">
 				<div id="focus">
 					<ul>
-						<li><a href="#"><img src="../images/T1.jpg" /></a></li>
-						<li><a href="#"><img src="../images/T2.jpg" /></a></li>
-						<li><a href="#"><img src="../images/T3.jpg" /></a></li>
-						<li><a href="#"><img src="../images/T4.jpg" /></a></li>
-						<li><a href="#"><img src="../images/T5.jpg" /></a></li>
+						<li><a href="#"><img src="../images/use/carousel/c1.jpg" /></a></li>
+						<li><a href="#"><img src="../images/use/carousel/c2.jpg" /></a></li>
+						<li><a href="#"><img src="../images/use/carousel/c3.jpg" /></a></li>
+						<li><a href="#"><img src="../images/use/carousel/c4.jpg" /></a></li>
+						<li><a href="#"><img src="../images/use/carousel/c5.jpg" /></a></li>
 					</ul>
 				</div>
 			</div>

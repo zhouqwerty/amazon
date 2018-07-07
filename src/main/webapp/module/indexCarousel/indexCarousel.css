@@ -1,0 +1,7 @@
+.carousel_div img{
+    width: 100%;
+}
+
+#myCarousel .carousel-control{
+    padding-top: 24%;
+}
