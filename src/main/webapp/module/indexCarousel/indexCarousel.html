@@ -1,5 +1,8 @@
 <div class="index-carousel">
     <link rel="stylesheet" href="./module/indexCarousel/indexCarousel.css">
+    <div class="category_second" :style="{display:category.isSelected}">
+        {{category.selectedFirstCategory}}
+    </div>
     <div id="myCarousel" class="carousel slide">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>

@@ -5,3 +5,11 @@
 #myCarousel .carousel-control{
     padding-top: 24%;
 }
+
+.category_second{
+    width: 100%;
+    height: 200px;
+    border: solid 1px black;
+    position: absolute;
+    z-index: 10;
+}

@@ -4,11 +4,33 @@ Vue.component('qwe-category', function (resolve, reject) {
             template: responseText,
             props: {},
             data: function () {
-                return {}
+                return {
+                    selected:'',
+                    category:$Global.category,
+                    categories:[
+                        {id:'1', name:'11/11/11',},
+                        {id:'2', name:'22/22/22',},
+                        {id:'3', name:'33/33/33',},
+                        {id:'4', name:'44/44/44',},
+                        {id:'5', name:'55/55/55',},
+                        {id:'6', name:'66/66/66',},
+                        {id:'7', name:'77/77/77',},
+                    ]
+                }
             },
-            watch: {},
+            watch: {
+
+            },
             created: function () {},
-            methods: {}
+            methods: {
+                selectCategory:function(item){
+                    this.category.selectedFirstCategory=item.id;
+                    this.category.isSelected='block';
+                },
+                unselectCategory:function(item){
+                    this.category.isSelected='none';
+                }
+            }
         });
     });
 });
