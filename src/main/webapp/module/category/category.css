@@ -10,5 +10,14 @@
 .category_content ul li{
     list-style-type: none;
     height: 30px;
+    line-height: 30px;
     text-align: right;
 }
+
+@media (max-width: 992px){
+    .qwe_category{
+        display: none;
+    }
+}
+
+

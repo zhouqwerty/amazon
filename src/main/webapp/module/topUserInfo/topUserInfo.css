@@ -1,6 +1,6 @@
 .top_user_info{
     width: 100%;
-    background-color: rgba(44,176,232,0.9);
+    background-color: rgb(44,176,232);
     position: fixed;
     top: 0px;
     z-index: 10;

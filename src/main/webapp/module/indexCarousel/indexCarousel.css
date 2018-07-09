@@ -1,3 +1,7 @@
+.index_carousel{
+    overflow: hidden;
+}
+
 .carousel_div img{
     width: 100%;
 }
@@ -12,4 +16,17 @@
     border: solid 1px black;
     position: absolute;
     z-index: 10;
+}
+
+#today_hot_product ul li{
+    float: left;
+    list-style-type: none;
+    width: 33.3%;
+    border: 1px solid black;
+}
+
+@media (max-width: 400px){
+    #today_hot_product ul li{
+        width: 50%;
+    }
 }

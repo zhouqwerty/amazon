@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="images/icon/logo.png"/>
+    <!--框架css-->
+    <link rel="stylesheet" href="lib/iview/iview.css">
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+    <!--css-->
+    <link rel="stylesheet" href="css/common.css">
+    <!--框架js-->
+    <script src="lib/util/gl.js"></script>
+    <script src="lib/iview/iview.min.js"></script>
+    <script src="lib/jquery/jquery-3.2.1.js"></script>
+    <script src="lib/bootstrap/bootstrap.js"></script>
+    <!--js-->
+
+    <!--模块-->
+    <script src="module/topUserInfo/topUserInfo.js"></script>
+    <script src="module/headerSearch/headerSearch.js"></script>
+    <script src="module/productUnit/productUnit.js"></script>
+    <title>亚马逊(搜索)</title>
+</head>
+<body>
+<div id="search" style="overflow: auto">
+    <top-user-info></top-user-info>
+    <div style="width: 100%;margin-top: 40px">
+        <header-search></header-search>
+    </div>
+    <div class="product_container">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<script>
+    var app=new Vue({
+        el:'#search',
+        data:{
+
+        },
+        methods:{
+        }
+    });
+</script>
+</body>
+</html>

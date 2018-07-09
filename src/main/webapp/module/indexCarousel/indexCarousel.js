@@ -10,7 +10,7 @@ Vue.component('index-carousel', function (resolve, reject) {
             },
             watch: {
                 'category.selectedFirstCategory':function (oldVal,newVal) {
-                    console.log(newVal);
+                    // console.log(newVal);
                 }
             },
             created: function () {},
