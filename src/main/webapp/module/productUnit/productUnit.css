@@ -1,3 +1,38 @@
 .product_unit{
-    width: 100%;
+    width: 90%;
+    border: 1px solid #eee;
+    margin: 0 auto;
+    height: 95%;
 }
+
+.product_info{
+    padding: 0 10px;
+}
+
+.product_sale{
+    overflow: hidden;
+}
+.product_price{
+    float: left;
+    font-weight: 600;
+    font-size: 18px;
+    color: #e8393c;
+}
+
+.product_sell{
+    float: right;
+}
+.product_desc{
+    margin-top: 10px;
+}
+.store_info{
+    overflow: hidden;
+    margin-top: 10px;
+}
+.store_name{
+    float: left;
+}
+.store_location{
+    float: right;
+}
+

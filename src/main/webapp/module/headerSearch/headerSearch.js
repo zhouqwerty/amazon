@@ -14,6 +14,7 @@ Vue.component('header-search', function (resolve, reject) {
                         {name:'书籍'},
                         {name:'时尚新品'},
                         {name:'海外代购'}],
+                    cFirstListVisible:'none',
                 }
             },
             watch: {},
@@ -22,6 +23,14 @@ Vue.component('header-search', function (resolve, reject) {
                 searchGoods:function (name) {
                     console.log(name)
                 },
+                hideCategoryList:function (e) {
+                   if(e.target.tagName!='LI'){
+                       this.cFirstListVisible='none';
+                       $Global.category.secondListVisible='none';
+                   }else{
+                       this.cFirstListVisible='none';
+                   }
+                }
             }
         });
     });

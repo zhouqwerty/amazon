@@ -4,14 +4,7 @@ Vue.component('index-carousel', function (resolve, reject) {
             template: responseText,
             props: {},
             data: function () {
-                return {
-                    category:$Global.category,
-                }
-            },
-            watch: {
-                'category.selectedFirstCategory':function (oldVal,newVal) {
-                    // console.log(newVal);
-                }
+                return {}
             },
             created: function () {},
             methods: {}

@@ -12,16 +12,17 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row category_header">
-            <div class="col-lg-4 col-md-4 col-sm-2 col-xs-2">
-                <div class="pull-right all_category_text">所有分类</div>
+    <div style="height: 30px;background-color:#41b8ea ">
+            <div class="my_container header_category">
+                <div class="header_all_category" @mouseover="cFirstListVisible='block'" @mouseout="hideCategoryList">
+                    <div class="all_category_text" >
+                        所有分类
+                    </div>
+                    <div class="all_category_content" :style="{display:cFirstListVisible}">
+                        <qwe-category></qwe-category>
+                    </div>
+                </div>
+
             </div>
-            <div class="col-lg-6 col-md-8 col-sm-10 col-xs-10">
-                <ul class="category_tip">
-                    <li v-for="item in categoryTips"><a  @click="searchGoods(item.name)">{{item.name}}</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
 </div>

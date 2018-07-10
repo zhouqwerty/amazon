@@ -1,8 +1,13 @@
 <div class="qwe_category">
     <link rel="stylesheet" href="./module/category/category.css">
     <div class="category_content">
-        <ul class="category_first">
-            <li v-for="item in categories" @mouseover="selectCategory(item,$event)" @mouseout="unselectCategory(item,$event)">{{item.name}}&nbsp;&gt;</li>
-        </ul>
+        <div class="category_first">
+            <ul >
+                <li v-for="item in categories" @mouseover="selectCategory(item,$event)" @mouseout="unselectCategory(item,$event)">{{item.name}}&nbsp;&gt;</li>
+            </ul>
+        </div>
+        <div class="category_second" :style="{display:category.secondListVisible}">
+                {{selectedId}}
+        </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 Vue.component('product-unit', function (resolve, reject) {
-    GL.Http.load('', function (responseText) {
+    GL.Http.load('./module/productUnit/productUnit.html', function (responseText) {
         resolve({
             template: responseText,
             props: {
