@@ -1,3 +1,5 @@
 $Global={
-
+    category:{
+        secondListVisible:'none',
+    }
 }

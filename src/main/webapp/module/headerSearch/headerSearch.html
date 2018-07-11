@@ -2,25 +2,30 @@
     <link rel="stylesheet" href="./module/headerSearch/headerSearch.css">
     <div class="container">
         <div class="row" style="margin-top: 30px">
-            <div class="col-lg-4">
-                <img src="images/use/index.png" alt="" class="pull-right">
+            <div class="col-lg-4 col-md-4" style="text-align: center">
+                <img src="images/use/index.png">
             </div>
-            <div class="col-lg-6 search_div" style="padding-top: 10px">
+            <div class="col-lg-6 col-md-8 search_div" style="padding-top: 10px">
                 <gaea-input v-model="searchContent" :placeholder="searchTip">
                     <gaea-button slot="append" style="font-size: 16px;color: white;letter-spacing: 4px" @click="searchGoods">搜索</gaea-button>
                 </gaea-input>
             </div>
         </div>
     </div>
-    <div style="height: 30px;background-color:#41b8ea ">
+    <div style="height: 30px;background-color:#41b8ea;margin-top: 30px ">
             <div class="my_container header_category">
-                <div class="header_all_category" @mouseover="cFirstListVisible='block'" @mouseout="hideCategoryList">
+                <div class="header_all_category" @mouseover="showCategoryList" @mouseout="hideCategoryList">
                     <div class="all_category_text" >
                         所有分类
                     </div>
                     <div class="all_category_content" :style="{display:cFirstListVisible}">
                         <qwe-category></qwe-category>
                     </div>
+                </div>
+                <div class="header_categories">
+                    <ul>
+                        <li v-for="item in categoryTips"><a href="#">{{item.name}}</a></li>
+                    </ul>
                 </div>
 
             </div>

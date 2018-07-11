@@ -2,9 +2,15 @@ Vue.component('header-search', function (resolve, reject) {
     GL.Http.load('./module/headerSearch/headerSearch.html', function (responseText) {
         resolve({
             template: responseText,
-            props: {},
+            props: {
+                cfirstshow:{
+                    type: Boolean,
+                    default: false
+                }
+            },
             data: function () {
                 return {
+                    category:$Global.category,
                     searchContent:'',
                     searchTip:'台式机',
                     categoryTips:[
@@ -13,23 +19,30 @@ Vue.component('header-search', function (resolve, reject) {
                         {name:'鲜花'},
                         {name:'书籍'},
                         {name:'时尚新品'},
-                        {name:'海外代购'}],
+                        {name:'海外代购'},
+                        {name:'健身'}],
                     cFirstListVisible:'none',
+                    isShow: false
                 }
             },
             watch: {},
-            created: function () {},
+            created: function () {
+               if(this.cfirstshow){
+                    this.cFirstListVisible='block'
+                }
+            },
             methods: {
                 searchGoods:function (name) {
                     console.log(name)
                 },
+                showCategoryList:function (e) {
+                    this.cFirstListVisible='block';
+                    if(e.target.className=='category_second'){
+                        this.category.hideSecondList=false;
+                    }
+                },
                 hideCategoryList:function (e) {
-                   if(e.target.tagName!='LI'){
-                       this.cFirstListVisible='none';
-                       $Global.category.secondListVisible='none';
-                   }else{
-                       this.cFirstListVisible='none';
-                   }
+                    this.cFirstListVisible='none'
                 }
             }
         });

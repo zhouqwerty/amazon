@@ -3,7 +3,7 @@
     <div class="category_content">
         <div class="category_first">
             <ul >
-                <li v-for="item in categories" @mouseover="selectCategory(item,$event)" @mouseout="unselectCategory(item,$event)">{{item.name}}&nbsp;&gt;</li>
+                <li v-for="item in categories" @mouseover="selectCategory(item,$event)" @mouseout="unselectCategory(item,$event)"><div>{{item.name}}&nbsp;&gt;</div></li>
             </ul>
         </div>
         <div class="category_second" :style="{display:category.secondListVisible}">
