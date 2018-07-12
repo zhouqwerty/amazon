@@ -18,3 +18,54 @@
 .border_1{
     border: 1px solid black;
 }
+
+.index_left{
+    height: 1px;
+}
+
+.index_middle{
+}
+
+.index_right{
+    width: 250px;
+}
+
+@media (max-width: 960px) {
+    .index_left{
+        width: 0px;
+    }
+
+    .index_middle{
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .index_right{
+        width: 600px;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 960px) {
+    .index_content>div{
+        float: left;
+    }
+    .index_left{
+        width: 250px;
+    }
+    .index_middle{
+        width: 460px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .index_content>div{
+        float: left;
+    }
+    .index_left{
+        width: 250px;
+    }
+    .index_middle{
+        width: 650px;
+    }
+}

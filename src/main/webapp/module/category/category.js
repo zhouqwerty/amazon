@@ -24,18 +24,11 @@ Vue.component('qwe-category', function (resolve, reject) {
             created: function () {},
             methods: {
                 selectCategory:function(item,event){
-                    setTimeout(()=>{
-                        this.category.secondListVisible='block';
-                    },200)
+                    this.category.secondListVisible='block';
                     this.selectedId=item.id;
                     event.target.style.backgroundColor='rgba(58,174,224,0.6)';
                 },
                 unselectCategory:function(item,event){
-                    setTimeout(()=>{
-                        if(this.category.hideSecondList){
-                            this.category.secondListVisible='none';
-                        }
-                    },100)
                     event.target.style.backgroundColor='transparent';
                 }
             }

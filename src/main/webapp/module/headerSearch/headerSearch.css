@@ -3,28 +3,6 @@
     height: 100%;
 }
 
-.my_container{
-    margin: 0 auto;
-}
-
-@media (max-width: 960px) {
-    .my_container{
-        width: 720px;
-    }
-}
-
-@media (min-width: 960px) {
-    .my_container{
-        width: 960px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .my_container{
-        width: 1200px;
-    }
-}
-
 .search_div .ivu-input-group .ivu-input{
     height: 40px;
     border: #41b8ea 1px solid;
@@ -74,16 +52,16 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 30px;
-    display: flex;
-    flex-direction: row;
+    position: relative;
 }
 .header_all_category{
     width: 250px;
+    background-color: #3aaee0;
 }
 
 .all_category_text{
    text-align: center;
-   background-color: #3aaee0;
+    width: 100%;
 }
 
 .all_category_content{
@@ -96,7 +74,9 @@
 }
 
 .header_categories{
-    padding-left: 20px;
+    position: absolute;
+    left: 270px;
+    top:0px;
     height: 30px;
     overflow: hidden;
 }
@@ -106,6 +86,7 @@
     float: left;
     width: 150px;
     text-align: center;
+    background-color: #41b8ea;
 }
 
 .header_categories li a{

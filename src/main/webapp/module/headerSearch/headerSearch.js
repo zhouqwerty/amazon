@@ -22,12 +22,21 @@ Vue.component('header-search', function (resolve, reject) {
                         {name:'海外代购'},
                         {name:'健身'}],
                     cFirstListVisible:'none',
-                    isShow: false
                 }
             },
-            watch: {},
+            watch: {
+                'category.changeFirstStatus':function (newVal,oldVal) {
+                    if(newVal){
+                        this.cfirstshow=false;
+                        this.hideCategoryList();
+                    }else{
+                        this.cfirstshow=true;
+                        this.showCategoryList();
+                    }
+                }
+            },
             created: function () {
-               if(this.cfirstshow){
+                if(this.cfirstshow&&$(window).width()>960){
                     this.cFirstListVisible='block'
                 }
             },
@@ -37,12 +46,15 @@ Vue.component('header-search', function (resolve, reject) {
                 },
                 showCategoryList:function (e) {
                     this.cFirstListVisible='block';
-                    if(e.target.className=='category_second'){
-                        this.category.hideSecondList=false;
+                    if(e&&e.target.className=='category_second'){
+                        this.category.secondListVisible='block';
                     }
                 },
                 hideCategoryList:function (e) {
-                    this.cFirstListVisible='none'
+                    if(!this.cfirstshow||$(window).width()<960){
+                        this.cFirstListVisible='none';
+                    }
+                    this.category.secondListVisible='none';
                 }
             }
         });

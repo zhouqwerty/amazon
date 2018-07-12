@@ -9,8 +9,16 @@
     float: left;
 }
 
+.my_container{
+    margin: 0 auto;
+}
+
 @media (max-width: 960px) {
     .product_container{
+        width: 720px;
+    }
+
+    .my_container{
         width: 720px;
     }
 }
@@ -19,10 +27,18 @@
     .product_container{
         width: 960px;
     }
+
+    .my_container{
+        width: 960px;
+    }
 }
 
 @media (min-width: 1200px) {
     .product_container{
+        width: 1200px;
+    }
+
+    .my_container{
         width: 1200px;
     }
 }

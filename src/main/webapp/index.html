@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="images/icon/logo.png"/>
+    <!--框架-->
     <link rel="stylesheet" href="lib/iview/iview.css">
     <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+    <!--css-->
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/common.css">
     <!--框架-->
     <script src="lib/util/gl.js"></script>
     <script src="lib/iview/iview.min.js"></script>
@@ -28,21 +31,14 @@
     <div class="searcher_header">
         <header-search cfirstshow="true"></header-search>
     </div>
-    <div class="container-fluid index_content">
-        <div class="row">
-            <div class="col-lg-2">
-
+    <div class="my_container index_content">
+            <div class="index_left">
             </div>
-            <div class="col-lg-2 col-md-3" style="padding-left: 2px">
-            </div>
-            <div class="col-lg-4 col-md-6" style="padding: 15px 0 0 0">
+            <div class="index_middle">
                 <index-carousel></index-carousel>
             </div>
-            <div class="col-lg-2 col-md-3 col-sm-6" style="padding-top: 15px;">
+            <div class="index_right">
                 <brand-tip></brand-tip>
-            </div>
-            <div class="col-lg-2">
-
             </div>
         </div>
     </div>
