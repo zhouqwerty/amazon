@@ -36,3 +36,7 @@
     float: right;
 }
 
+.product_selected{
+    border: 1px #41b8ea solid;
+}
+

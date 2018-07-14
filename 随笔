@@ -1,2 +1,18 @@
 前端
 1.class的命名使用下划线，组件的命名使用中划线
+2.iview使用
+    在非 template/render 模式下（例如使用 CDN 引用时），组件名要分隔，
+    例如 DatePicker 必须要写成 date-picker。
+    以下组件，在非 template/render 模式下，需要加前缀 i-：
+        Button: i-button
+        Col: i-col
+        Table: i-table
+        Input: i-input
+        Form: i-form
+        Menu: i-menu
+        Select: i-select
+        Option: i-option
+        Progress: i-progress
+    以下组件，在所有模式下，必须加前缀 i-，除非使用 iview-loader：
+        Switch: i-switch
+        Circle: i-circle

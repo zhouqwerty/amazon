@@ -6,11 +6,17 @@ Vue.component('product-unit', function (resolve, reject) {
                 product:''
             },
             data: function () {
-                return {}
+                return {
+                    selectFlag:false
+                }
             },
             watch: {},
             created: function () {},
-            methods: {}
+            methods: {
+                showProductInfo:function () {
+                    window.open("product.html?pid="+this.product.id,"_blank");
+                }
+            }
         });
     });
 });

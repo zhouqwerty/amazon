@@ -3,24 +3,24 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center;padding-top: 5px">
-                <gaea-button type="primary" style="background: #4d91d94a" @click="login.loginModal=true">登录</gaea-button>
-                <gaea-button type="primary" style="background: #4d91d94a" @click="register.registerModal=true">注册</gaea-button>
+                <i-button type="primary" style="background: #4d91d94a" @click="login.loginModal=true">登录</i-button>
+                <i-button type="primary" style="background: #4d91d94a" @click="register.registerModal=true">注册</i-button>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <ul class="top_left_nav">
                     <li><a href="#">商城首页</a></li>
                     <li>
-                        <gaea-dropdown @on-click="selectMyShop">
+                        <dropdown @on-click="selectMyShop">
                             <a href="javascript:void(0)">
                                 我的购物
-                                <gaea-icon type="arrow-down-b" style="color: white"></gaea-icon>
+                                <icon type="arrow-down-b" style="color: white"></icon>
                             </a>
-                            <gaea-dropdownMenu slot="list" >
-                                <gaea-dropdownItem name="product">已买到的宝贝</gaea-dropdownItem>
-                                <gaea-dropdownItem name="browser">我的足迹</gaea-dropdownItem>
-                                <gaea-dropdownItem name="info">个人信息</gaea-dropdownItem>
-                            </gaea-dropdownMenu>
-                        </gaea-dropdown>
+                            <dropdown-menu slot="list" >
+                                <dropdownItem name="product">已买到的宝贝</dropdownItem>
+                                <dropdownItem name="browser">我的足迹</dropdownItem>
+                                <dropdownItem name="info">个人信息</dropdownItem>
+                            </dropdown-menu>
+                        </dropdown>
                     </li>
                     <li><a href="#">购物车</a></li>
                     <li><a href="#">收藏夹</a></li>
@@ -29,74 +29,74 @@
         </div>
     </div>
     <!--登录-->
-    <gaea-modal v-model="login.loginModal" width="360" @on-cancel="lrEnd('loginInfo')" :mask-closable="false">
+    <modal v-model="login.loginModal" width="360" @on-cancel="lrEnd('loginInfo')" :mask-closable="false">
         <p slot="header" style="color:black;text-align:center">
             <span>登录</span>
         </p>
         <div style="text-align:center">
-            <gaea-form ref="loginInfo" :model="login.loginInfo" :rules="login.loginRule" :label-width="60">
-                <gaea-formItem label="用户名" prop="username">
-                    <gaea-input type="text" v-model="login.loginInfo.username"></gaea-input>
-                </gaea-formItem>
-                <gaea-formItem label="密码" prop="password">
-                    <gaea-input type="password" v-model="login.loginInfo.password"></gaea-input>
-                </gaea-formItem>
-                <gaea-formItem label="验证码" prop="valid">
-                    <gaea-row>
-                        <gaea-col span="10">
-                            <gaea-input type="text" v-model="login.loginInfo.valid"></gaea-input>
-                        </gaea-col>
-                        <gaea-col span="9" offset="1">
+            <i-form ref="loginInfo" :model="login.loginInfo" :rules="login.loginRule" :label-width="60">
+                <form-item label="用户名" prop="username">
+                    <i-input type="text" v-model="login.loginInfo.username"></i-input>
+                </form-item>
+                <form-item label="密码" prop="password">
+                    <i-input type="password" v-model="login.loginInfo.password"></i-input>
+                </form-item>
+                <form-item label="验证码" prop="valid">
+                    <row>
+                        <i-col span="10">
+                            <i-input type="text" v-model="login.loginInfo.valid"></i-input>
+                        </i-col>
+                        <i-col span="9" offset="1">
                             <img src="images/icon/logo.png" alt="" style="width: 150px;height: 30px;background: #eee">
-                        </gaea-col>
-                    </gaea-row>
-                </gaea-formItem>
-                <gaea-formItem>
-                    <gaea-button type="primary" @click="loginSubmit('loginInfo')" :loading="login.loginFlag">登录</gaea-button>
-                    <gaea-button type="ghost" @click="lrReset('loginInfo')" style="margin-left: 8px">重置</gaea-button>
-                </gaea-formItem>
-            </gaea-form>
+                        </i-col>
+                    </row>
+                </form-item>
+                <form-item>
+                    <i-button type="primary" @click="loginSubmit('loginInfo')" :loading="login.loginFlag">登录</i-button>
+                    <i-button type="ghost" @click="lrReset('loginInfo')" style="margin-left: 8px">重置</i-button>
+                </form-item>
+            </i-form>
         </div>
         <div slot="footer"></div>
-    </gaea-modal>
+    </modal>
     <!--注册-->
-    <gaea-modal v-model="register.registerModal" width="360" @on-cancel="lrEnd('registerInfo')" :mask-closable="false">
+    <modal v-model="register.registerModal" width="360" @on-cancel="lrEnd('registerInfo')" :mask-closable="false">
         <p slot="header" style="color:black;text-align:center">
             <span>注册</span>
         </p>
         <div style="text-align:center">
-            <gaea-form ref="registerInfo" :model="register.registerInfo" :rules="register.registerRule" :label-width="60">
-                <gaea-formItem label="用户名" prop="username">
-                    <gaea-input type="text" v-model="register.registerInfo.username"></gaea-input>
-                </gaea-formItem>
-                <gaea-formItem label="密码" prop="password">
-                    <gaea-input type="password" v-model="register.registerInfo.password"></gaea-input>
-                </gaea-formItem>
-                <gaea-formItem label="再次输入" prop="password2">
-                    <gaea-input type="password" v-model="register.registerInfo.password2"></gaea-input>
-                </gaea-formItem>
-                <gaea-formItem label="邮箱" prop="email">
-                    <gaea-input type="text" v-model="register.registerInfo.email"></gaea-input>
-                </gaea-formItem>
-                <gaea-formItem label="手机号" prop="phone">
-                    <gaea-row>
-                        <gaea-col span="15">
-                            <gaea-input type="text" v-model="register.registerInfo.phone"></gaea-input>
-                        </gaea-col>
-                        <gaea-col span="5" offset="1">
-                            <gaea-button>获取验证码</gaea-button>
-                        </gaea-col>
-                    </gaea-row>
-                </gaea-formItem>
-                <gaea-formItem label="验证码" prop="valid">
-                    <gaea-input type="password" v-model="register.registerInfo.valid"></gaea-input>
-                </gaea-formItem>
-                <gaea-formItem>
-                    <gaea-button type="primary" @click="registerSubmit('registerInfo')" :loading="register.registerFlag">注册</gaea-button>
-                    <gaea-button type="ghost" @click="lrReset('registerInfo')" style="margin-left: 8px">重置</gaea-button>
-                </gaea-formItem>
-            </gaea-form>
+            <i-form ref="registerInfo" :model="register.registerInfo" :rules="register.registerRule" :label-width="60">
+                <form-item label="用户名" prop="username">
+                    <i-input type="text" v-model="register.registerInfo.username"></i-input>
+                </form-item>
+                <form-item label="密码" prop="password">
+                    <i-input type="password" v-model="register.registerInfo.password"></i-input>
+                </form-item>
+                <form-item label="再次输入" prop="password2">
+                    <i-input type="password" v-model="register.registerInfo.password2"></i-input>
+                </form-item>
+                <form-item label="邮箱" prop="email">
+                    <i-input type="text" v-model="register.registerInfo.email"></i-input>
+                </form-item>
+                <form-item label="手机号" prop="phone">
+                    <row>
+                        <i-col span="15">
+                            <i-input type="text" v-model="register.registerInfo.phone"></i-input>
+                        </i-col>
+                        <i-col span="5" offset="1">
+                            <i-button>获取验证码</i-button>
+                        </i-col>
+                    </row>
+                </form-item>
+                <form-item label="验证码" prop="valid">
+                    <i-input type="password" v-model="register.registerInfo.valid"></i-input>
+                </form-item>
+                <form-item>
+                    <i-button type="primary" @click="registerSubmit('registerInfo')" :loading="register.registerFlag">注册</i-button>
+                    <i-button type="ghost" @click="lrReset('registerInfo')" style="margin-left: 8px">重置</i-button>
+                </form-item>
+            </i-form>
         </div>
         <div slot="footer"></div>
-    </gaea-modal>
+    </modal>
 </div>

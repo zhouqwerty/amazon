@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
     <!--css-->
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/search.css">
     <!--框架js-->
-    <script src="lib/util/gl.js"></script>
+    <script src="lib/vue/vuePlus.js"></script>
     <script src="lib/iview/iview.min.js"></script>
     <script src="lib/jquery/jquery-3.2.1.js"></script>
     <script src="lib/bootstrap/bootstrap.js"></script>
@@ -28,26 +29,52 @@
     <div style="width: 100%;margin-top: 60px">
         <header-search></header-search>
     </div>
-    <div class="product_container">
-        <ul>
-            <li><product-unit></product-unit></li>
-            <li><product-unit></product-unit></li>
-            <li><product-unit></product-unit></li>
-            <li><product-unit></product-unit></li>
-            <li><product-unit></product-unit></li>
-            <li><product-unit></product-unit></li>
-            <li><product-unit></product-unit></li>
-            <li><product-unit></product-unit></li>
+    <div class="my_container">
+        <ul class="product-list">
+            <li v-for="item in products"><product-unit :product="item"></product-unit></li>
         </ul>
+        <div style="text-align: center;padding:40px 0 60px 0;">
+            <page @on-change="lookNextPageProducts":total="page.total" :page-size="page.size" :current.sync="page.current" show-elevator></page>
+        </div>
     </div>
 </div>
 <script>
     var app=new Vue({
         el:'#search',
         data:{
-            i:0
+            i:0,
+            products:[
+                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
+                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
+                {id:'1',name:'one'},{id:'2',name:'two'}, {id:'3',name:'three'},
+                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
+                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
+                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
+                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
+                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
+                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
+                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
+                {id:'1',name:'one'},{id:'2',name:'two'}, {id:'3',name:'three'},
+                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
+                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
+                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
+                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
+                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
+                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
+                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
+                {id:'1',name:'one'},{id:'2',name:'two'}, {id:'3',name:'three'},
+                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
+            ],
+            page:{
+                total:6000,
+                size:60,
+                current:2
+            }
         },
         methods:{
+            lookNextPageProducts:function (current) {
+                console.log(current)
+            }
         }
     });
 </script>

@@ -1,0 +1,36 @@
+.order_header{
+    margin-top: 100px;
+    overflow: hidden;
+}
+.order_header_logo{
+    text-align: center;
+    width: 30%;
+    float: left;
+}
+.order_header_steps{
+    width: 70%;
+    float: left;
+}
+.order_address_unit{
+    padding: 10px;
+    list-style-type: none;
+    float: left;
+    width:240px;
+    border: 1px dashed #41b8ea;
+    margin-left: 20px;
+}
+
+.order_address_unit_selected{
+    border: solid;
+}
+@media (max-width: 960px) {
+
+}
+
+@media (min-width: 960px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}

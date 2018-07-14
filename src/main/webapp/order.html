@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="images/icon/logo.png"/>
+    <!--框架-->
+    <link rel="stylesheet" href="lib/iview/iview.css">
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+    <!--css-->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/order.css">
+    <!--框架-->
+    <script src="lib/vue/vuePlus.js"></script>
+    <script src="lib/iview/iview.min.js"></script>
+    <script src="lib/jquery/jquery-3.2.1.js"></script>
+    <script src="lib/bootstrap/bootstrap.js"></script>
+    <!--js-->
+    <!--模块-->
+    <script src="module/topUserInfo/topUserInfo.js"></script>
+    <title>亚马逊(订单)</title>
+</head>
+<body style="overflow-y: auto">
+<div id="order">
+    <top-user-info></top-user-info>
+    <div class="my_container">
+        <div class="order_header">
+            <div class="order_header_logo">
+                <img src="images/use/index.png" alt="">
+            </div>
+            <div class="order_header_steps">
+                <steps :current="0">
+                    <step title="下订单"></step>
+                    <Step title="付款"></Step>
+                    <Step title="确认收货"></Step>
+                    <Step title="评价"></Step>
+                </steps>
+            </div>
+        </div>
+        <div class="order_address">
+            <ul>
+                <li v-for="item in addrs" class="order_address_unit">
+                    <div>收件人：{{item.name}}</div>
+                    <div>地址：{{item.addr}}</div>
+                    <div>联系方式:{{item.phone}}</div>
+                </li>
+            </ul>
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</div>
+<script>
+    var app=new Vue({
+        el:'#order',
+        data:{
+            addrs:[
+                {
+                    name:111,
+                    phone:'1654115654654',
+                    addr:'中国北池子村'
+                },
+                {
+                    name:111,
+                    phone:'1654115654654',
+                    addr:'中国北池子村'
+                },
+                {
+                    name:111,
+                    phone:'1654115654654',
+                    addr:'中国北池子村'
+                },
+                {
+                    name:111,
+                    phone:'1654115654654',
+                    addr:'中国北池子村'
+                }
+            ]
+        },
+        methods:{
+        }
+    });
+</script>
+</body>
+</html>

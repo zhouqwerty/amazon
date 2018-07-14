@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>测试</title>
+    <!--框架css-->
+    <link rel="stylesheet" href="lib/iview/iview.css">
+    <!--框架js-->
+    <script src="lib/vue/vuePlus.js"></script>
+    <script src="lib/iview/iview.min.js"></script>
 </head>
 <body>
-<div style="height: 100px;background-color: red;display: flex;">
-    <div style="background-color: blue">
-        1111
-    </div>
-    <div style="background-color: yellow">
-        2222
-    </div>
-
+<div id="demo">
+    <page :total="100" show-sizer></page>
 </div>
+<script>
+    var vm=new Vue({
+        el:"#demo"
+    })
+</script>
 </body>
 </html>

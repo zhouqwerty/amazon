@@ -1,0 +1,10 @@
+.product-list{
+    overflow: hidden;
+}
+
+.product-list li{
+    list-style-type: none;
+    width: 240px;
+    height: 400px;
+    float: left;
+}

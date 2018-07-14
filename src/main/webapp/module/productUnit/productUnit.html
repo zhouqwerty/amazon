@@ -1,4 +1,4 @@
-<div class="product_unit">
+<div class="product_unit" @click="showProductInfo" @mouseover="selectFlag=true" @mouseout="selectFlag=false" :class="{product_selected:selectFlag}">
     <link rel="stylesheet" href="./module/productUnit/productUnit.css">
     <div style="text-align: center"><img src="./images/product/1.jpg" alt="" style="width: 200px"></div>
     <div class="product_info">

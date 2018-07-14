@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="images/icon/logo.png"/>
+    <!--框架css-->
+    <link rel="stylesheet" href="lib/iview/iview.css">
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+    <!--css-->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/product.css">
+    <!--框架js-->
+    <script src="lib/vue/vuePlus.js"></script>
+    <script src="lib/iview/iview.min.js"></script>
+    <script src="lib/jquery/jquery-3.2.1.js"></script>
+    <script src="lib/bootstrap/bootstrap.js"></script>
+    <!--js-->
+    <script src="js/product.js"></script>
+    <!--模块-->
+    <script src="module/topUserInfo/topUserInfo.js"></script>
+    <script src="module/headerSearch/headerSearch.js"></script>
+    <script src="module/category/category.js"></script>
+    <title>亚马逊(商品)</title>
+</head>
+<body style="overflow: auto">
+<div id="product">
+    <top-user-info></top-user-info>
+    <div style="width: 100%;margin-top: 60px">
+        <header-search></header-search>
+    </div>
+    <div class="product_info_container">
+        <div class="product_info_left">
+            <div>
+                <img src="images/product/1.jpg" style="width: 80%">
+            </div>
+            <div>
+
+            </div>
+        </div>
+        <div class="product_info_right">
+            <div class="product_info_header">
+                布拉布拉布拉布拉不啦布拉布拉布拉布拉不啦布拉布拉布拉布拉不啦
+            </div>
+            <div class="product_info_old_price">
+                原价：<span class="old_price_number">￥ 799.00</span>
+            </div>
+            <div class="product_info_new_price">
+                现价：<span class="new_price_number">￥ 699.00</span>
+            </div>
+            <div class="product_info_count">
+                数量：<input-number :max="100" :min="1" v-model="productCount"></input-number>
+            </div>
+            <div class="product_sale_button">
+                <i-button @click="placeOrder" class="product_buy_button"><img src="images/icon/buy.png" alt="">立即购买</i-button>
+                <i-button class="product_cart_button"><img src="images/icon/cart.png" alt="">加入购物车</i-button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var app=new Vue({
+        el:'#product',
+        data:{
+            i:0,
+            productCount:1,
+            pid:'12'
+        },
+        methods:{
+            placeOrder:function () {
+                window.open("order.html?pid="+this.pid+"&count="+this.productCount,"_blank");
+            }
+        }
+    });
+</script>
+</body>
+</html>
