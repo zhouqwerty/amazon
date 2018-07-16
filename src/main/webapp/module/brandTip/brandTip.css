@@ -18,8 +18,8 @@
 
 .brand_tip_content ul li{
     float: left;
-    width: 45%;
-    margin: 5px 2.5%;
+    width: 120px;
+    margin: 2px;
     height: 100px;
 }
 

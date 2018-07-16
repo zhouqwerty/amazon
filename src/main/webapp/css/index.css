@@ -1,5 +1,5 @@
 .index_content{
-
+    padding-top: 10px;
 }
 
 .searcher_header{
@@ -7,23 +7,12 @@
     width: 100%;
 }
 
-.width_100{
-    width: 100%;
-}
-
-.height_100{
-    height: 100%;
-}
-
-.border_1{
-    border: 1px solid black;
-}
-
 .index_left{
     height: 1px;
 }
 
 .index_middle{
+    padding: 0 7px 20px 7px;
 }
 
 .index_right{
@@ -41,7 +30,7 @@
     }
 
     .index_right{
-        width: 600px;
+        width: 625px;
         margin: 0 auto;
     }
 }

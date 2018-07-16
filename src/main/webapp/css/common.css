@@ -2,6 +2,10 @@
     margin: 0 auto;
 }
 
+.searcher_header{
+    margin-top: 60px;
+}
+
 @media (max-width: 960px) {
     .my_container{
         width: 720px;

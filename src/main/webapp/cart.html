@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="images/icon/logo.png"/>
+    <!--框架-->
+    <link rel="stylesheet" href="lib/iview/iview.css">
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+    <!--css-->
+    <link rel="stylesheet" href="css/common.css">
+    <!--框架-->
+    <script src="lib/vue/vuePlus.js"></script>
+    <script src="lib/iview/iview.min.js"></script>
+    <script src="lib/jquery/jquery-3.2.1.js"></script>
+    <script src="lib/bootstrap/bootstrap.js"></script>
+    <!--js-->
+    <script src="js/cart.js"></script>
+    <!--模块-->
+    <script src="module/topUserInfo/topUserInfo.js"></script>
+    <script src="module/headerSearch/headerSearch.js"></script>
+    <script src="module/category/category.js"></script>
+    <script src="module/orderUnit/orderUnit.js"></script>
+    <title>亚马逊(购物车)</title>
+</head>
+<body style="overflow-y: auto">
+<div id="cart">
+    <top-user-info></top-user-info>
+    <div class="searcher_header">
+        <header-search></header-search>
+    </div>
+    <div class="my_container">
+        <div class="cart_header">
+            <img src="images/icon/cartLogo.png" alt="">
+            <span>购物车</span>
+        </div>
+        <order-unit></order-unit>
+        <order-unit></order-unit>
+        <order-unit></order-unit>
+    </div>
+</div>
+<script>
+    var app=new Vue({
+        el:'#cart',
+        data:{
+
+        },
+        methods:{
+        }
+    });
+</script>
+</body>
+</html>

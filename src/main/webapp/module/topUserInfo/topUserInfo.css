@@ -3,7 +3,7 @@
     background-color: rgb(44,176,232);
     position: fixed;
     top: 0px;
-    z-index: 10;
+    z-index: 20;
 }
 
 .top_left_nav{

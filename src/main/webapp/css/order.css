@@ -1,3 +1,8 @@
+.price_text{
+    font-weight: 600;
+    font-size: 18px;
+    color: #e8393c;
+}
 .order_header{
     margin-top: 100px;
     overflow: hidden;
@@ -35,6 +40,28 @@ div.order_address_selected{
     border: 2px solid #41b8ea;
 }
 
+.order_info {
+    margin-top: 50px;
+    padding-left: 50px;
+    padding-bottom: 200px;
+}
+.order_info_wrap{
+    margin-top: 30px;
+}
+.order_info_headers{
+    margin-top: 10px;
+}
+.order_info_header{
+    font-size: 16px;
+}
+
+.order_final_info{
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #2b85e4;
+    float: right;
+    width: 300px;
+}
 @media (max-width: 960px) {
 
 }

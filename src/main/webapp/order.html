@@ -17,6 +17,7 @@
     <!--js-->
     <!--模块-->
     <script src="module/topUserInfo/topUserInfo.js"></script>
+    <script src="module/orderUnit/orderUnit.js"></script>
     <title>亚马逊(订单)</title>
 </head>
 <body style="overflow-y: auto">
@@ -51,8 +52,41 @@
                 <i-button type="primary" @click="addAddr.modal=true">新增收货地址</i-button>
             </div>
         </div>
-        <div>
-            
+        <div class="order_info">
+            <h4 style="font-weight: 600">确认订单信息</h4>
+            <div class="order_info_wrap">
+                <div><img src="images/icon/store.png" alt="">京天华盛官方旗舰店</div>
+                <div class="order_info_headers">
+                    <row>
+                        <i-col span="6">
+                            <div class="order_info_header">商品信息</div>
+                        </i-col>
+                        <i-col span="6">
+                            <div class="order_info_header">分类</div>
+                        </i-col>
+                        <i-col span="3">
+                            <div class="order_info_header">单价</div>
+                        </i-col>
+                        <i-col span="6">
+                            <div class="order_info_header">数量</div>
+                        </i-col>
+                        <i-col span="3">
+                            <div class="order_info_header">小计</div>
+                        </i-col>
+                    </row>
+                    </row>
+                </div>
+                <order-unit></order-unit>
+            </div>
+            <div class="order_final_info">
+                <div>实付款:<span class="price_text">￥3999.00</span></div>
+                <div>地址：<span>中国北池子村</span></div>
+                <div>收件人：<span>某某某(110)</span></div>
+            </div>
+            <div class="clearfix"></div>
+            <div style="margin-top: 20px;overflow: hidden">
+                <i-button type="primary" @click="submitOrder" class="pull-right">提交订单</i-button>
+            </div>
         </div>
     </div>
     <!--新增地址-->
@@ -204,6 +238,7 @@
                 {id:'3',name:'无锡'},
                 {id:'4',name:'扬州'},
             ],
+            productCount:1
         },
         methods:{
             changeAddress:function(addr){
@@ -215,14 +250,21 @@
             saveNewAddress:function (name) {
                 this.$refs[name].validate((result)=> {
                     if(result){
-                        console.log("地址合格")
-                    }else{
-                        console.log("地址错误")
+                        this.addAddr.saveFlag = true;
+                        setTimeout(() => {
+                            this.addAddr.modal = false;
+                            this.addAddr.saveFlag = false;
+                            this.$Message.success('保存成功');
+                            this.reset("addAddress");
+                        }, 2000);
                     }
                 });
             },
             reset:function (name) {
                 this.$refs[name].resetFields();
+            },
+            submitOrder:function () {
+                console.log("submit order")
             }
         }
     });
