@@ -1,8 +1,3 @@
-.price_text{
-    font-weight: 600;
-    font-size: 18px;
-    color: #e8393c;
-}
 .order_header{
     margin-top: 100px;
     overflow: hidden;
@@ -61,6 +56,9 @@ div.order_address_selected{
     border: 2px solid #2b85e4;
     float: right;
     width: 300px;
+}
+.store_order_wrap{
+     margin-top: 30px;
 }
 @media (max-width: 960px) {
 

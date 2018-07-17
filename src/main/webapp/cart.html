@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
     <!--css-->
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/cart.css">
     <!--框架-->
     <script src="lib/vue/vuePlus.js"></script>
     <script src="lib/iview/iview.min.js"></script>
@@ -30,21 +31,168 @@
     </div>
     <div class="my_container">
         <div class="cart_header">
-            <img src="images/icon/cartLogo.png" alt="">
-            <span>购物车</span>
+            <img src="images/icon/cartLogo.png" alt="" class="cart_header_icon">
+            <span style="position: relative;top: 10px;left: 15px">购物车</span>
         </div>
-        <order-unit></order-unit>
-        <order-unit></order-unit>
-        <order-unit></order-unit>
+        <div v-for="storeInfo in orderList" class="cart_store">
+            <div><checkbox @on-change=checkStore(storeInfo) v-model="storeInfo.model"></checkbox><img src="images/icon/store.png" alt="">{{storeInfo.store}}</div>
+            <div>
+                <div class="order_info_headers">
+                    <row>
+                        <i-col span="1">
+                            &nbsp;
+                        </i-col>
+                        <i-col span="19">
+                            <row>
+                                <i-col span="6">
+                                    <div class="order_info_header">商品信息</div>
+                                </i-col>
+                                <i-col span="6">
+                                    <div class="order_info_header">分类</div>
+                                </i-col>
+                                <i-col span="3">
+                                    <div class="order_info_header">单价</div>
+                                </i-col>
+                                <i-col span="6">
+                                    <div class="order_info_header">数量</div>
+                                </i-col>
+                                <i-col span="3">
+                                    <div class="order_info_header">小计</div>
+                                </i-col>
+                            </row>
+                        </i-col>
+                        <i-col span="4">
+
+                        </i-col>
+                    </row>
+                </div>
+                <div>
+                    <template v-for="orderInfo in storeInfo.orders">
+                        <row>
+                            <i-col span="1">
+                                <checkbox @on-change=checkOrder(orderInfo,storeInfo) v-model="orderInfo.model" class="order_checkbox"></checkbox>
+                            </i-col>
+                            <i-col span="19">
+                                <order-unit :order-info="orderInfo"></order-unit>
+                            </i-col>
+                            <i-col span="4">
+                                <div class="delete_order_button_wrap">
+                                    <div>
+                                        <i-button type="primary" @click="saveOrder(orderInfo)" size="small">保存</i-button>
+                                    </div>
+                                    <div>
+                                        <i-button type="primary" @click="deleteOrder(orderInfo)" size="small">删除</i-button>
+                                    </div>
+                                </div>
+                            </i-col>
+                        </row>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div class="cart_sum_cost_wrap">共计:<span class="price_text">￥{{sumCost}}</span></div>
+        <div class="cart_all_button_wrap">
+            <i-button type="primary" @click="saveOrders">保存</i-button>
+            <i-button type="primary" @click="deleteSelectedOrders">删除</i-button>
+            <i-button type="primary" @click="createOrders">生成订单</i-button>
+        </div>
     </div>
 </div>
 <script>
     var app=new Vue({
         el:'#cart',
         data:{
-
+            orderList:[
+                {
+                    store:'京天华盛',
+                    model:false,
+                    orders:[
+                        {
+                            img:'images/product/1.jpg',
+                            desc:'不拉不拉不拉',
+                            category:'不拉不拉不拉',
+                            price:1122.00,
+                            count:1,
+                            cost:1122.00,
+                            model:false
+                        },
+                    ]
+                },
+                {
+                    store:"名龙堂",
+                    model:false,
+                    orders:[
+                        {
+                            img:'images/product/1.jpg',
+                            desc:'不拉不拉不拉',
+                            category:'不拉不拉不拉',
+                            price:1122.00,
+                            count:1,
+                            cost:1122.00,
+                            model:false
+                        },
+                        {
+                            img:'images/product/1.jpg',
+                            desc:'不拉不拉不拉',
+                            category:'不拉不拉不拉',
+                            price:1122.00,
+                            count:1,
+                            cost:1122.00,
+                            model:false
+                        },
+                    ]
+                },
+            ],
+            sumCost:9999.99
         },
         methods:{
+            checkStore:function(store){
+                let orders=store.orders;
+                if(store.model){
+                    for(let i in orders){
+                        orders[i].model=true;
+                    }
+                }else{
+                    for(let i in orders){
+                        orders[i].model=false;
+                    }
+                }
+            },
+            checkOrder:function(order,store){
+                let flag=true;
+                let orders=store.orders;
+                if(order.model){
+                    for(let i in orders){
+                        if(!orders[i].model){
+                            flag=false;
+                        }
+                    }
+                }else{
+                    for(let i in orders){
+                        if(orders[i].model){
+                            flag=false;
+                        }
+                    }
+                }
+                if(flag){
+                    store.model=order.model;
+                }
+            },
+            deleteOrder:function (order) {
+                console.log(order)
+            },
+            deleteSelectedOrders:function () {
+                //遍历集合删除
+            },
+            createOrders:function () {
+                
+            },
+            saveOrders:function () {
+
+            },
+            saveOrder:function () {
+
+            },
         }
     });
 </script>

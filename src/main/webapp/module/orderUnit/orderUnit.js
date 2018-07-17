@@ -12,7 +12,11 @@ Vue.component('order-unit', function (resolve, reject) {
             },
             watch: {},
             created: function () {},
-            methods: {}
+            methods: {
+                changeCount:function (count) {
+                    console.log(count)
+                }
+            }
         });
     });
 });

@@ -3,28 +3,28 @@
     <div class="order_info_content">
         <row>
             <i-col span="3">
-                <img src="images/product/1.jpg" alt="">
+                <img :src="orderInfo.img" alt="">
             </i-col>
             <i-col span="3">
-                <div class="order_info_text">京天华盛i5 8500/gtx1060...</div>
+                <div class="order_info_text">{{orderInfo.desc}}</div>
             </i-col>
             <i-col span="6">
                 <div class="order_info_text">
-                    分类：120G/黑色
+                    {{orderInfo.category}}
                 </div>
             </i-col>
             <i-col span="3">
                 <div class="order_info_text">
-                    5000.00
+                    {{orderInfo.price}}
                 </div>
             </i-col>
             <i-col span="6">
                 <div class="order_info_text">
-                    数量：<input-number :max="100" :min="1" v-model="productCount"></input-number>
+                    数量：<input-number :max="100" :min="1" v-model="orderInfo.count" @on-change="changeCount"></input-number>
                 </div>
             </i-col>
             <i-col span="3">
-                <div class="order_info_text price_text">￥3399.00</div>
+                <div class="order_info_text price_text">￥{{orderInfo.cost}}</div>
             </i-col>
         </row>
     </div>

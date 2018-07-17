@@ -6,6 +6,12 @@
     margin-top: 60px;
 }
 
+.price_text{
+    font-weight: 600;
+    font-size: 18px;
+    color: #e8393c;
+}
+
 @media (max-width: 960px) {
     .my_container{
         width: 720px;

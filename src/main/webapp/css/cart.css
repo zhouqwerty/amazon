@@ -1,0 +1,41 @@
+.cart_header{
+    margin: 20px 0 30px 0;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: "Arial Narrow";
+    color: #ea9840;
+}
+.cart_header_icon{
+    width: 70px;
+}
+.order_info_headers{
+    margin-top: 10px;
+}
+.order_info_header{
+    font-size: 16px;
+}
+.cart_store{
+    margin-top: 40px;
+}
+.order_checkbox{
+    position: relative;
+    left: 15px;
+    top: 7px;
+}
+
+.delete_order_button_wrap{
+
+}
+
+.delete_order_button_wrap div{
+    padding: 20px 0 0 40px;
+}
+.cart_all_button_wrap{
+    text-align: center;
+    padding: 40px 0 100px 0;
+}
+
+.cart_sum_cost_wrap{
+    padding: 20px 200px 0;
+    text-align: right;
+}
