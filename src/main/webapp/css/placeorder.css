@@ -1,17 +1,6 @@
-.order_header{
+.place_order_page_header{
     margin-top: 100px;
-    overflow: hidden;
 }
-.order_header_logo{
-    text-align: center;
-    width: 30%;
-    float: left;
-}
-.order_header_steps{
-    width: 70%;
-    float: left;
-}
-
 .order_address{
     margin-top: 50px;
     padding-left: 50px;
@@ -42,12 +31,6 @@ div.order_address_selected{
 }
 .order_info_wrap{
     margin-top: 30px;
-}
-.order_info_headers{
-    margin-top: 10px;
-}
-.order_info_header{
-    font-size: 16px;
 }
 
 .order_final_info{

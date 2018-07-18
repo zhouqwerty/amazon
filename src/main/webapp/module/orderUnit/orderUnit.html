@@ -20,7 +20,7 @@
             </i-col>
             <i-col span="6">
                 <div class="order_info_text">
-                    数量：<input-number :max="100" :min="1" v-model="orderInfo.count" @on-change="changeCount"></input-number>
+                    数量：<input-number :max="100" :min="1" :disabled="numDisabled" v-model="orderInfo.count" @on-change="changeCount"></input-number>
                 </div>
             </i-col>
             <i-col span="3">

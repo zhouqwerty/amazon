@@ -1,0 +1,12 @@
+.step_header{
+    overflow: hidden;
+}
+.step_header_logo{
+    text-align: center;
+    width: 30%;
+    float: left;
+}
+.step_header_steps{
+    width: 70%;
+    float: left;
+}

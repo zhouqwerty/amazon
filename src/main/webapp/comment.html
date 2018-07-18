@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="images/icon/logo.png"/>
+    <!--框架-->
+    <link rel="stylesheet" href="lib/iview/iview.css">
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+    <!--css-->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/comment.css">
+    <!--框架-->
+    <script src="lib/vue/vuePlus.js"></script>
+    <script src="lib/iview/iview.min.js"></script>
+    <script src="lib/jquery/jquery-3.2.1.js"></script>
+    <script src="lib/bootstrap/bootstrap.js"></script>
+    <!--js-->
+
+    <!--模块-->
+    <script src="module/topUserInfo/topUserInfo.js"></script>
+    <script src="module/stepHeader/stepHeader.js"></script>
+    <script src="module/orderUnit/orderUnit.js"></script>
+    <script src="module/orderHeader/orderHeader.js"></script>
+    <title>亚马逊(评价)</title>
+</head>
+<body style="overflow-y: auto">
+<div id="comment">
+    <top-user-info></top-user-info>
+    <div class="my_container comment_all">
+        <div class="comment_page_header">
+            <step-header current="3"></step-header>
+        </div>
+        <div class="comment_order_info">
+            <h3>订单信息</h3>
+            <order-header></order-header>
+            <order-unit :order-info="order" :num-disabled="true"></order-unit>
+        </div>
+        <div class="comment_content">
+            <h3>评价内容</h3>
+            <div>
+                <div class="comment_rate">
+                    <span class="comment_rate_header">物流服务</span>
+                    <rate show-text allow-half v-model="rates.transport">
+                        <span class="comment_rate_text">{{rates.transport}}</span>
+                    </rate>
+                </div>
+                <div class="comment_rate">
+                    <span class="comment_rate_header">商品描述</span>
+                    <rate show-text allow-half v-model="rates.product">
+                        <span class="comment_rate_text">{{rates.product}}</span>
+                    </rate>
+                </div>
+                <div class="comment_rate">
+                    <span class="comment_rate_header">服务态度</span>
+                    <rate show-text allow-half v-model="rates.service">
+                        <span class="comment_rate_text">{{rates.service}}</span>
+                    </rate>
+                </div>
+            </div>
+            <div class="comment_content_custom">
+                <i-input v-model="comment" type="textarea" rows="4" placeholder="你的评价..."></i-input>
+            </div>
+            <div style="text-align: right;padding: 30px 10px 0 0">
+                <i-button type="primary" @click="submitComment" :loading="submitFlag">提交评价</i-button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var app=new Vue({
+        el:'#comment',
+        data:{
+            order:{
+                img:'images/product/1.jpg',
+                desc:'不拉不拉不拉',
+                category:'不拉不拉不拉',
+                price:1122.00,
+                count:1,
+                cost:1122.00,
+                model:false
+            },
+            rates:{
+                product:0,
+                service:0,
+                transport:0
+            },
+            comment:'',
+            submitFlag:false
+        },
+        methods:{
+            submitComment:function () {
+                this.submitFlag=true
+            }
+        }
+    });
+</script>
+</body>
+</html>

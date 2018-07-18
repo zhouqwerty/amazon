@@ -3,7 +3,11 @@ Vue.component('order-unit', function (resolve, reject) {
         resolve({
             template: responseText,
             props: {
-                orderInfo:Object
+                orderInfo:Object,
+                numDisabled:{
+                    type:Boolean,
+                    default:false
+                }
             },
             data: function () {
                 return {

@@ -1,0 +1,22 @@
+.comment_page_header{
+    margin-top: 100px;
+}
+.comment_content{
+    padding-top: 30px;
+}
+.comment_rate{
+    margin-top: 15px;
+}
+.comment_rate_header{
+    font-size: 16px;
+    padding:0 10px 0 7px;
+    position: relative;
+    top: 3px;
+}
+.comment_rate_text{
+    color: #f5a623;
+    font-size: 16px;
+}
+.comment_content_custom{
+    padding-top: 25px;
+}
