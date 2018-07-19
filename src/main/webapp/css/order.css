@@ -1,0 +1,19 @@
+.order_badge_dot{
+
+}
+.order_tabs{
+    margin: 40px 0 200px 0;
+}
+.order_tabs .ivu-tabs-nav{
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.order_handle_button_wrap div{
+    padding: 0 0 0 30px;
+    margin-top: 25px;
+}
+.all_order_tab_pagination{
+    text-align: center;
+    padding-top: 40px;
+}

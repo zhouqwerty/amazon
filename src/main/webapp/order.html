@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
     <!--css-->
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/order.css">
     <!--框架-->
     <script src="lib/vue/vuePlus.js"></script>
     <script src="lib/iview/iview.min.js"></script>
@@ -19,7 +20,8 @@
     <script src="module/topUserInfo/topUserInfo.js"></script>
     <script src="module/headerSearch/headerSearch.js"></script>
     <script src="module/category/category.js"></script>
-
+    <script src="module/orderHeader/orderHeader.js"></script>
+    <script src="module/orderUnit/orderUnit.js"></script>
 
     <title>亚马逊(订单)</title>
 </head>
@@ -30,33 +32,371 @@
         <header-search></header-search>
     </div>
     <div class="my_container">
-        <tabs value="name1">
-            <tab-pane :label="uncompleteOrderLabel" name="name1">标签一的内容</tab-pane>
-            <tab-pane label="标签二" name="name2">标签二的内容</tab-pane>
-            <tab-pane label="标签三" name="name3">标签三的内容</tab-pane>
-        </tabs>
+        <div class="order_tabs">
+            <tabs value="unpay">
+                <tab-pane :label="label.allOrder" name="all">
+                    <div class="all_order_tab">
+                        <row>
+                            <i-col span="20">
+                                <order-header></order-header>
+                            </i-col>
+                            <i-col span="4">
+
+                            </i-col>
+                        </row>
+                        <template v-for="item in orderList.unpay">
+                            <row>
+                                <i-col span="20">
+                                    <order-unit  :order-info="item" :num-disabled="true"></order-unit>
+                                </i-col>
+                                <i-col span="4">
+                                    <div class="order_handle_button_wrap">
+                                        <div>
+                                            <i-button type="primary" size="small" @click="payOrder(item.id)">付款</i-button>
+                                        </div>
+                                        <div>
+                                            <i-button type="primary" size="small" @click="cancelOrder(item.id)">取消订单</i-button>
+                                        </div>
+                                    </div>
+                                </i-col>
+                            </row>
+                        </template>
+                        <template v-for="item in orderList.unsend">
+                            <row>
+                                <i-col span="20">
+                                    <order-unit  :order-info="item" :num-disabled="true"></order-unit>
+                                </i-col>
+                                <i-col span="4">
+                                    <div class="order_handle_button_wrap">
+                                        <div>
+                                            <i-button type="primary" size="small" @click="cancelOrder(item.id)">取消订单</i-button>
+                                        </div>
+                                    </div>
+                                </i-col>
+                            </row>
+                        </template>
+                        <template v-for="item in orderList.untake">
+                            <row>
+                                <i-col span="20">
+                                    <order-unit  :order-info="item" :num-disabled="true"></order-unit>
+                                </i-col>
+                                <i-col span="4">
+                                    <div class="order_handle_button_wrap">
+                                        <div>
+                                            <i-button type="primary" size="small" @click="confirmReceipt(item.id)">确认收货</i-button>
+                                        </div>
+                                        <div>
+                                            <i-button type="primary" size="small" @click="returnGoods(item.id)">退货</i-button>
+                                        </div>
+                                    </div>
+                                </i-col>
+                            </row>
+                        </template>
+                        <template v-for="item in orderList.uncomment">
+                            <row>
+                                <i-col span="20">
+                                    <order-unit  :order-info="item" :num-disabled="true"></order-unit>
+                                </i-col>
+                                <i-col span="4">
+                                    <div class="order_handle_button_wrap">
+                                        <div>
+                                            <i-button type="primary" size="small" @click="commentOrder(item.id)">评价</i-button>
+                                        </div>
+                                    </div>
+                                </i-col>
+                            </row>
+                        </template>
+                        <template v-for="item in orderList.finished">
+                            <row>
+                                <i-col span="20">
+                                    <order-unit  :order-info="item" :num-disabled="true"></order-unit>
+                                </i-col>
+                                <i-col span="4">
+
+                                </i-col>
+                            </row>
+                        </template>
+                    </div>
+                    <div class="all_order_tab_pagination">
+                        <page @on-change="lookNextPageOrders" :total="page.total" :page-size="page.size" :current.sync="page.current" show-elevator></page>
+                    </div>
+                </tab-pane>
+                <tab-pane :label="label.unpayOrder" name="unpay">
+                    <div class="unpay_tab">
+                        <row>
+                            <i-col span="20">
+                                <order-header></order-header>
+                            </i-col>
+                            <i-col span="4">
+
+                            </i-col>
+                        </row>
+                        <template v-for="item in orderList.unpay">
+                            <row>
+                                <i-col span="20">
+                                    <order-unit  :order-info="item" :num-disabled="true"></order-unit>
+                                </i-col>
+                                <i-col span="4">
+                                    <div class="order_handle_button_wrap">
+                                        <div>
+                                            <i-button type="primary" size="small" @click="payOrder(item.id)">付款</i-button>
+                                        </div>
+                                        <div>
+                                            <i-button type="primary" size="small" @click="cancelOrder(item.id)">取消订单</i-button>
+                                        </div>
+                                    </div>
+                                </i-col>
+                            </row>
+                        </template>
+                    </div>
+                </tab-pane>
+                <tab-pane :label="label.unsendOrder" name="unsend">
+                    <div class="unsend_tab">
+                        <row>
+                            <i-col span="20">
+                                <order-header></order-header>
+                            </i-col>
+                            <i-col span="4">
+
+                            </i-col>
+                        </row>
+                        <template v-for="item in orderList.unsend">
+                            <row>
+                                <i-col span="20">
+                                    <order-unit  :order-info="item" :num-disabled="true"></order-unit>
+                                </i-col>
+                                <i-col span="4">
+                                    <div class="order_handle_button_wrap">
+                                        <div>
+                                            <i-button type="primary" size="small" @click="cancelOrder(item.id)">取消订单</i-button>
+                                        </div>
+                                    </div>
+                                </i-col>
+                            </row>
+                        </template>
+                    </div>
+                </tab-pane>
+                <tab-pane :label="label.untakeOrder" name="untake">
+                    <div class="untake_tab">
+                        <row>
+                            <i-col span="20">
+                                <order-header></order-header>
+                            </i-col>
+                            <i-col span="4">
+
+                            </i-col>
+                        </row>
+                        <template v-for="item in orderList.untake">
+                            <row>
+                                <i-col span="20">
+                                    <order-unit  :order-info="item" :num-disabled="true"></order-unit>
+                                </i-col>
+                                <i-col span="4">
+                                    <div class="order_handle_button_wrap">
+                                        <div>
+                                            <i-button type="primary" size="small" @click="confirmReceipt(item.id)">确认收货</i-button>
+                                        </div>
+                                        <div>
+                                            <i-button type="primary" size="small" @click="returnGoods(item.id)">退货</i-button>
+                                        </div>
+                                    </div>
+                                </i-col>
+                            </row>
+                        </template>
+                    </div>
+                </tab-pane>
+                <tab-pane :label="label.uncommentOrder" name="uncomment">
+                    <div class="uncomment_order">
+                        <row>
+                            <i-col span="20">
+                                <order-header></order-header>
+                            </i-col>
+                            <i-col span="4">
+
+                            </i-col>
+                        </row>
+                        <template v-for="item in orderList.uncomment">
+                            <row>
+                                <i-col span="20">
+                                    <order-unit  :order-info="item" :num-disabled="true"></order-unit>
+                                </i-col>
+                                <i-col span="4">
+                                    <div class="order_handle_button_wrap">
+                                        <div>
+                                            <i-button type="primary" size="small" @click="commentOrder(item.id)">评价</i-button>
+                                        </div>
+                                    </div>
+                                </i-col>
+                            </row>
+                        </template>
+                    </div>
+                </tab-pane>
+            </tabs>
+        </div>
     </div>
 </div>
 <script>
     var app=new Vue({
         el:'#order',
         data:{
-            uncompleteOrderCount:9,
-            uncompleteOrderLabel: (h) => {
-                return h('div', [
-                    h('span', '未完成'),
-                    h('Badge', {
-                        props: {
-                            count: this.uncompleteOrderCount
-                        }
-                    })
-                ])
+            label:{
+                allOrder: '所有订单',
+                unpayOrder: (h) => {
+                    return h('div', [
+                        h('span', '待付款'),
+                        h('Badge', {
+                            props: {
+                                count: this.app.count.unpay,
+                                className:'order_badge_dot'
+                            }
+                        })
+                    ])
+                },
+                unsendOrder: (h) => {
+                    return h('div', [
+                        h('span', '待发货'),
+                        h('Badge', {
+                            props: {
+                                count: this.app.count.unsend
+                            }
+                        })
+                    ])
+                },
+                untakeOrder: (h) => {
+                    return h('div', [
+                        h('span', '待收货'),
+                        h('Badge', {
+                            props: {
+                                count: this.app.count.untake
+                            }
+                        })
+                    ])
+                },
+                uncommentOrder: (h) => {
+                    return h('div', [
+                        h('span', '待评价'),
+                        h('Badge', {
+                            props: {
+                                count: this.app.count.uncomment
+                            }
+                        })
+                    ])
+                },
             },
-            orders:{
-                uncomplete:[{},{},{}]
+            count:{
+                unpay:1,
+                unsend:2,
+                untake:3,
+                uncomment:4
+            },
+            orderList:{
+                unpay:[
+                    {
+                    img:'images/product/1.jpg',
+                    desc:'不拉不拉不拉',
+                    category:'不拉不拉不拉',
+                    price:1122.00,
+                    count:1,
+                    cost:1122.00,
+                    model:false
+                    },
+                    {
+                    img:'images/product/1.jpg',
+                    desc:'不拉不拉不拉',
+                    category:'不拉不拉不拉',
+                    price:1122.00,
+                    count:1,
+                    cost:1122.00,
+                    model:false
+                    }
+                ],
+                unsend:[
+                    {
+                    img:'images/product/1.jpg',
+                    desc:'不拉不拉不拉',
+                    category:'不拉不拉不拉',
+                    price:1122.00,
+                    count:1,
+                    cost:1122.00,
+                    model:false
+                    }
+                ],
+                untake:[
+                    {
+                    img:'images/product/1.jpg',
+                    desc:'不拉不拉不拉',
+                    category:'不拉不拉不拉',
+                    price:1122.00,
+                    count:1,
+                    cost:1122.00,
+                    model:false
+                    },
+                    {
+                    img:'images/product/1.jpg',
+                    desc:'不拉不拉不拉',
+                    category:'不拉不拉不拉',
+                    price:1122.00,
+                    count:1,
+                    cost:1122.00,
+                    model:false
+                    },
+                    {
+                    img:'images/product/1.jpg',
+                    desc:'不拉不拉不拉',
+                    category:'不拉不拉不拉',
+                    price:1122.00,
+                    count:1,
+                    cost:1122.00,
+                    model:false
+                    }
+                ],
+                uncomment:[
+                    {
+                    img:'images/product/1.jpg',
+                    desc:'不拉不拉不拉',
+                    category:'不拉不拉不拉',
+                    price:1122.00,
+                    count:1,
+                    cost:1122.00,
+                    model:false
+                    },
+                    {
+                    img:'images/product/1.jpg',
+                    desc:'不拉不拉不拉',
+                    category:'不拉不拉不拉',
+                    price:1122.00,
+                    count:1,
+                    cost:1122.00,
+                    model:false
+                    }
+                ],
+                finished:[]
+            },
+            page:{
+                total:6000,
+                size:60,
+                current:2
             }
         },
         methods:{
+            payOrder:function (oid) {
+                console.log("付款")
+            },
+            cancelOrder:function (oid) {
+                console.log("取消订单")
+            },
+            confirmReceipt:function (oid) {
+                console.log("确认收货")
+            },
+            returnGoods:function (oid) {
+                console.log("退货")
+            },
+            commentOrder:function (oid) {
+                console.log("评价")
+            },
+            lookNextPageOrders:function () {
+                
+            }
         }
     });
 </script>
