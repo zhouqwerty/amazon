@@ -5,7 +5,7 @@
 <mapper namespace="com.amazon.module.dao.UserDao">
     <!--插入用户-->
     <insert id="addUser" parameterType="user">
-        insert into User(username,password,sex,birthday,id_code,email,mobile,address,status)
+        insert into Users(username,password,sex,birthday,id_code,email,mobile,address,status)
         values(#{username},#{password},#{sex},#{birthday},#{id_code},#{email},#{mobile},#{address},1);
     </insert>
 
