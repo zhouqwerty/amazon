@@ -2,15 +2,18 @@ package com.amazon.module.entity;
 
 import java.sql.Timestamp;
 
+/**
+ * @describe 订单实体类
+ * */
 public class Order {
-    private long oid;
-    private long user_id;
-    private String username;
-    private String address;
-    private Timestamp createTime;
-    private double cost;
-    private int status;
-    private int type;
+    private long oid;//订单id
+    private long user_id;//用户id
+    private String username;//用户名
+    private String address;//地址
+    private Timestamp createTime;//创建时间
+    private double cost;//花费
+    private int status;//状态
+    private int type;//类型
 
     public long getOid() {
         return oid;

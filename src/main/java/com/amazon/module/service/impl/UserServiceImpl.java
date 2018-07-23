@@ -16,4 +16,8 @@ public class UserServiceImpl implements UserService {
         ud.addUser(u);
         return 1;
     }
+
+    public User validUser(User user) {
+        return ud.queryUser(user);
+    }
 }
