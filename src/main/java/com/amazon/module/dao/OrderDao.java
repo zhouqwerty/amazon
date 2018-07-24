@@ -1,5 +1,7 @@
 package com.amazon.module.dao;
 
+import com.amazon.module.entity.Order;
+
 /**
  * @author 岸久
  * @version 1.0
@@ -7,4 +9,5 @@ package com.amazon.module.dao;
  * @describe 该dao处理订单表的操作
  * */
 public interface OrderDao {
+    String addOrder(Order order);
 }

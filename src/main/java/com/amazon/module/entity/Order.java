@@ -14,6 +14,7 @@ public class Order {
     private double cost;//花费
     private int status;//状态
     private int type;//类型
+    private User user;
 
     public long getOid() {
         return oid;
@@ -77,5 +78,13 @@ public class Order {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

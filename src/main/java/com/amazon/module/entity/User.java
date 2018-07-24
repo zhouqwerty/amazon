@@ -1,5 +1,7 @@
 package com.amazon.module.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 /**
@@ -10,7 +12,9 @@ public class User {
     private String username;//用户名
     private String password;//密码
     private String sex;//性别
-    private Date birthday;//时间
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date birthday;//生日
     private String id_code;//身份证号
     private String email;//电子邮件
     private String mobile;//电话

@@ -12,6 +12,6 @@ public class OrderServiceImpl implements OrderService{
     @Autowired
     private OrderDao od;
     public int placeOrder(Order order) {
-        return 0;
+        return 1;
     }
 }

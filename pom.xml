@@ -14,7 +14,8 @@
     <commons-logging.version>1.2</commons-logging.version>
     <oracle.driver.version>14</oracle.driver.version>
     <mybatis.version>3.4.1</mybatis.version>
-    <jackson.version>2.7.5</jackson.version>
+    <jackson.version>2.9.5</jackson.version>
+    <guava.version>19.0</guava.version>
   </properties>
 
   <dependencies>
@@ -202,11 +203,6 @@
       <version>5.1.40</version>
     </dependency>
 
-
-
-
-
-
     <!-- swagger-springmvc dependencies -->
     <dependency>
       <groupId>io.springfox</groupId>
@@ -218,17 +214,80 @@
       <artifactId>springfox-swagger-ui</artifactId>
       <version>2.6.0</version>
     </dependency>
-    <!--这个不是整合swagger必须的，这里主要是为了解决version的问题-->
+
+    <!--base64-->
     <dependency>
-       <groupId>com.fasterxml.jackson.core</groupId>
-       <artifactId>jackson-databind</artifactId>
-       <version>${jackson.version}</version>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.9</version>
     </dependency>
+
+    <!--apache collections-->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-collections4</artifactId>
+      <version>4.0</version>
+    </dependency>
+
+    <!--utils-->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.0</version>
+    </dependency>
+
+    <!-- Google 的基于java1.6的类库集合的扩展项目 -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${guava.version}</version>
+    </dependency>
+
+    <!--fastjson -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.47</version>
+    </dependency>
+
+    <!-- jackson-core -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <!--jackson-annotations -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <!-- jackson-databind -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+
+
 
   </dependencies>
 
   <build>
     <finalName>amazon</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+    </plugins>
 
     <resources>
       <resource>
