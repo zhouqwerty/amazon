@@ -271,6 +271,22 @@
       <version>${jackson.version}</version>
     </dependency>
 
+    <!-- shiro-core -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-core</artifactId>
+      <version>1.3.2</version>
+    </dependency>
+
+    <!-- shiro-web -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-web</artifactId>
+      <version>1.3.2</version>
+    </dependency>
+
+
+
 
 
 

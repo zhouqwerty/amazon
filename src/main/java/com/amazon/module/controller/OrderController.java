@@ -2,6 +2,7 @@ package com.amazon.module.controller;
 
 import com.amazon.base.dto.BaseRequestDto;
 import com.amazon.base.dto.BaseResponseDto;
+import com.amazon.base.util.GenerateUtil;
 import com.amazon.module.entity.Order;
 import com.amazon.module.entity.User;
 import com.amazon.module.service.OrderService;
@@ -36,14 +37,15 @@ public class OrderController {
     @ApiOperation(value = "下订单")
     @RequestMapping(value = "/placeOrder",method = RequestMethod.POST)
     @ResponseBody
-    public BaseResponseDto<String> placeOrder(@RequestBody BaseRequestDto<Order> baseReq, @SessionAttribute("user") User user){
+    public BaseResponseDto<String> placeOrder(@RequestBody BaseRequestDto<Order> baseReq){
         BaseResponseDto<String> baseResp=new BaseResponseDto<>();
         baseResp.setTime(baseReq.getTime());
         try{
             Order order=baseReq.getData();
-            order.setUser(user);
-            os.placeOrder(order);
-            baseResp.setData("");
+            order.setOid(GenerateUtil.generateOrderId());
+            order.setUser(new User());
+            String oid=os.placeOrder(order);
+            baseResp.setData(oid);
             baseResp.setSuccess(true);
         }catch (Exception e){
             e.printStackTrace();

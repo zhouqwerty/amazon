@@ -2,9 +2,13 @@ package com.amazon.module.controller;
 
 import com.amazon.base.dto.BaseRequestDto;
 import com.amazon.base.dto.BaseResponseDto;
+import com.amazon.base.util.GenerateUtil;
+import com.amazon.module.entity.Order;
 import com.amazon.module.entity.User;
+import com.amazon.module.service.OrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +24,9 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/test")
 public class TestController {
+
+    @Autowired
+    private OrderService os;
 
     /**
      * @param session 会话对象
@@ -60,5 +67,29 @@ public class TestController {
         return baseResp;
     }
 
+    /**
+     * @datetime 2018.7.25 19:43
+     * */
+    @ApiOperation(value = "测试mybatis插入")
+    @RequestMapping(value = "/insertOrderTest",method = RequestMethod.POST)
+    @ResponseBody
+    public  BaseResponseDto<String> insertOrderTest(){
+        BaseResponseDto<String> baseResp=new BaseResponseDto<>();
+        try{
+            Order order=new Order();
+            order.setOid(GenerateUtil.generateOrderId());
+            order.setAddress("1111");
+            order.setCost(6654.99);
+            User user=new User();
+            user.setUser_id("401484181D654F2FACF26AA0571C7D74");
+            user.setUsername("1232321");
+            order.setUser(user);
+            os.placeOrder(order);
+        }catch (Exception e){
+            e.printStackTrace();
+            baseResp.setSuccess(false);
+        }
+        return baseResp;
+    }
 
 }

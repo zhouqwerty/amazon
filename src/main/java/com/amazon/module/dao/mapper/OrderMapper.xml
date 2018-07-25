@@ -2,6 +2,12 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.amazon.module.dao.CartDao">
+<mapper namespace="com.amazon.module.dao.OrderDao">
+
+    <!--插入订单-->
+    <insert id="addOrder" parameterType="order" >
+        insert into orders(oid,user_id,username,address,createtime,cost,status,type)
+        values(#{oid},#{user.user_id},#{user.username},#{address},sysdate,#{cost},1,1)
+    </insert>
 
 </mapper>

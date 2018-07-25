@@ -1,22 +1,31 @@
 package com.amazon.module.entity;
 
-import java.sql.Timestamp;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
+/**
+ * @describe 评论实体类
+ * */
 public class Comment {
-    private long cid;
+    private String cid;
     private String reply;
     private String content;
-    private Timestamp createTime;
-    private Timestamp replyTime;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date createTime;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date replyTime;
     private String nickName;
     private String state;
 
-    public long getCid() {
+    public String getCid() {
         return cid;
     }
 
-    public void setCid(long cid) {
+    public void setCid(String cid) {
         this.cid = cid;
     }
 
@@ -36,19 +45,19 @@ public class Comment {
         this.content = content;
     }
 
-    public Timestamp getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public Timestamp getReplyTime() {
+    public Date getReplyTime() {
         return replyTime;
     }
 
-    public void setReplyTime(Timestamp replyTime) {
+    public void setReplyTime(Date replyTime) {
         this.replyTime = replyTime;
     }
 

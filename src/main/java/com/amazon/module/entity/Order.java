@@ -1,34 +1,54 @@
 package com.amazon.module.entity;
 
-import java.sql.Timestamp;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 /**
  * @describe 订单实体类
  * */
 public class Order {
-    private long oid;//订单id
-    private long user_id;//用户id
+    private String oid;//订单id
+    private String user_id;//用户id
     private String username;//用户名
     private String address;//地址
-    private Timestamp createTime;//创建时间
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date createTime;//创建时间
     private double cost;//花费
     private int status;//状态
     private int type;//类型
     private User user;
 
-    public long getOid() {
+    public Order() {
+    }
+
+    public Order(String oid, String user_id, String username, String address, Date createTime, double cost, int status, int type, User user) {
+        this.oid = oid;
+        this.user_id = user_id;
+        this.username = username;
+        this.address = address;
+        this.createTime = createTime;
+        this.cost = cost;
+        this.status = status;
+        this.type = type;
+        this.user = user;
+    }
+
+    public String getOid() {
         return oid;
     }
 
-    public void setOid(long oid) {
+    public void setOid(String oid) {
         this.oid = oid;
     }
 
-    public long getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(long user_id) {
+    public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
@@ -48,11 +68,11 @@ public class Order {
         this.address = address;
     }
 
-    public Timestamp getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Timestamp createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 

@@ -1,33 +1,36 @@
 package com.amazon.module.entity;
 
+/**
+ * @describe 订单详细实体类
+ * */
 public class OrderDetail {
-    private long od_id;
-    private long oid;
-    private long pid;
+    private String od_id;
+    private String oid;
+    private String pid;
     private int count;
     private double cost;
 
-    public long getOd_id() {
+    public String getOd_id() {
         return od_id;
     }
 
-    public void setOd_id(long od_id) {
+    public void setOd_id(String od_id) {
         this.od_id = od_id;
     }
 
-    public long getOid() {
+    public String getOid() {
         return oid;
     }
 
-    public void setOid(long oid) {
+    public void setOid(String oid) {
         this.oid = oid;
     }
 
-    public long getPid() {
+    public String getPid() {
         return pid;
     }
 
-    public void setPid(long pid) {
+    public void setPid(String pid) {
         this.pid = pid;
     }
 

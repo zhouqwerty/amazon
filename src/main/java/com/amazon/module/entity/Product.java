@@ -1,20 +1,23 @@
 package com.amazon.module.entity;
 
+/**
+ * @describe 商品实体类
+ * */
 public class Product {
-    private long pid;
+    private String pid;
     private String name;
     private String desc;
     private double price;
     private int stock;
-    private long pc_id;
-    private long pc_child_id;
+    private int pc_id;
+    private int pc_child_id;
     private String fileName;
 
-    public long getPid() {
+    public String getPid() {
         return pid;
     }
 
-    public void setPid(long pid) {
+    public void setPid(String pid) {
         this.pid = pid;
     }
 
@@ -50,19 +53,19 @@ public class Product {
         this.stock = stock;
     }
 
-    public long getPc_id() {
+    public int getPc_id() {
         return pc_id;
     }
 
-    public void setPc_id(long pc_id) {
+    public void setPc_id(int pc_id) {
         this.pc_id = pc_id;
     }
 
-    public long getPc_child_id() {
+    public int getPc_child_id() {
         return pc_child_id;
     }
 
-    public void setPc_child_id(long pc_child_id) {
+    public void setPc_child_id(int pc_child_id) {
         this.pc_child_id = pc_child_id;
     }
 

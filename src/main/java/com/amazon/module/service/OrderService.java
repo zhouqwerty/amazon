@@ -9,5 +9,5 @@ import com.amazon.module.entity.Order;
  * @describe 该service提供关于订单的服务
  * */
 public interface OrderService {
-    int placeOrder(Order order);
+    String placeOrder(Order order);
 }

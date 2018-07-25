@@ -21,6 +21,22 @@ public class User {
     private String address;//地址
     private int status;//状态
 
+    public User() {
+    }
+
+    public User(String user_id, String username, String password, String sex, Date birthday, String id_code, String email, String mobile, String address, int status) {
+        this.user_id = user_id;
+        this.username = username;
+        this.password = password;
+        this.sex = sex;
+        this.birthday = birthday;
+        this.id_code = id_code;
+        this.email = email;
+        this.mobile = mobile;
+        this.address = address;
+        this.status = status;
+    }
+
     public String getUser_id() {
         return user_id;
     }
