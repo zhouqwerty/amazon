@@ -2,6 +2,8 @@ package com.amazon.module.controller;
 
 import com.amazon.base.dto.BaseRequestDto;
 import com.amazon.base.dto.BaseResponseDto;
+import com.amazon.base.util.CommonUtil;
+import com.amazon.base.util.GenerateUtil;
 import com.amazon.module.entity.User;
 import com.amazon.module.service.UserService;
 import io.swagger.annotations.Api;
@@ -12,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 /**
  * @author 岸久
  * @version 1.0
@@ -34,13 +41,18 @@ public class UserController {
     @ApiOperation(value = "登录")
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public BaseResponseDto<User> login(@RequestBody BaseRequestDto<User> baseReq){
+    public BaseResponseDto<User> login(@RequestBody BaseRequestDto<User> baseReq, HttpServletResponse resp, HttpSession session){
         BaseResponseDto<User> baseResp=new BaseResponseDto<>();
         baseResp.setTime(baseReq.getTime());
         try{
-            User user=baseReq.getData();
-            User u=us.validUser(user);
-            baseResp.setData(u);
+            User params=baseReq.getData();
+            User result=us.validUser(params);
+            if(!CommonUtil.isNullOrEmpty(result)){
+                String token=GenerateUtil.generateTokeCode();
+                session.setAttribute("token", token);
+                resp.addCookie(new Cookie("token",token));
+            }
+            baseResp.setData(result);
             baseResp.setSuccess(true);
         }catch (Exception e){
             e.printStackTrace();

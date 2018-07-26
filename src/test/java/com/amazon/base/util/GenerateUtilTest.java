@@ -50,4 +50,8 @@ public class GenerateUtilTest {
         System.out.println(GenerateUtil.generateOrderId());
     }
 
+    @Test
+    public void testGenerateTokenCode(){
+        System.out.println(GenerateUtil.generateTokeCode());
+    }
 }

@@ -36,9 +36,9 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!--代理过滤器（将过滤器纳入spring管理）-->
+    <!--身份验证过滤器（将过滤器纳入spring管理）-->
     <filter>
-        <filter-name>coreFilter</filter-name>
+        <filter-name>identityFilter</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
         <init-param>
             <param-name>targetFilterLifecycle</param-name>
@@ -46,7 +46,7 @@
         </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>coreFilter</filter-name>
+        <filter-name>identityFilter</filter-name>
         <url-pattern>/core/*</url-pattern>
     </filter-mapping>
 
@@ -56,7 +56,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath*:spring/SpringMVC.xml</param-value>
+            <param-value>classpath*:spring/spring-mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

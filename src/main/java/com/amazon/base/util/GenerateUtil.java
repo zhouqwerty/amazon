@@ -1,5 +1,9 @@
 package com.amazon.base.util;
 
+import sun.misc.BASE64Encoder;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -21,6 +25,22 @@ public class GenerateUtil {
         buffer.append(sdf1.format(new Date()));
         buffer.append(numToStringLen4(random.nextInt(10000)));
         return buffer.toString();
+    }
+
+    public static String generateTokeCode(){
+        String value = System.currentTimeMillis()+new Random().nextInt()+"";
+        //获取数据指纹，指纹是唯一的
+        try {
+            MessageDigest md = MessageDigest.getInstance("md5");
+            byte[] b = md.digest(value.getBytes());//产生数据的指纹
+            //Base64编码
+            BASE64Encoder be = new BASE64Encoder();
+            be.encode(b);
+            return be.encode(b);//制定一个编码
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private static String numToStringLen4(int num){
