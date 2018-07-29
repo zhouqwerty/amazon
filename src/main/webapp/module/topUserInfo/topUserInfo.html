@@ -3,8 +3,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center;padding-top: 5px">
-                <i-button type="primary" style="background: #4d91d94a" @click="clickLogin">登录</i-button>
-                <i-button type="primary" style="background: #4d91d94a" @click="register.registerModal=true">注册</i-button>
+                <template v-if="!login.loginSuccess">
+                    <i-button type="primary" style="background: #4d91d94a" @click="clickLogin">登录</i-button>
+                    <i-button type="primary" style="background: #4d91d94a" @click="register.registerModal=true">注册</i-button>
+                </template>
+                <template v-else>
+                    <span class="login_username_text">你好，{{userInfo.username}}</span>
+                    <i-button type="primary" style="background: #4d91d94a;margin:0 0 5px 10px" @click="cancelLogin">注销</i-button>
+                </template>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <ul class="top_left_nav">
@@ -29,7 +35,7 @@
         </div>
     </div>
     <!--登录-->
-    <modal v-model="login.loginModal" width="360" @on-cancel="lrEnd('loginInfo')" :mask-closable="false">
+    <modal v-model="login.loginModal" width="360" @on-cancel="lrEnd('loginInfo')" @on-visible-change="lrEnd('loginInfo')" :mask-closable="false">
         <p slot="header" style="color:black;text-align:center">
             <span>登录</span>
         </p>
@@ -47,12 +53,16 @@
                             <i-input type="text" v-model="login.loginInfo.valid"></i-input>
                         </i-col>
                         <i-col span="9" offset="1">
-                            <img :src="login.validateCode" alt="" style="width: 150px;height: 30px;background: #eee">
+                            <img :src="login.validateCode" alt="" style="width:100px;height:30px;background: #eee">
+                        </i-col>
+                        <i-col span="3" offset="1">
+                            <img src="assets/common/refresh-eee.png" @click="refreshLoginCode">
                         </i-col>
                     </row>
                 </form-item>
+                <div class="login_result_text">{{login.loginResult}}</div>
                 <form-item>
-                    <i-button type="primary" @click="loginSubmit('loginInfo')" :loading="login.loginFlag">登录</i-button>
+                    <i-button type="primary" @click="loginSubmit('loginInfo')" :loading="login.loginButtonFlag">登录</i-button>
                     <i-button type="ghost" @click="lrReset('loginInfo')" style="margin-left: 8px">重置</i-button>
                 </form-item>
             </i-form>

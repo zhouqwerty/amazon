@@ -28,3 +28,13 @@
     color: #c3c0e4;
 }
 
+.login_result_text{
+    color: red;
+}
+
+.login_username_text{
+    color: white;
+    line-height: 35px;
+    font-size: 13px;
+}
+

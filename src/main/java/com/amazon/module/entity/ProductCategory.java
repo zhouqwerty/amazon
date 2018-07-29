@@ -1,8 +1,11 @@
 package com.amazon.module.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * @describe 商品分类实体类
  * */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductCategory {
     private int pc_id;
     private String name;

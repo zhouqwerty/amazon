@@ -35,18 +35,3 @@ function callApi(url, data, callback, callErrorBack) {
         }
     });
 }
-
-var obj = {};
-obj.time = new Date().getTime();
-jQuery.ajax({
-    type: 'post',
-    url: basePath+"/core/user/getValidateCode",
-    cache: false,
-    data: JSON.stringify(obj),
-    dataType: "json",
-    contentType: "application/json; charset=utf-8",
-    success: function (data) {
-        console.log("fangwen le ")
-    }
-});
-

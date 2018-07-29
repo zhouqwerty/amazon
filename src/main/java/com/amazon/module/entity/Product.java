@@ -1,8 +1,11 @@
 package com.amazon.module.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * @describe 商品实体类
  * */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Product {
     private String pid;
     private String name;

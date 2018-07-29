@@ -1,6 +1,7 @@
 package com.amazon.module.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Date;
 /**
  * @describe 评论实体类
  * */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Comment {
     private String cid;
     private String reply;

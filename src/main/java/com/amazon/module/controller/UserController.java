@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
@@ -43,19 +44,23 @@ public class UserController {
     @ApiOperation(value = "登录")
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public BaseResponseDto<User> login(@RequestBody BaseRequestDto<User> baseReq, HttpServletResponse resp, HttpSession session){
-        BaseResponseDto<User> baseResp=new BaseResponseDto<>();
+    public BaseResponseDto<Object> login(@RequestBody BaseRequestDto<ParamsDto> baseReq, HttpServletResponse resp, HttpSession session){
+        BaseResponseDto<Object> baseResp=new BaseResponseDto<>();
         baseResp.setTime(baseReq.getTime());
         try{
-            User params=baseReq.getData();
-            User result=us.validUser(params);
-            if(!CommonUtil.isNullOrEmpty(result)){
-                String token=GenerateUtil.generateTokeCode();
-                session.setAttribute("token", token);
-                session.setAttribute("user_id",result.getUser_id());
-                resp.addCookie(new Cookie("token",token));
+            ParamsDto params=baseReq.getData();
+            if(validValidateCode(params,session)){
+                User result=us.validUser(params.getUser());
+                if(!CommonUtil.isNullOrEmpty(result)){
+                    String token=GenerateUtil.generateTokeCode();
+                    session.setAttribute("token", token);
+                    session.setAttribute("user",result);
+                    resp.addCookie(new Cookie("token",token));
+                }
+                baseResp.setData(result);
+            }else{
+                baseResp.setData("codeError");
             }
-            baseResp.setData(result);
             baseResp.setSuccess(true);
         }catch (Exception e){
             e.printStackTrace();
@@ -112,14 +117,13 @@ public class UserController {
     }
 
     /**
-     * @param baseReq 验证码
-     * @return 验证结果 1 相同 0 不同
-     * @datetime 2018.7.27 19:31
+     * @return 图片的base64字符串
+     * @datetime 2018.7.27 18:57
      * */
     @ApiOperation(value = "验证验证码")
     @RequestMapping(value = "/validValidateCode",method = RequestMethod.POST)
     @ResponseBody
-    public  BaseResponseDto<String> validValidateCode(@RequestBody BaseRequestDto<ParamsDto> baseReq, @SessionAttribute("validateCode") String code){
+    public  BaseResponseDto<String> validValidateCode(@RequestBody BaseRequestDto<ParamsDto> baseReq,@SessionAttribute("validateCode") String code){
         BaseResponseDto<String> baseResp=new BaseResponseDto<>();
         baseResp.setTime(System.currentTimeMillis());
         try{
@@ -138,11 +142,88 @@ public class UserController {
         return baseResp;
     }
 
+    /**
+     * @return 是否登录
+     * @datetime 2018.7.29 18:54
+     * */
+    @ApiOperation(value = "是否登录")
+    @RequestMapping(value = "/loginCheck",method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResponseDto<User> loginCheck(HttpServletRequest req, HttpSession session){
+        BaseResponseDto<User> baseResp=new BaseResponseDto<>();
+        baseResp.setTime(System.currentTimeMillis());
+        try{
+            Cookie[] cookies=req.getCookies();
+            User result=null;
+            String token=null;
+            String sToken=(String) session.getAttribute("token");
+            User user=(User)session.getAttribute("user");
+            if(!CommonUtil.isNullOrEmpty(cookies)){
+                for(Cookie c:cookies){
+                    if(c.getName().equals("token")){
+                        token=c.getValue();
+                    }
+                }
+            }
+            if(!CommonUtil.isNullOrEmpty(sToken)){
+                if(!CommonUtil.isNullOrEmpty(user)&&sToken.equals(token)){
+                    result=user;
+                }
+            }
+            baseResp.setData(result);
+            baseResp.setSuccess(true);
+        }catch (Exception e){
+            e.printStackTrace();
+            baseResp.setSuccess(false);
+        }
+        return baseResp;
+    }
+
+    /**
+     * @return 是否退出 1 成功注销
+     * @datetime 2018.7.29 19:47
+     * */
+    @ApiOperation(value = "注销")
+    @RequestMapping(value = "/cancelLogin",method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResponseDto<String> cancelLogin(HttpServletRequest req, HttpSession session){
+        BaseResponseDto<String> baseResp=new BaseResponseDto<>();
+        baseResp.setTime(System.currentTimeMillis());
+        try{
+            session.removeAttribute("user");
+            session.removeAttribute("token");
+            baseResp.setData("1");
+            baseResp.setSuccess(true);
+        }catch (Exception e){
+            e.printStackTrace();
+            baseResp.setSuccess(false);
+        }
+        return baseResp;
+    }
 
     @RequestMapping(value = "/checkEmail",method = RequestMethod.POST)
     @ResponseBody
     public String checkEmail(@RequestBody User user){
         return null;
+    }
+
+
+/*--------------------------------------- 非请求方法（private）------------------------------------------------------*/
+
+    /**
+     * @param params 前端的验证码
+     * @param session 会话
+     * @return 验证结果 true 相同 false 不同
+     * @datetime 2018.7.29 16:50
+     * */
+    private boolean validValidateCode(ParamsDto params,HttpSession session){
+        boolean result=false;
+        String validateCode=params.getValidateCode();
+        String code=(String) session.getAttribute("validateCode");
+        if(validateCode.equalsIgnoreCase(code)){
+            result=true;
+        }
+        return result;
     }
 
 }

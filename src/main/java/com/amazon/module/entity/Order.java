@@ -1,6 +1,7 @@
 package com.amazon.module.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Date;
 /**
  * @describe 订单实体类
  * */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Order {
     private String oid;//订单id
     private String user_id;//用户id

@@ -98,7 +98,7 @@ public class ValidateCode {
             g.drawLine(r.nextInt(width),r.nextInt(width),r.nextInt(width),r.nextInt(width));
         }
         //4.设置验证码
-        g.setColor(Color.green);
+        g.setColor(Color.blue);
         //4.1设置验证码字体
         g.setFont(new Font("宋体",Font.BOLD|Font.ITALIC,fontSize));
         for (int i = 0; i < codeCount; i++) {

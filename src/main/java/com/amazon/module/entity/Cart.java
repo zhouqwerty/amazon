@@ -1,8 +1,11 @@
 package com.amazon.module.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * @describe 购物车实体类
  * */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Cart {
     private String cid;
     private String pid;

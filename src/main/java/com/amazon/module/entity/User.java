@@ -1,12 +1,14 @@
 package com.amazon.module.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 /**
  * @describe 用户实体类
  * */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
     private String user_id;//用户id
     private String username;//用户名

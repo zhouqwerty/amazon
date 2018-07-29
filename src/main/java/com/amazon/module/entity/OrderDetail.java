@@ -1,8 +1,11 @@
 package com.amazon.module.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * @describe 订单详细实体类
  * */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDetail {
     private String od_id;
     private String oid;
