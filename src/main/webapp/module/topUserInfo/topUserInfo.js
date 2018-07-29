@@ -58,7 +58,8 @@ Vue.component('top-user-info', function (resolve, reject) {
                             valid: [
                                 { required:true , message:'验证码不能为空'}
                             ]
-                        }
+                        },
+                        validateCode:''
                     },
                     register:{
                         registerModal:false,
@@ -96,12 +97,42 @@ Vue.component('top-user-info', function (resolve, reject) {
 
                         }
                     },
-
+                    interfaces:{
+                        login:'/core/user/login',
+                        register:'/core/user/register',
+                        getValidateCode:'core/user/getValidateCode',
+                        validValidateCode:'core/user/validValidateCode'
+                    }
                 }
             },
             watch: {},
             created: function () {},
             methods: {
+                clickLogin:function () {
+                    let $this=this;
+                    var obj = {};
+                    obj.time = new Date().getTime();
+                    $.ajax({
+                        type: 'post',
+                        url: basePath+$this.interfaces.getValidateCode,
+                        cache: false,
+                        data: JSON.stringify(obj),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        beforeSend: function (request) {
+                            request.setRequestHeader("GaeaToken", sessionStorage.getItem("GaeaToken"));
+                        },
+                        success: function (data) {
+                            callback(data.data);
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            if (callErrorBack instanceof Function) {
+                                callErrorBack();
+                            }
+                            console.log('!!!error:' + errorThrown);
+                        }
+                    });
+                },
                 selectMyShop: function (name) {
                     console.log(name)
                 },

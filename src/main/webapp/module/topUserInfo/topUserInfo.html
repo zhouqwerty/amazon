@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6" style="text-align: center;padding-top: 5px">
-                <i-button type="primary" style="background: #4d91d94a" @click="login.loginModal=true">登录</i-button>
+                <i-button type="primary" style="background: #4d91d94a" @click="clickLogin">登录</i-button>
                 <i-button type="primary" style="background: #4d91d94a" @click="register.registerModal=true">注册</i-button>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -47,7 +47,7 @@
                             <i-input type="text" v-model="login.loginInfo.valid"></i-input>
                         </i-col>
                         <i-col span="9" offset="1">
-                            <img src="images/icon/logo.png" alt="" style="width: 150px;height: 30px;background: #eee">
+                            <img :src="login.validateCode" alt="" style="width: 150px;height: 30px;background: #eee">
                         </i-col>
                     </row>
                 </form-item>
