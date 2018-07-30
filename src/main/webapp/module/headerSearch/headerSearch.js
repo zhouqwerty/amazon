@@ -46,7 +46,7 @@ Vue.component('header-search', function (resolve, reject) {
                 },
                 showCategoryList:function (e) {
                     this.cFirstListVisible='block';
-                    if(e&&e.target.className=='category_second'){
+                    if(e&&e.target.className.startsWith('category_second')){
                         this.category.secondListVisible='block';
                     }
                 },

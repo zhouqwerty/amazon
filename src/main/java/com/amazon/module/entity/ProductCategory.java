@@ -7,15 +7,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductCategory {
-    private int pc_id;
+    private String pc_id;
     private String name;
-    private int pc_parent_id;
+    private String pc_parent_id;
 
-    public int getPc_id() {
+    public String getPc_id() {
         return pc_id;
     }
 
-    public void setPc_id(int pc_id) {
+    public void setPc_id(String pc_id) {
         this.pc_id = pc_id;
     }
 
@@ -27,11 +27,11 @@ public class ProductCategory {
         this.name = name;
     }
 
-    public int getPc_parent_id() {
+    public String getPc_parent_id() {
         return pc_parent_id;
     }
 
-    public void setPc_parent_id(int pc_parent_id) {
+    public void setPc_parent_id(String pc_parent_id) {
         this.pc_parent_id = pc_parent_id;
     }
 }

@@ -2,6 +2,19 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.amazon.module.dao.CartDao">
+<mapper namespace="com.amazon.module.dao.ProductCategoryDao">
+
+    <!--查询用户-->
+    <select id="queryProductCategoryByParentId" resultType="productCategory">
+        select pc_id as pc_id,name as name,parent_id as pc_parent_id from product_category where parent_id=
+        <choose>
+            <when test="_parameter==null">
+                pc_id
+            </when>
+            <otherwise>
+                #{pcid} and parent_id!=pc_id
+            </otherwise>
+        </choose>
+    </select>
 
 </mapper>
