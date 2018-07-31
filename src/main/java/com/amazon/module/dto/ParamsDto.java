@@ -1,5 +1,6 @@
 package com.amazon.module.dto;
 
+import com.amazon.base.dto.Page;
 import com.amazon.module.entity.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -13,6 +14,24 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class ParamsDto {
     private String validateCode;//验证码
     private User user;
+    private PCateParamsDto pCate;
+    private Page page;
+
+    public PCateParamsDto getpCate() {
+        return pCate;
+    }
+
+    public void setpCate(PCateParamsDto pCate) {
+        this.pCate = pCate;
+    }
+
+    public Page getPage() {
+        return page;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
+    }
 
     public String getValidateCode() {
         return validateCode;

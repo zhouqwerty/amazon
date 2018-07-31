@@ -31,6 +31,13 @@
         <header-search></header-search>
     </div>
     <div class="my_container">
+        <div class="category_nav_bread_crumb_wrap">
+            <breadcrumb separator=">" v-if="params.pcid">
+                <breadcrumb-item to="index.html">所有分类</breadcrumb-item>
+                <breadcrumb-item :to="'search.html?pcid='+params.pcid+'&pcname='+params.pcname" >{{params.pcname}}</breadcrumb-item>
+                <breadcrumb-item to="#" v-if="params.cpcid">{{params.cpcname}}</breadcrumb-item>
+            </breadcrumb>
+        </div>
         <ul class="product-list">
             <li v-for="item in products"><product-unit :product="item"></product-unit></li>
         </ul>
@@ -70,7 +77,21 @@
                 total:6000,
                 size:60,
                 current:2
+            },
+            params:{},
+            interfaces:{
+                getProductsByPage:'core/product/getProductsByPage'
             }
+        },
+        created:function () {
+            window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) =>{this.params[key] = decodeURI(value);});
+            let params={};
+            params.page.size=this.page.size;
+            params.page.current=this.page.current;
+            params.pCate=this.params;
+            callApi(this.interfaces.getProductsByPage,params,(data)=> {
+                this.products=data;
+            })
         },
         methods:{
             lookNextPageProducts:function (current) {

@@ -4,14 +4,14 @@
         <div class="category_first">
             <ul >
                 <li v-for="item in categories" @mouseover="selectCategory(item,$event)" @mouseout="unselectCategory(item,$event)">
-                    <div class="category_first_name" @click="searchProductsByPcid(item.pcid)">{{item.name}}&nbsp;&gt;</div>
+                    <div class="category_first_name" @click="searchProductsByPcid(item)">{{item.name}}&nbsp;&gt;</div>
                 </li>
             </ul>
         </div>
         <div class="category_second" :style="{display:category.secondListVisible}">
                 <ul>
                     <li v-for="item in childCategories" class="category_second_li">
-                        <a :href="'product.html?cpcid='+item.pcid" class="category_second_li_a" target="_blank">{{item.name}}</a>
+                        <a :href="'search.html?cpcid='+item.pcid+'&cpcname='+item.name+'&pcid='+currentCate.pcid+'&pcname='+currentCate.name" class="category_second_li_a" target="_blank">{{item.name}}</a>
                     </li>
                 </ul>
         </div>

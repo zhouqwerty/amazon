@@ -8,6 +8,10 @@ Vue.component('qwe-category', function (resolve, reject) {
                     category:$Global.category,
                     categories:[],
                     childCategories:[],
+                    currentCate:{
+                        pcid:'',
+                        name:''
+                    },
                     interfaces:{
                         getProductCategory:'/core/product/getProductCategory'
                     }
@@ -25,6 +29,8 @@ Vue.component('qwe-category', function (resolve, reject) {
                 selectCategory:function(item,event){
                     this.category.secondListVisible='block';
                     this.childCategories=item.children;
+                    this.currentCate.pcid=item.pcid;
+                    this.currentCate.name=item.name;
                     event.target.style.backgroundColor='rgba(58,174,224,0.3)';
                     event.target.style.color='rgb(51,167,255)';
                 },
@@ -32,8 +38,8 @@ Vue.component('qwe-category', function (resolve, reject) {
                     event.target.style.backgroundColor='transparent';
                     event.target.style.color='black';
                 },
-                searchProductsByPcid:function (pcid) {
-                    window.open("product.html?pcid="+pcid,"_blank");
+                searchProductsByPcid:function (item) {
+                    window.open('search.html?pcid='+item.pcid+'&pcname='+item.name,'_blank');
                 }
             }
         });
