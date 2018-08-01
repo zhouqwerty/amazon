@@ -4,8 +4,11 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.amazon.base.dto.BaseRequestDto;
 import com.amazon.base.dto.BaseResponseDto;
+import com.amazon.base.util.CommonUtil;
 import com.amazon.base.util.GenerateUtil;
+import com.amazon.module.dto.ParamsDto;
 import com.amazon.module.entity.Order;
+import com.amazon.module.entity.Product;
 import com.amazon.module.entity.User;
 import com.amazon.module.service.OrderService;
 import com.amazon.module.service.ProductService;
@@ -17,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 岸久
@@ -45,6 +51,35 @@ public class ProductController {
         try{
             JSONArray category=ps.getProductCategory();
             baseResp.setData(category);
+            baseResp.setSuccess(true);
+        }catch (Exception e){
+            e.printStackTrace();
+            baseResp.setSuccess(false);
+        }
+        return baseResp;
+    }
+
+
+    /**
+     * @param baseReq 搜索商品所需参数
+     * @return 搜索商品（分页）
+     * @datetime 2018.8.1 18:53
+     * */
+    @ApiOperation(value = "搜索商品")
+    @RequestMapping(value = "/getProductsByPage",method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResponseDto<Map<String,Object>> getProductsByPage(@RequestBody BaseRequestDto<ParamsDto> baseReq){
+        BaseResponseDto<Map<String,Object>> baseResp=new BaseResponseDto<>();
+        baseResp.setTime(System.currentTimeMillis());
+        try{
+            Map<String,Object> products=null;
+            ParamsDto params=baseReq.getData();
+            if(!CommonUtil.isNullOrEmpty(params.getSearch())){
+                products=ps.getProductPageBySearch(params);
+            }else if(!CommonUtil.isNullOrEmpty(params.getpCate())){
+                products=ps.getProductPageByCategory(params);
+            }
+            baseResp.setData(products);
             baseResp.setSuccess(true);
         }catch (Exception e){
             e.printStackTrace();

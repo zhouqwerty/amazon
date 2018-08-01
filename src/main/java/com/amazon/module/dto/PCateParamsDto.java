@@ -9,7 +9,7 @@ package com.amazon.module.dto;
 public class PCateParamsDto {
     private String pcid;//一级id
     private String pcname;//一级name
-    private String ccpid;//二级id
+    private String cpcid;//二级id
     private String cpcname;//二级name
 
     public String getPcid() {
@@ -28,12 +28,12 @@ public class PCateParamsDto {
         this.pcname = pcname;
     }
 
-    public String getCcpid() {
-        return ccpid;
+    public String getCpcid() {
+        return cpcid;
     }
 
-    public void setCcpid(String ccpid) {
-        this.ccpid = ccpid;
+    public void setCpcid(String cpcid) {
+        this.cpcid = cpcid;
     }
 
     public String getCpcname() {

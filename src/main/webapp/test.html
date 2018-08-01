@@ -15,10 +15,9 @@
 
 </div>
 <script>
-    var obj="   111  111   ";
-    console.log(obj);
-    console.log(obj.trim())
-    console.log(obj)
+    var params={};
+    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) =>{params[key] = decodeURI(value);});
+    console.log(params);
 </script>
 </body>
 </html>

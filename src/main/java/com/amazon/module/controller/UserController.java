@@ -6,6 +6,7 @@ import com.amazon.base.dto.ValidateCode;
 import com.amazon.base.util.CommonUtil;
 import com.amazon.base.util.GenerateUtil;
 import com.amazon.base.util.SpecialUtil;
+import com.amazon.module.constant.CommonValue;
 import com.amazon.module.dto.ParamsDto;
 import com.amazon.module.entity.User;
 import com.amazon.module.service.UserService;
@@ -53,9 +54,9 @@ public class UserController {
                 User result=us.validUser(params.getUser());
                 if(!CommonUtil.isNullOrEmpty(result)){
                     String token=GenerateUtil.generateTokeCode();
-                    session.setAttribute("token", token);
+                    session.setAttribute(CommonValue.TOKEN, token);
                     session.setAttribute("user",result);
-                    resp.addCookie(new Cookie("token",token));
+                    resp.addCookie(new Cookie(CommonValue.TOKEN,token));
                 }
                 baseResp.setData(result);
             }else{
@@ -156,11 +157,11 @@ public class UserController {
             Cookie[] cookies=req.getCookies();
             User result=null;
             String token=null;
-            String sToken=(String) session.getAttribute("token");
+            String sToken=(String) session.getAttribute(CommonValue.TOKEN);
             User user=(User)session.getAttribute("user");
             if(!CommonUtil.isNullOrEmpty(cookies)){
                 for(Cookie c:cookies){
-                    if(c.getName().equals("token")){
+                    if(c.getName().equals(CommonValue.TOKEN)){
                         token=c.getValue();
                     }
                 }
@@ -191,7 +192,7 @@ public class UserController {
         baseResp.setTime(System.currentTimeMillis());
         try{
             session.removeAttribute("user");
-            session.removeAttribute("token");
+            session.removeAttribute(CommonValue.TOKEN);
             baseResp.setData("1");
             baseResp.setSuccess(true);
         }catch (Exception e){

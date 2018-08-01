@@ -24,3 +24,13 @@
   (3)相当重要的一步，在web.xml中配置访问json文件的路径（放在springMVC的DispatcherServlet的servlet-mapping中,
      我配置的mapping是/v2/api-docs）
   (4)下载swagger-ui，修改其中index.html中的url为访问json文件的url（例如我的就是：http://localhost:8888/v2/api-docs）
+2.对于后端的方法命名
+controller：随便，根据功能来，越好理解越好
+service：增：save*，add*
+         删：delete*,remove*
+         改：update*,modify*,change*
+         查：get*,valid*
+dao：增：add*,insert*
+     删：delete*
+     改：update*
+     查：query*,select*

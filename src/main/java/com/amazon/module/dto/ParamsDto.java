@@ -16,9 +16,18 @@ public class ParamsDto {
     private User user;
     private PCateParamsDto pCate;
     private Page page;
+    private String search;
 
     public PCateParamsDto getpCate() {
         return pCate;
+    }
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
     }
 
     public void setpCate(PCateParamsDto pCate) {

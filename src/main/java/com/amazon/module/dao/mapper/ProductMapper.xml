@@ -4,4 +4,55 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.amazon.module.dao.ProductDao">
 
+    <!--模糊查询商品总数-->
+    <select id="queryProductCountBySearch" parameterType="String" resultType="int">
+        select count(1) from product where pname like '%${search}%' or description like '%${search}%'
+    </select>
+
+    <!--模糊查询商品（分页）-->
+    <select id="queryProductsBySearch" parameterType="map" resultType="product">
+        select
+                    pname as name,description as describe,
+                    price as price,stock as stock,
+                    pc_id as pc_id,pc_child_id as pc_child_id,
+                    p_file_name as fileName,pid as pid
+        from
+            (select rownum as r,t.* from product t where pname like '%${search}%' or description like '%${search}%')
+        where r between #{start} and #{end}
+    </select>
+
+    <!--一级商品分类Id查询商品总数-->
+    <select id="queryProductCountByPcid" parameterType="String" resultType="int">
+        select count(1) from product where pc_id=#{cid}
+    </select>
+
+    <!--一级商品分类Id查询商品（分页）-->
+    <select id="queryProductsByPcid" parameterType="map" resultType="product">
+        select
+                pname as name,description as describe,
+                price as price,stock as stock,
+                pc_id as pc_id,pc_child_id as pc_child_id,
+                p_file_name as fileName,pid as pid
+        from
+            (select rownum as r,t.* from product t where pc_id=#{cid})
+        where r between #{start} and #{end}
+    </select>
+
+    <!--二级商品分类Id查询商品总数-->
+    <select id="queryProductCountByCpcid" parameterType="String" resultType="int">
+        select count(1) from product where pc_child_id=#{cid}
+    </select>
+
+    <!--二级商品分类Id查询商品（分页）-->
+    <select id="queryProductsByCpcid" parameterType="map" resultType="product">
+        select
+                pname as name,description as describe,
+                price as price,stock as stock,
+                pc_id as pc_id,pc_child_id as pc_child_id,
+                p_file_name as fileName,pid as pid
+        from
+            (select rownum as r,t.* from product t where pc_child_id=#{cid})
+        where r between #{start} and #{end}
+    </select>
+
 </mapper>
