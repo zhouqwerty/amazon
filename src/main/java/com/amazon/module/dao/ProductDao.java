@@ -9,42 +9,48 @@ import java.util.Map;
 public interface ProductDao {
 
     /**
-     * @param search 搜索模糊查询的商品数量
+     * @function 通过搜索模糊查询商品的数量
+     * @param search 搜索内容
      * @return 商品数量
      * @datetime 2018.8.1 19:20
      * */
     Integer queryProductCountBySearch(@Param("search") String search);
 
     /**
-     * @param paramMap 搜索模糊查询的商品
+     * @function 通过搜索模糊查询商品
+     * @param paramMap 搜索内容
      * @return 商品(分页)
      * @datetime 2018.8.1 19:28
      * */
     List<Product> queryProductsBySearch(Map<String, Object> paramMap);
 
     /**
-     * @param pcid 根据一级分类查询的商品数量
+     * @function 根据一级分类查询的商品数量
+     * @param pcid 一级分类id
      * @return 商品数量
      * @datetime 2018.8.1 20:33
      * */
     Integer queryProductCountByPcid(@Param("cid") String pcid);
 
     /**
-     * @param pcid 根据一级分类查询的商品
+     * @function 根据一级分类查询的商品
+     * @param pcid 一级分类id
      * @return 商品(分页)
      * @datetime 2018.8.1 20:33
      * */
     List<Product> queryProductsByPcid(Map<String, Object> pcid);
 
     /**
-     * @param cpcid 根据二级分类查询的商品数量
+     * @function 根据二级分类查询的商品数量
+     * @param cpcid 二级分类id
      * @return 商品数量
      * @datetime 2018.8.1 20:33
      * */
     Integer queryProductCountByCpcid(@Param("cid") String cpcid);
 
     /**
-     * @param cpcid 根据二级分类查询的商品
+     * @function 根据二级分类查询的商品
+     * @param cpcid 二级分类id
      * @return 商品(分页)
      * @datetime 2018.8.1 20:33
      * */

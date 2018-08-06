@@ -3,6 +3,7 @@ package com.amazon.module.filter;
 import com.alibaba.fastjson.JSON;
 import com.amazon.base.dto.BaseResponseDto;
 import com.amazon.base.util.CommonUtil;
+import com.amazon.module.constant.CommonValue;
 import com.amazon.module.dto.ParamsDto;
 import com.amazon.module.entity.User;
 import com.amazon.module.service.UserService;
@@ -39,11 +40,11 @@ public class AuthFilter implements Filter{
         HttpSession session=req.getSession();
         String token=null;
         Cookie[] cookies=req.getCookies();
-        String sToken=(String) session.getAttribute("token");
-        User user=(User)session.getAttribute("user");
+        String sToken=(String) session.getAttribute(CommonValue.TOKEN);
+        User user=(User)session.getAttribute(CommonValue.USER);
         if(!CommonUtil.isNullOrEmpty(cookies)){
             for(Cookie c:cookies){
-                if(c.getName().equals("token")){
+                if(c.getName().equals(CommonValue.TOKEN)){
                     token=c.getValue();
                 }
             }
@@ -58,7 +59,7 @@ public class AuthFilter implements Filter{
         }else{
             BaseResponseDto<String> baseResp=new BaseResponseDto<>();
             baseResp.setTime(System.currentTimeMillis());
-            baseResp.setData("unLogin");
+            baseResp.setData(CommonValue.UNLOGIN);
             baseResp.setSuccess(true);
             resp.setContentType("application/json; charset=utf-8");
             resp.getWriter().append(JSON.toJSONString(baseResp));

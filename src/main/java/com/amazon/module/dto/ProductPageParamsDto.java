@@ -6,11 +6,12 @@ package com.amazon.module.dto;
  * @datetime 2018.7.31 20:44
  * @describe 接收分类参数的Dto
  * */
-public class PCateParamsDto {
+public class ProductPageParamsDto {
     private String pcid;//一级id
     private String pcname;//一级name
     private String cpcid;//二级id
     private String cpcname;//二级name
+    private String search;//搜索内容
 
     public String getPcid() {
         return pcid;
@@ -42,5 +43,13 @@ public class PCateParamsDto {
 
     public void setCpcname(String cpcname) {
         this.cpcname = cpcname;
+    }
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
     }
 }

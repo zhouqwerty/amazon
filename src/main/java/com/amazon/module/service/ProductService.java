@@ -14,12 +14,14 @@ import java.util.Map;
 public interface ProductService {
 
     /**
+     * @function 获取商品分类目录树
      * @return 商品分类目录树
      * @datetime 2018.8.1 19:03
      * */
     JSONArray getProductCategory();
 
     /**
+     * @function 根据输入内容模糊查询商品（分页）
      * @param params 通过搜索模糊查询商品
      * @return 商品集合（分页）
      * @datetime 2018.8.1 19:03
@@ -27,6 +29,7 @@ public interface ProductService {
     Map<String, Object> getProductPageBySearch(ParamsDto params);
 
     /**
+     * @function 根据分类查询商品（分页）
      * @param params 通过商品分类查询商品
      * @return 商品集合（分页）
      * @datetime 2018.8.1 19:03

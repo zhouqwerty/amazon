@@ -30,6 +30,7 @@ public class OrderController {
     private OrderService os;
 
     /**
+     * @function 下订单
      * @param baseReq 下订单所需的信息
      * @return 返回下订单的结果 1 下订单成功 0 下订单失败
      * @datetime 2018.7.23 20:17

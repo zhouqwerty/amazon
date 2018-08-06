@@ -14,24 +14,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class ParamsDto {
     private String validateCode;//验证码
     private User user;
-    private PCateParamsDto pCate;
+    private ProductPageParamsDto ppDto;
     private Page page;
-    private String search;
 
-    public PCateParamsDto getpCate() {
-        return pCate;
+    public ProductPageParamsDto getPpDto() {
+        return ppDto;
     }
 
-    public String getSearch() {
-        return search;
-    }
-
-    public void setSearch(String search) {
-        this.search = search;
-    }
-
-    public void setpCate(PCateParamsDto pCate) {
-        this.pCate = pCate;
+    public void setPpDto(ProductPageParamsDto ppDto) {
+        this.ppDto = ppDto;
     }
 
     public Page getPage() {

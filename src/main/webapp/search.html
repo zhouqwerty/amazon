@@ -52,26 +52,16 @@
         data:{
             i:0,
             products:[
-                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
-                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
-                {id:'1',name:'one'},{id:'2',name:'two'}, {id:'3',name:'three'},
-                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
-                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
-                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
-                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
-                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
-                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
-                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
-                {id:'1',name:'one'},{id:'2',name:'two'}, {id:'3',name:'three'},
-                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
-                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
-                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
-                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
-                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
-                {id:'1',name:'one'}, {id:'2',name:'two'}, {id:'3',name:'three'},
-                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
-                {id:'1',name:'one'},{id:'2',name:'two'}, {id:'3',name:'three'},
-                {id:'4',name:'four'}, {id:'5',name:'five'}, {id:'6',name:'six'},
+                {
+                    pid:'215sd5a5dasasdd',
+                    name:'demo',
+                    describe:'demo',
+                    price:12.22,
+                    stock:12,
+                    pc_id:12,
+                    pc_child_id:22,
+                    fileName:'assets/product/1.jpg'
+                }
             ],
             page:{
                 total:0,
@@ -80,21 +70,26 @@
             },
             params:{},
             interfaces:{
-                getProductsByPage:'core/product/getProductsByPage'
+                getProductsByPage:'/core/product/getProductsByPage'
             }
         },
         created:function () {
             window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) =>{this.params[key] = decodeURI(value);});
-            let params={};
-            params.page=this.page;
-            params.pCate=this.params;
-            callApi(this.interfaces.getProductsByPage,params,(data)=> {
-                this.products=data;
-            })
+            if(this.params['search']){
+                $Global.headerSearch.search=this.params['search'];
+                $Global.headerSearch.searchFlag=!$Global.headerSearch.searchFlag;
+            }
+            this.lookNextPageProducts();
         },
         methods:{
-            lookNextPageProducts:function (current) {
-                console.log(current)
+            lookNextPageProducts:function () {
+                let params={};
+                params.page=this.page;
+                params.ppDto=this.params;
+                callApi(this.interfaces.getProductsByPage,params,(data)=> {
+                    this.products=data.product;
+                    this.page.total=data.count;
+                })
             }
         }
     });

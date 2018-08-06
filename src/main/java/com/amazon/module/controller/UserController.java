@@ -15,7 +15,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,6 +37,7 @@ public class UserController {
     private UserService us;
 
     /**
+     * @function 登录验证
      * @param baseReq 登录所需的用户名和密码
      * @return 登录的查询结果
      * @datetime 2018.7.23 20:15
@@ -55,12 +55,12 @@ public class UserController {
                 if(!CommonUtil.isNullOrEmpty(result)){
                     String token=GenerateUtil.generateTokeCode();
                     session.setAttribute(CommonValue.TOKEN, token);
-                    session.setAttribute("user",result);
+                    session.setAttribute(CommonValue.USER,result);
                     resp.addCookie(new Cookie(CommonValue.TOKEN,token));
                 }
                 baseResp.setData(result);
             }else{
-                baseResp.setData("codeError");
+                baseResp.setData(CommonValue.VALID_CODE_ERROR);
             }
             baseResp.setSuccess(true);
         }catch (Exception e){
@@ -71,6 +71,7 @@ public class UserController {
     }
 
     /**
+     * @function 注册用户
      * @param baseReq 注册所需的信息
      * @return 注册结果 1 注册成功 0 注册失败
      * @datetime 2018.7.23 20:15
@@ -84,7 +85,11 @@ public class UserController {
         try{
             User user=baseReq.getData();
             int i=us.registerUser(user);
-            baseResp.setData(i+"");
+            if(i>0){
+                baseResp.setData(CommonValue.DESIRED);
+            }else{
+                baseResp.setData(CommonValue.UNDESIRED);
+            }
             baseResp.setSuccess(true);
         }catch (Exception e){
             e.printStackTrace();
@@ -94,6 +99,7 @@ public class UserController {
     }
 
     /**
+     * @function 获取验证码图片的base64字符串
      * @return 图片的base64字符串
      * @datetime 2018.7.27 18:57
      * */
@@ -105,9 +111,9 @@ public class UserController {
         baseResp.setTime(System.currentTimeMillis());
         try{
             Map<String,Object> map=new ValidateCode().getCode();
-            String code=(String) map.get("code");
-            BufferedImage image=(BufferedImage)map.get("image");
-            session.setAttribute("validateCode",code);
+            String code=(String) map.get(CommonValue.VALID_CODE_KEY);
+            BufferedImage image=(BufferedImage)map.get(CommonValue.VALID_IMAGE_KEY);
+            session.setAttribute(CommonValue.VALID_CODE,code);
             baseResp.setData("data:image/png;base64,"+SpecialUtil.bufferImageToBase64(image));
             baseResp.setSuccess(true);
         }catch (Exception e){
@@ -118,7 +124,8 @@ public class UserController {
     }
 
     /**
-     * @return 图片的base64字符串
+     * @function 验证验证码是否正确
+     * @return 验证结果
      * @datetime 2018.7.27 18:57
      * */
     @ApiOperation(value = "验证验证码")
@@ -128,11 +135,11 @@ public class UserController {
         BaseResponseDto<String> baseResp=new BaseResponseDto<>();
         baseResp.setTime(System.currentTimeMillis());
         try{
-            String result="0";
+            String result=CommonValue.UNDESIRED;
             ParamsDto params=baseReq.getData();
             String validateCode=params.getValidateCode();
             if(validateCode.equalsIgnoreCase(code)){
-                result="1";
+                result=CommonValue.DESIRED;
             }
             baseResp.setData(result);
             baseResp.setSuccess(true);
@@ -144,6 +151,7 @@ public class UserController {
     }
 
     /**
+     * @function 验证是否处于登录状态
      * @return 是否登录
      * @datetime 2018.7.29 18:54
      * */
@@ -158,7 +166,7 @@ public class UserController {
             User result=null;
             String token=null;
             String sToken=(String) session.getAttribute(CommonValue.TOKEN);
-            User user=(User)session.getAttribute("user");
+            User user=(User)session.getAttribute(CommonValue.USER);
             if(!CommonUtil.isNullOrEmpty(cookies)){
                 for(Cookie c:cookies){
                     if(c.getName().equals(CommonValue.TOKEN)){
@@ -181,6 +189,7 @@ public class UserController {
     }
 
     /**
+     * @function 注销用户
      * @return 是否退出 1 成功注销
      * @datetime 2018.7.29 19:47
      * */
@@ -191,9 +200,9 @@ public class UserController {
         BaseResponseDto<String> baseResp=new BaseResponseDto<>();
         baseResp.setTime(System.currentTimeMillis());
         try{
-            session.removeAttribute("user");
+            session.removeAttribute(CommonValue.USER);
             session.removeAttribute(CommonValue.TOKEN);
-            baseResp.setData("1");
+            baseResp.setData(CommonValue.DESIRED);
             baseResp.setSuccess(true);
         }catch (Exception e){
             e.printStackTrace();
@@ -212,6 +221,7 @@ public class UserController {
 /*--------------------------------------- 非请求方法（private）------------------------------------------------------*/
 
     /**
+     * @function 验证验证码是否正确
      * @param params 前端的验证码
      * @param session 会话
      * @return 验证结果 true 相同 false 不同
@@ -220,7 +230,7 @@ public class UserController {
     private boolean validValidateCode(ParamsDto params,HttpSession session){
         boolean result=false;
         String validateCode=params.getValidateCode();
-        String code=(String) session.getAttribute("validateCode");
+        String code=(String) session.getAttribute(CommonValue.VALID_CODE);
         if(validateCode.equalsIgnoreCase(code)){
             result=true;
         }

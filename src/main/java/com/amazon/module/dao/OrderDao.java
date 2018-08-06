@@ -9,5 +9,11 @@ import com.amazon.module.entity.Order;
  * @describe 该dao处理订单表的操作
  * */
 public interface OrderDao {
+    /**
+     * @function 添加订单
+     * @param order 订单信息
+     * @return 插入的行数
+     * @datetime 2018.8.2 19:08
+     * */
     String addOrder(Order order);
 }

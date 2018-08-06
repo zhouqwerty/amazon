@@ -39,6 +39,7 @@ public class ProductController {
     private ProductService ps;
 
     /**
+     * @function 获取商品分类的目录树
      * @return 商品分类目录树
      * @datetime 2018.7.30 18:56
      * */
@@ -61,6 +62,7 @@ public class ProductController {
 
 
     /**
+     * @function 搜索商品（模糊查询或者分类）
      * @param baseReq 搜索商品所需参数
      * @return 搜索商品（分页）
      * @datetime 2018.8.1 18:53
@@ -74,9 +76,9 @@ public class ProductController {
         try{
             Map<String,Object> products=null;
             ParamsDto params=baseReq.getData();
-            if(!CommonUtil.isNullOrEmpty(params.getSearch())){
+            if(!CommonUtil.isNullOrEmpty(params.getPpDto().getSearch())){
                 products=ps.getProductPageBySearch(params);
-            }else if(!CommonUtil.isNullOrEmpty(params.getpCate())){
+            }else if(!CommonUtil.isNullOrEmpty(params.getPpDto().getPcid())){
                 products=ps.getProductPageByCategory(params);
             }
             baseResp.setData(products);

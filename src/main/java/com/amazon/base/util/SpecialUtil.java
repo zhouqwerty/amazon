@@ -16,6 +16,12 @@ public class SpecialUtil {
 
     private static BASE64Encoder encoder=new BASE64Encoder();
 
+    /**
+     * @function 将图片对象转成的base64字符串
+     * @param image 图片对象
+     * @return 图片对象转成的base64字符串
+     * @datetime 2018.8.2 19:04
+     * */
     public static String bufferImageToBase64(BufferedImage image) throws IOException {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ImageIO.write(image, "png", outputStream);

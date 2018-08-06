@@ -1,14 +1,14 @@
 //初始化根路径
 var basePath = "";
-$(function(){
+function initBasePath() {
     var curRequestPath = window.document.location.href;
     var pathName = window.document.location.pathname;
     var ipAndPort = curRequestPath.indexOf(pathName);
     var localhostPath = curRequestPath.substring(0,ipAndPort);
     var projectName = pathName.substring(0,pathName.substr(1).indexOf('/')+1);
     basePath = localhostPath + projectName;
-})
-
+}
+initBasePath();
 //post方式发送json数据的ajax请求
 function callApi(url, data, callback, callErrorBack) {
     var obj = {};

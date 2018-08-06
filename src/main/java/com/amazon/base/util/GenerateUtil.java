@@ -20,6 +20,11 @@ public class GenerateUtil {
     private static SimpleDateFormat sdf1=new SimpleDateFormat("yyyyMMddHHmmssSSSS");
     private static ThreadLocalRandom random=ThreadLocalRandom.current();
 
+    /**
+     * @function 产生订单id
+     * @return 产生的订单id 当前时间+随机四位数
+     * @datetime 2018.8.2 19:00
+     * */
     public static String generateOrderId(){
         StringBuffer buffer=new StringBuffer();
         buffer.append(sdf1.format(new Date()));
@@ -27,6 +32,11 @@ public class GenerateUtil {
         return buffer.toString();
     }
 
+    /**
+     * @function 产生token id
+     * @return 产生的token id
+     * @datetime 2018.8.2 19:00
+     * */
     public static String generateTokeCode(){
         String value = System.currentTimeMillis()+new Random().nextInt()+"";
         //获取数据指纹，指纹是唯一的
@@ -43,6 +53,12 @@ public class GenerateUtil {
         return null;
     }
 
+    /**
+     * @function 将0-9999的数字转出长度为4的字符串
+     * @param num 数字(0-9999)
+     * @return 转成长度为4的字符串
+     * @datetime 2018.8.2 19:00
+     * */
     private static String numToStringLen4(int num){
         String result=null;
         if(num<10000){
