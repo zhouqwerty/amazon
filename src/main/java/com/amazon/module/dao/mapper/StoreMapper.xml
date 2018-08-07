@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.amazon.module.dao.StoreDao">
+
+    <!--根据sid查询商铺信息-->
+    <select id="queryStoreBySid" parameterType="String" resultType="store">
+        select
+            sid as sid,sname as sname,
+            address as address,managerid as managerid,
+            slevel as level,rate as rate
+        from STORE
+        where sid =#{sid}
+    </select>
+</mapper>

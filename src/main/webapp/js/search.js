@@ -2,9 +2,5 @@ $Global={
     category:{
         secondListVisible:'none',
         hideSecondList:true
-    },
-    headerSearch:{
-        searchFlag:true,
-        search:''
     }
 }

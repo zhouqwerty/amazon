@@ -6,12 +6,12 @@ Vue.component('header-search', function (resolve, reject) {
                 cfirstshow:{
                     type: Boolean,
                     default: false
-                }
+                },
+                searchContent:''
             },
             data: function () {
                 return {
                     category:$Global.category,
-                    searchContent:'',
                     searchTip:'台式机',
                     categoryTips:[
                         {name:'数码电器'},
@@ -22,7 +22,6 @@ Vue.component('header-search', function (resolve, reject) {
                         {name:'海外代购'},
                         {name:'健身'}],
                     cFirstListVisible:'none',
-                    searchFlag:$Global.headerSearch
                 }
             },
             watch: {
@@ -34,11 +33,6 @@ Vue.component('header-search', function (resolve, reject) {
                         this.cfirstshow=true;
                         this.showCategoryList();
                     }
-                },
-                'searchFlag.searchFlag':function () {
-                    if($Global.headerSearch){
-                        this.searchContent=$Global.headerSearch.search;
-                    }
                 }
             },
             created: function () {
@@ -48,7 +42,7 @@ Vue.component('header-search', function (resolve, reject) {
             },
             methods: {
                 searchGoods:function (name) {
-                    window.open('search.html?search='+this.searchContent,'_blank');
+                    window.open('search.html?search='+this.searchContent,'_self');
                 },
                 showCategoryList:function (e) {
                     this.cFirstListVisible='block';

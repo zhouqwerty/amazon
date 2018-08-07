@@ -28,7 +28,7 @@
 <div id="search">
     <top-user-info></top-user-info>
     <div style="width: 100%;margin-top: 60px">
-        <header-search></header-search>
+        <header-search :search-content="searchContent"></header-search>
     </div>
     <div class="my_container">
         <div class="category_nav_bread_crumb_wrap">
@@ -51,6 +51,7 @@
         el:'#search',
         data:{
             i:0,
+            searchContent:'',
             products:[
                 {
                     pid:'215sd5a5dasasdd',
@@ -74,10 +75,9 @@
             }
         },
         created:function () {
-            window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) =>{this.params[key] = decodeURI(value);});
+            this.params=getParamsFromUrl(window.location.href);
             if(this.params['search']){
-                $Global.headerSearch.search=this.params['search'];
-                $Global.headerSearch.searchFlag=!$Global.headerSearch.searchFlag;
+                this.searchContent=this.params['search'];
             }
             this.lookNextPageProducts();
         },

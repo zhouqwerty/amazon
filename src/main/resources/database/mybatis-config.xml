@@ -14,13 +14,16 @@
     <!-- 类型名称：为一些类定义别名 -->
     <typeAliases>
         <typeAlias alias="user" type="com.amazon.module.entity.User"/>
+        <typeAlias alias="userType" type="com.amazon.module.entity.UserType"/>
         <typeAlias alias="order" type="com.amazon.module.entity.Order"/>
         <typeAlias alias="orderDetail" type="com.amazon.module.entity.OrderDetail"/>
+        <typeAlias alias="store" type="com.amazon.module.entity.Store"/>
         <typeAlias alias="product" type="com.amazon.module.entity.Product"/>
         <typeAlias alias="productCategory" type="com.amazon.module.entity.ProductCategory"/>
         <typeAlias alias="news" type="com.amazon.module.entity.News"/>
         <typeAlias alias="comment" type="com.amazon.module.entity.Comment"/>
         <typeAlias alias="cart" type="com.amazon.module.entity.Cart"/>
+        <typeAlias alias="params" type="com.amazon.module.dto.ParamsDto"/>
     </typeAliases>
 
     <!-- 类型处理器：定义Java类型与数据库中的数据类型之间的转换关系 -->

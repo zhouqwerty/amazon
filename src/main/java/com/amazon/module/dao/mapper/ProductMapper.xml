@@ -4,6 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.amazon.module.dao.ProductDao">
 
+    <resultMap type="product" id="productMapper">
+        <id property="pid" column="pid"/>
+        <result property="name" column="pname"/>
+        <result property="describe" column="description"/>
+        <result property="price" column="price"/>
+        <result property="stock" column="stock"/>
+        <result property="pc_id" column="pc_id"/>
+        <result property="pc_child_id" column="pc_child_id"/>
+        <result property="fileName" column="fileName"/>
+    </resultMap>
     <!--模糊查询商品总数-->
     <select id="queryProductCountBySearch" parameterType="String" resultType="int">
         select count(1) from product where pname like '%${search}%' or description like '%${search}%'
@@ -53,6 +63,16 @@
         from
             (select rownum as r,t.* from product t where pc_child_id=#{cid})
         where r between #{start} and #{end}
+    </select>
+
+    <!--一级商品分类Id查询商品（分页）-->
+    <select id="queryProductByPid" parameterType="params" resultType="product">
+        select
+        pname as name,description as describe,
+        price as price,stock as stock,
+        pc_id as pc_id,pc_child_id as pc_child_id,
+        p_file_name as fileName,pid as pid
+        from product t where pid=#{pid}
     </select>
 
 </mapper>

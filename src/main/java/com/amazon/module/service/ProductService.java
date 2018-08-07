@@ -2,6 +2,7 @@ package com.amazon.module.service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.amazon.module.dto.ParamsDto;
+import com.amazon.module.entity.Product;
 
 import java.util.Map;
 
@@ -35,4 +36,12 @@ public interface ProductService {
      * @datetime 2018.8.1 19:03
      * */
     Map<String, Object> getProductPageByCategory(ParamsDto params);
+
+    /**
+     * @function 通过pid（商品id）查询商品的详细信息
+     * @param params pid
+     * @return 商品信息
+     * @datetime 2018.8.7 18:53
+     * */
+    Product getProductInfoByPid(ParamsDto params);
 }

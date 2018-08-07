@@ -15,6 +15,15 @@ public class Product {
     private int pc_id;
     private int pc_child_id;
     private String fileName;
+    private Store store;
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
 
     public String getPid() {
         return pid;

@@ -1,8 +1,8 @@
 package com.amazon.module.dao;
 
+import com.amazon.module.dto.ParamsDto;
 import com.amazon.module.entity.Product;
 import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 import java.util.Map;
 
@@ -55,4 +55,12 @@ public interface ProductDao {
      * @datetime 2018.8.1 20:33
      * */
     List<Product> queryProductsByCpcid(Map<String, Object> cpcid);
+
+    /**
+     * @function 根据商品id查询商品信息
+     * @param params 商品id
+     * @return 商品信息
+     * @datetime 2018.8.7 20:28
+     * */
+    Product queryProductByPid(ParamsDto params);
 }

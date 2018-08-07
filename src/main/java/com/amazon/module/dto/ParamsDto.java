@@ -16,6 +16,15 @@ public class ParamsDto {
     private User user;
     private ProductPageParamsDto ppDto;
     private Page page;
+    private String pid;
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
 
     public ProductPageParamsDto getPpDto() {
         return ppDto;

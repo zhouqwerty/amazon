@@ -7,14 +7,14 @@ Vue.component('product-unit', function (resolve, reject) {
             },
             data: function () {
                 return {
-                    selectFlag:false
+                    selectFlag:false,
                 }
             },
             watch: {},
             created: function () {},
             methods: {
                 showProductInfo:function () {
-                    window.open("product.html?pid="+this.product.id,"_blank");
+                    window.open("product.html?pid="+this.product.pid,"_blank");
                 }
             }
         });

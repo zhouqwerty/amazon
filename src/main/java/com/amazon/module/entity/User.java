@@ -22,6 +22,15 @@ public class User {
     private String mobile;//电话
     private String address;//地址
     private int status;//状态
+    private int type;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public User() {
     }

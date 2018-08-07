@@ -89,4 +89,29 @@ public class ProductController {
         }
         return baseResp;
     }
+
+    /**
+     * @function 通过pid（商品id）查询商品的详细信息
+     * @param baseReq pid
+     * @return 商品信息
+     * @datetime 2018.8.7 18:50
+     * */
+    @ApiOperation(value = "通过pid查询商品信息")
+    @RequestMapping(value = "/getProductInfoByPid",method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResponseDto<Product> getProductInfoByPid(@RequestBody BaseRequestDto<ParamsDto> baseReq){
+        BaseResponseDto<Product> baseResp=new BaseResponseDto<>();
+        baseResp.setTime(System.currentTimeMillis());
+        try{
+            ParamsDto params=baseReq.getData();
+            Product product=ps.getProductInfoByPid(params);
+            baseResp.setData(product);
+            baseResp.setSuccess(true);
+        }catch (Exception e){
+            e.printStackTrace();
+            baseResp.setSuccess(false);
+        }
+        return baseResp;
+    }
+
 }

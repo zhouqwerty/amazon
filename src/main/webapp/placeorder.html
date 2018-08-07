@@ -257,7 +257,16 @@
                     ]
                 },
             ],
-            sumCost:9999.99
+            sumCost:9999.99,
+            params:{},
+        },
+        created:function () {
+            this.params=getParamsFromUrl(window.location.href);
+            let params={};
+            params.pid=this.params.pid;
+            callApi(this.interfaces.getProductInfoByPid,params,(data)=> {
+                this.product=data;
+            })
         },
         methods:{
             changeAddress:function(addr){

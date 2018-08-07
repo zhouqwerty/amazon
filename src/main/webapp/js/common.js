@@ -35,3 +35,9 @@ function callApi(url, data, callback, callErrorBack) {
         }
     });
 }
+
+function getParamsFromUrl(Url) {
+    let params={};
+    Url.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) =>{params[key] = decodeURI(value);});
+    return params;
+}

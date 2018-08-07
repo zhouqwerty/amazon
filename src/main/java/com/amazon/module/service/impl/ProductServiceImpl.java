@@ -7,6 +7,7 @@ import com.amazon.module.constant.CommonValue;
 import com.amazon.module.dao.ProductCategoryDao;
 import com.amazon.module.dao.ProductDao;
 import com.amazon.module.dto.ParamsDto;
+import com.amazon.module.entity.Product;
 import com.amazon.module.entity.ProductCategory;
 import com.amazon.module.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,11 @@ public class ProductServiceImpl implements ProductService{
             resultMap.put(CommonValue.PAGE_PRODUCT_KEY,pd.queryProductsByPcid(paramMap));
         }
         return resultMap;
+    }
+
+    @Override
+    public Product getProductInfoByPid(ParamsDto params) {
+        return pd.queryProductByPid(params);
     }
 
     /*--------------------------------------分割线（私有方法）------------------------------------------*/
