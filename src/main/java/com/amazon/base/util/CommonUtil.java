@@ -1,5 +1,6 @@
 package com.amazon.base.util;
 
+import com.alibaba.fastjson.util.IOUtils;
 import com.amazon.base.common.ChineseNumParser;
 import com.amazon.base.common.GeneralEncodeHelper;
 import com.google.common.base.CharMatcher;
@@ -9,12 +10,7 @@ import com.google.common.collect.Lists;
 import com.google.common.io.ByteStreams;
 import com.google.common.io.CharStreams;
 import java.awt.Color;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
+import java.io.*;
 import java.lang.Character.UnicodeBlock;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
@@ -44,8 +40,10 @@ import javax.sql.rowset.serial.SerialClob;
 import javax.sql.rowset.serial.SerialException;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.aspectj.util.FileUtil;
 import org.springframework.http.HttpMethod;
 
 /**
@@ -799,4 +797,5 @@ public class CommonUtil {
 
         return ip;
     }
+
 }

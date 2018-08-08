@@ -12,7 +12,10 @@
         <result property="stock" column="stock"/>
         <result property="pc_id" column="pc_id"/>
         <result property="pc_child_id" column="pc_child_id"/>
-        <result property="fileName" column="fileName"/>
+        <result property="fileName" column="p_file_name"/>
+        <association property="store" column="sid"
+        select="com.amazon.module.dao.StoreDao.queryStoreBySid"
+        javaType="store"/>
     </resultMap>
     <!--模糊查询商品总数-->
     <select id="queryProductCountBySearch" parameterType="String" resultType="int">
@@ -20,12 +23,9 @@
     </select>
 
     <!--模糊查询商品（分页）-->
-    <select id="queryProductsBySearch" parameterType="map" resultType="product">
+    <select id="queryProductsBySearch" parameterType="map" resultMap="productMapper">
         select
-                    pname as name,description as describe,
-                    price as price,stock as stock,
-                    pc_id as pc_id,pc_child_id as pc_child_id,
-                    p_file_name as fileName,pid as pid
+                *
         from
             (select rownum as r,t.* from product t where pname like '%${search}%' or description like '%${search}%')
         where r between #{start} and #{end}
@@ -37,12 +37,9 @@
     </select>
 
     <!--一级商品分类Id查询商品（分页）-->
-    <select id="queryProductsByPcid" parameterType="map" resultType="product">
+    <select id="queryProductsByPcid" parameterType="map" resultMap="productMapper">
         select
-                pname as name,description as describe,
-                price as price,stock as stock,
-                pc_id as pc_id,pc_child_id as pc_child_id,
-                p_file_name as fileName,pid as pid
+                *
         from
             (select rownum as r,t.* from product t where pc_id=#{cid})
         where r between #{start} and #{end}
@@ -54,24 +51,18 @@
     </select>
 
     <!--二级商品分类Id查询商品（分页）-->
-    <select id="queryProductsByCpcid" parameterType="map" resultType="product">
+    <select id="queryProductsByCpcid" parameterType="map" resultMap="productMapper">
         select
-                pname as name,description as describe,
-                price as price,stock as stock,
-                pc_id as pc_id,pc_child_id as pc_child_id,
-                p_file_name as fileName,pid as pid
+                *
         from
             (select rownum as r,t.* from product t where pc_child_id=#{cid})
         where r between #{start} and #{end}
     </select>
 
-    <!--一级商品分类Id查询商品（分页）-->
-    <select id="queryProductByPid" parameterType="params" resultType="product">
+    <!--通过商品id查询商品-->
+    <select id="queryProductByPid" parameterType="params" resultMap="productMapper">
         select
-        pname as name,description as describe,
-        price as price,stock as stock,
-        pc_id as pc_id,pc_child_id as pc_child_id,
-        p_file_name as fileName,pid as pid
+                *
         from product t where pid=#{pid}
     </select>
 

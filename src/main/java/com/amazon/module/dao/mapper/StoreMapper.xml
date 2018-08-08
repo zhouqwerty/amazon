@@ -7,9 +7,9 @@
     <!--根据sid查询商铺信息-->
     <select id="queryStoreBySid" parameterType="String" resultType="store">
         select
-            sid as sid,sname as sname,
-            address as address,managerid as managerid,
-            slevel as level,rate as rate
+            sid as sid,sname as sName,
+            address as address,managerid as managerId,
+            slevel as sLevel,rate as rate
         from STORE
         where sid =#{sid}
     </select>
