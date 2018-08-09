@@ -13,16 +13,19 @@
     </settings>
     <!-- 类型名称：为一些类定义别名 -->
     <typeAliases>
-        <typeAlias alias="user" type="com.amazon.module.entity.User"/>
-        <typeAlias alias="userType" type="com.amazon.module.entity.UserType"/>
+        <!--entity-->
+        <typeAlias alias="cart" type="com.amazon.module.entity.Cart"/>
+        <typeAlias alias="comment" type="com.amazon.module.entity.Comment"/>
+        <typeAlias alias="news" type="com.amazon.module.entity.News"/>
         <typeAlias alias="order" type="com.amazon.module.entity.Order"/>
         <typeAlias alias="orderDetail" type="com.amazon.module.entity.OrderDetail"/>
-        <typeAlias alias="store" type="com.amazon.module.entity.Store"/>
+        <typeAlias alias="placeName" type="com.amazon.module.entity.PlaceName"/>
         <typeAlias alias="product" type="com.amazon.module.entity.Product"/>
         <typeAlias alias="productCategory" type="com.amazon.module.entity.ProductCategory"/>
-        <typeAlias alias="news" type="com.amazon.module.entity.News"/>
-        <typeAlias alias="comment" type="com.amazon.module.entity.Comment"/>
-        <typeAlias alias="cart" type="com.amazon.module.entity.Cart"/>
+        <typeAlias alias="store" type="com.amazon.module.entity.Store"/>
+        <typeAlias alias="user" type="com.amazon.module.entity.User"/>
+        <typeAlias alias="userType" type="com.amazon.module.entity.UserType"/>
+        <!--other-->
         <typeAlias alias="params" type="com.amazon.module.dto.ParamsDto"/>
     </typeAliases>
 

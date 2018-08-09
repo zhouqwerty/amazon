@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.amazon.module.dao.PlaceNameDao">
-    <!--插入用户-->
+    <!--插入地名-->
     <insert id="addPlaceName" parameterType="com.alibaba.fastjson.JSONObject">
         <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="pnId">
             select sys_guid() from dual
@@ -11,5 +11,21 @@
         insert into PLACENAME(pnid,name,type,parent_id)
         values(#{pnId},#{name},#{type},#{parent_id})
     </insert>
+
+    <!--根据父类id查询地名集合-->
+    <select id="queryPlaceNameListByParentId" resultType="placeName">
+        select
+              pnid as pnId,name as name,
+              type as type,parent_id as parentId
+        from PLACENAME WHERE parent_id
+        <choose>
+            <when test="parentId==null">
+                is null
+            </when>
+            <otherwise>
+                =#{parentId}
+            </otherwise>
+        </choose>
+    </select>
 
 </mapper>

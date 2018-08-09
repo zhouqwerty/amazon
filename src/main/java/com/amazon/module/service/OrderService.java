@@ -1,6 +1,10 @@
 package com.amazon.module.service;
 
+import com.amazon.module.dto.ParamsDto;
 import com.amazon.module.entity.Order;
+import com.amazon.module.entity.PlaceName;
+
+import java.util.List;
 
 /**
  * @author 岸久
@@ -16,4 +20,12 @@ public interface OrderService {
      * @datetime 2018.8.2 19:16
      * */
     String placeOrder(Order order);
+
+    /**
+     * @function 获取地名集合
+     * @param params 所需的父类id
+     * @return 地名集合
+     * @datetime 2018.8.9 20:00
+     * */
+    List<PlaceName> getPlaceNameListByParentId(ParamsDto params);
 }

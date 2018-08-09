@@ -3,7 +3,9 @@ package com.amazon.module.controller;
 import com.amazon.base.dto.BaseRequestDto;
 import com.amazon.base.dto.BaseResponseDto;
 import com.amazon.base.util.GenerateUtil;
+import com.amazon.module.dto.ParamsDto;
 import com.amazon.module.entity.Order;
+import com.amazon.module.entity.PlaceName;
 import com.amazon.module.entity.User;
 import com.amazon.module.service.OrderService;
 import com.amazon.module.service.UserService;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @author 岸久
@@ -47,6 +50,30 @@ public class OrderController {
             order.setUser(new User());
             String oid=os.placeOrder(order);
             baseResp.setData(oid);
+            baseResp.setSuccess(true);
+        }catch (Exception e){
+            e.printStackTrace();
+            baseResp.setSuccess(false);
+        }
+        return baseResp;
+    }
+
+    /**
+     * @function 获取地名集合
+     * @param baseReq 所需的父类id
+     * @return 地名集合
+     * @datetime 2018.8.9 19:55
+     * */
+    @ApiOperation(value = "下订单")
+    @RequestMapping(value = "/getPlaceNameListByParentId",method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResponseDto<List<PlaceName>> getPlaceNameListByParentId(@RequestBody BaseRequestDto<ParamsDto> baseReq){
+        BaseResponseDto<List<PlaceName>> baseResp=new BaseResponseDto<>();
+        baseResp.setTime(baseReq.getTime());
+        try{
+            ParamsDto params=baseReq.getData();
+            List<PlaceName> places=os.getPlaceNameListByParentId(params);
+            baseResp.setData(places);
             baseResp.setSuccess(true);
         }catch (Exception e){
             e.printStackTrace();

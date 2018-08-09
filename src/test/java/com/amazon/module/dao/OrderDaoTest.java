@@ -1,5 +1,5 @@
 package com.amazon.module.dao;
 
 
-public class OrderDao {
+public class OrderDaoTest {
 }

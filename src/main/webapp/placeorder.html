@@ -49,7 +49,7 @@
             <h4 style="font-weight: 600">确认订单信息</h4>
             <div class="order_info_wrap">
                <div class="store_order_wrap" v-for="storeInfo in orderList">
-                   <div><img src="images/icon/store.png" alt="">{{storeInfo.store}}</div>
+                   <div><img src="assets/icon/store.png" alt="">{{storeInfo.store}}</div>
                    <div style="margin-top: 10px">
                        <order-header></order-header>
                    </div>
@@ -78,22 +78,22 @@
                     <row>
                         <i-col span="8">
                             <form-item prop="country">
-                                <i-select v-model="addAddr.info.country" style="width:100px">
-                                    <i-option v-for="item in countryList" :value="item.id" :key="item.id">{{ item.name }}</i-option>
+                                <i-select v-model="addAddr.info.country" style="width:100px" @on-change="selectCountry">
+                                    <i-option v-for="item in countryList" :value="item.pnId" :key="item.pnId">{{ item.name }}</i-option>
                                 </i-select>
                             </form-item>
                         </i-col>
                         <i-col span="8">
                             <form-item prop="province">
-                                <i-select v-model="addAddr.info.province" style="width:100px">
-                                    <i-option v-for="item in provinceList" :value="item.id" :key="item.id">{{ item.name }}</i-option>
+                                <i-select v-model="addAddr.info.province" style="width:100px" @on-change="selectProvince">
+                                    <i-option v-for="item in provinceList" :value="item.pnId" :key="item.pnId">{{ item.name }}</i-option>
                                 </i-select>
                             </form-item>
                         </i-col>
                         <i-col span="8">
                             <form-item prop="city">
                                 <i-select v-model="addAddr.info.city" style="width:100px">
-                                    <i-option v-for="item in cityList" :value="item.id" :key="item.id">{{ item.name }}</i-option>
+                                    <i-option v-for="item in cityList" :value="item.pnId" :key="item.pnId">{{ item.name }}</i-option>
                                 </i-select>
                             </form-item>
                         </i-col>
@@ -222,7 +222,7 @@
                     model:false,
                     orders:[
                         {
-                            img:'images/product/1.jpg',
+                            img:'assets/product/1.jpg',
                             desc:'不拉不拉不拉',
                             category:'不拉不拉不拉',
                             price:1122.00,
@@ -237,7 +237,7 @@
                     model:false,
                     orders:[
                         {
-                            img:'images/product/1.jpg',
+                            img:'assets/product/1.jpg',
                             desc:'不拉不拉不拉',
                             category:'不拉不拉不拉',
                             price:1122.00,
@@ -246,7 +246,7 @@
                             model:false
                         },
                         {
-                            img:'images/product/1.jpg',
+                            img:'assets/product/1.jpg',
                             desc:'不拉不拉不拉',
                             category:'不拉不拉不拉',
                             price:1122.00,
@@ -259,13 +259,16 @@
             ],
             sumCost:9999.99,
             params:{},
+            interfaces:{
+                getPlaceNameListByParentId:'/core/order/getPlaceNameListByParentId',
+            }
         },
         created:function () {
             this.params=getParamsFromUrl(window.location.href);
             let params={};
-            params.pid=this.params.pid;
-            callApi(this.interfaces.getProductInfoByPid,params,(data)=> {
-                this.product=data;
+            callApi(this.interfaces.getPlaceNameListByParentId,params,(data)=> {
+                this.countryList=data;
+                this.addAddr.info.country=data[0].pnId;
             })
         },
         methods:{
@@ -293,6 +296,22 @@
             },
             submitOrder:function () {
                 console.log("submit order")
+            },
+            selectCountry:function (val) {
+                let params={};
+                params.parentId=val;
+                callApi(this.interfaces.getPlaceNameListByParentId,params,(data)=> {
+                    this.provinceList=data;
+                    this.addAddr.info.province=data[0].pnId;
+                })
+            },
+            selectProvince:function (val) {
+                let params={};
+                params.parentId=val;
+                callApi(this.interfaces.getPlaceNameListByParentId,params,(data)=> {
+                    this.cityList=data;
+                    this.addAddr.info.city=data[0].pnId;
+                })
             }
         }
     });

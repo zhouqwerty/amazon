@@ -1,7 +1,10 @@
 package com.amazon.module.dao;
 
 import com.alibaba.fastjson.JSONObject;
+import com.amazon.module.entity.PlaceName;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @author 岸久
@@ -16,13 +19,13 @@ public interface PlaceNameDao {
      * @return 插入的地名id
      * @datetime 2018.8.8 20.19
      * */
-    String addPlaceName(JSONObject placeName);
+    int addPlaceName(JSONObject placeName);
 
     /**
-     * @function 根据地名id查找地名
-     * @param pnId 地名id
-     * @return 插入的地名id
-     * @datetime 2018.8.8 20.19
+     * @function 获取地名集合
+     * @param parentId 所需的父类id
+     * @return 地名集合
+     * @datetime 2018.8.9 20:00
      * */
-    String selectPlaceNameByPnId(@Param("pnId") String pnId);
+    List<PlaceName> queryPlaceNameListByParentId(@Param("parentId") String parentId);
 }

@@ -1,5 +1,5 @@
 package com.amazon.base.controller;
 
-public class UserController {
+public class UserControllerTest {
 
 }

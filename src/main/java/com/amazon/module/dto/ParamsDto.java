@@ -17,6 +17,15 @@ public class ParamsDto {
     private ProductPageParamsDto ppDto;
     private Page page;
     private String pid;
+    private String parentId;
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
 
     public String getPid() {
         return pid;

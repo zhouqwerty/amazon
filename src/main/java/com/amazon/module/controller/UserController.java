@@ -56,7 +56,9 @@ public class UserController {
                     String token=GenerateUtil.generateTokeCode();
                     session.setAttribute(CommonValue.TOKEN, token);
                     session.setAttribute(CommonValue.USER,result);
-                    resp.addCookie(new Cookie(CommonValue.TOKEN,token));
+                    Cookie c=new Cookie(CommonValue.TOKEN,token);
+                    c.setPath("/");
+                    resp.addCookie(c);
                 }
                 baseResp.setData(result);
             }else{
