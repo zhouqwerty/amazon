@@ -10,10 +10,13 @@
     <settings>
         <!--打印sql语句-->
         <setting name="logImpl" value="STDOUT_LOGGING" />
+        <!--解决插入时值为null报错的问题-->
+        <setting name="jdbcTypeForNull" value="NULL" />
     </settings>
     <!-- 类型名称：为一些类定义别名 -->
     <typeAliases>
         <!--entity-->
+        <typeAlias alias="address" type="com.amazon.module.entity.Address"/>
         <typeAlias alias="cart" type="com.amazon.module.entity.Cart"/>
         <typeAlias alias="comment" type="com.amazon.module.entity.Comment"/>
         <typeAlias alias="news" type="com.amazon.module.entity.News"/>

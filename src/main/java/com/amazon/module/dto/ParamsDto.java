@@ -18,6 +18,27 @@ public class ParamsDto {
     private Page page;
     private String pid;
     private String parentId;
+    private String aid;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    private String userId
+
+            ;
+
+    public String getAid() {
+        return aid;
+    }
+
+    public void setAid(String aid) {
+        this.aid = aid;
+    }
 
     public String getParentId() {
         return parentId;

@@ -67,7 +67,7 @@ public class AddressScript {
         obj.put("pnId","sdasdsads");
         obj.put("name","11111");
         obj.put("type","jia");
-        obj.put("parent_id","");
+        obj.put("parent_id",null);
         System.out.println(pnd.addPlaceName(obj));
         System.out.println(obj.get("pnId"));
     }

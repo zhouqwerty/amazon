@@ -3,7 +3,9 @@ package com.amazon.module.controller;
 import com.amazon.base.dto.BaseRequestDto;
 import com.amazon.base.dto.BaseResponseDto;
 import com.amazon.base.util.GenerateUtil;
+import com.amazon.module.constant.CommonValue;
 import com.amazon.module.dto.ParamsDto;
+import com.amazon.module.entity.Address;
 import com.amazon.module.entity.Order;
 import com.amazon.module.entity.PlaceName;
 import com.amazon.module.entity.User;
@@ -81,4 +83,84 @@ public class OrderController {
         }
         return baseResp;
     }
+
+    /**
+     * @function 存储新的地址
+     * @param baseReq 新地址信息
+     * @return 操作结果
+     * @datetime 2018.8.12 16:38
+     * */
+    @ApiOperation(value = "存储新地址")
+    @RequestMapping(value = "/saveNewAddress",method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResponseDto<String> saveNewAddress(@RequestBody BaseRequestDto<Address> baseReq,@SessionAttribute(CommonValue.USER)User user){
+        BaseResponseDto<String> baseResp=new BaseResponseDto<>();
+        baseResp.setTime(baseReq.getTime());
+        try{
+            Address address=baseReq.getData();
+            address.setUserId(user.getUser_id());
+            int i=os.saveNewAddress(address);
+            baseResp.setData(CommonValue.DESIRED);
+            baseResp.setSuccess(true);
+        }catch (Exception e){
+            e.printStackTrace();
+            baseResp.setSuccess(false);
+        }
+        return baseResp;
+    }
+
+    /**
+     * @function 获取我的所有地址
+     * @param user session中的用户信息
+     * @return 当前用户的所有地址
+     * @datetime 2018.8.12 17:54
+     * */
+    @ApiOperation(value = "获取用户的地址")
+    @RequestMapping(value = "/getMyAddress",method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResponseDto<List<Address>> getMyAddress(@SessionAttribute(CommonValue.USER)User user){
+        BaseResponseDto<List<Address>> baseResp=new BaseResponseDto<>();
+        baseResp.setTime(System.currentTimeMillis());
+        try{
+            List<Address> addresses=os.getMyAddress(user.getUser_id());
+            baseResp.setData(addresses);
+            baseResp.setSuccess(true);
+        }catch (Exception e){
+            e.printStackTrace();
+            baseResp.setSuccess(false);
+        }
+        return baseResp;
+    }
+
+    /**
+     * @function 改变用户的默认地址
+     * @param user session中的用户信息
+     * @param baseReq 要设置成默认地址的地址id
+     * @return 更新结果
+     * @datetime 2018.8.12 19:21
+     * */
+    @ApiOperation(value = "改变默认收货地址")
+    @RequestMapping(value = "/changeMyDefaultAddress",method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResponseDto<String> changeMyDefaultAddress(@RequestBody BaseRequestDto<ParamsDto> baseReq,@SessionAttribute(CommonValue.USER)User user){
+        BaseResponseDto<String> baseResp=new BaseResponseDto<>();
+        baseResp.setTime(System.currentTimeMillis());
+        try{
+            ParamsDto params=baseReq.getData();
+            params.setUserId(user.getUser_id());
+            boolean result=os.changeMyDefaultAddress(params);
+            if(result){
+                baseResp.setData(CommonValue.DESIRED);
+            }else {
+                baseResp.setData(CommonValue.UNDESIRED);
+
+            }
+            baseResp.setSuccess(true);
+        }catch (Exception e){
+            e.printStackTrace();
+            baseResp.setSuccess(false);
+        }
+        return baseResp;
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.amazon.module.service;
 
 import com.amazon.module.dto.ParamsDto;
+import com.amazon.module.entity.Address;
 import com.amazon.module.entity.Order;
 import com.amazon.module.entity.PlaceName;
 
@@ -28,4 +29,28 @@ public interface OrderService {
      * @datetime 2018.8.9 20:00
      * */
     List<PlaceName> getPlaceNameListByParentId(ParamsDto params);
+
+    /**
+     * @function 存储新的地址
+     * @param address 新地址信息
+     * @return 操作结果
+     * @datetime 2018.8.12 16:44
+     * */
+    int saveNewAddress(Address address);
+
+    /**
+     * @function 获取我的所有地址
+     * @param user_id 用户id
+     * @return 当前用户的所有地址
+     * @datetime 2018.8.12 17:56
+     * */
+    List<Address> getMyAddress(String user_id);
+
+    /**
+     * @function 改变用户的默认地址
+     * @param params 要设置成默认地址的地址id和user_id
+     * @return 更新结果
+     * @datetime 2018.8.12 19:26
+     * */
+    boolean changeMyDefaultAddress(ParamsDto params);
 }

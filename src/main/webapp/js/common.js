@@ -25,6 +25,9 @@ function callApi(url, data, callback, callErrorBack) {
             request.setRequestHeader("GaeaToken", sessionStorage.getItem("GaeaToken"));
         },
         success: function (data) {
+            if(!data.success){
+                console.log("-----------------------error happened-----------------------------")
+            }
             callback(data.data);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -40,4 +43,9 @@ function getParamsFromUrl(Url) {
     let params={};
     Url.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) =>{params[key] = decodeURI(value);});
     return params;
+}
+
+CommonValue={
+    SUCCESS:'1',
+    FAIL:'0',
 }
