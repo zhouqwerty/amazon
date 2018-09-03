@@ -34,3 +34,4 @@ dao：增：add*,insert*
      删：delete*
      改：update*
      查：query*,select*
+3.git pull失败 error: RPC failed; curl 56 OpenSSL SSL_read: SSL_ERROR_SYSCALL, errfno 10054
