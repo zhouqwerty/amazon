@@ -35,6 +35,7 @@
             <ul style="overflow: hidden">
                 <li v-for="item in addrs" class="order_address_unit">
                     <div :class="{order_address_selected:item.selected}"  @click="changeAddress(item)">
+                        <div v-show="item.status=='1'" class="order_default_address">[默认地址]</div>
                         <div>收件人：{{item.receiver}}</div>
                         <div>地址：{{item.province+item.city+item.detail}}</div>
                         <div>联系方式:{{item.phone}}</div>
@@ -43,6 +44,8 @@
             </ul>
             <div>
                 <i-button type="primary" @click="addNewAddress">新增收货地址</i-button>
+                <i-button type="primary" @click="setDefaultAddress">设置为默认地址</i-button>
+                <i-button type="primary" @click="deleteAddress">删除地址</i-button>
             </div>
         </div>
         <div class="order_info">
@@ -230,7 +233,8 @@
             interfaces:{
                 getPlaceNameListByParentId:'/core/order/getPlaceNameListByParentId',
                 saveNewAddress:'/core/order/saveNewAddress',
-                getMyAddress:'/core/order/getMyAddress'
+                getMyAddress:'/core/order/getMyAddress',
+                changeMyDefaultAddress:'/core/order/changeMyDefaultAddress'
             }
         },
         created:function () {
@@ -335,6 +339,26 @@
                         }
                     }
                 })
+            },
+            setDefaultAddress:function () {
+                let params={};
+                params.aid=this.selectedAddr.aid;
+                callApi(this.interfaces.changeMyDefaultAddress,params,(data)=>{
+                    if(data){
+                       this.changeAddressStatus();
+                    }
+                })
+            },
+            deleteAddress:function () {
+
+            },
+            changeAddressStatus:function () {
+                for(var i in this.addrs){
+                    if(this.addrs[i].status){
+                        this.addrs[i].status='0';
+                    }
+                }
+                this.selectedAddr.status='1';
             }
         }
     });

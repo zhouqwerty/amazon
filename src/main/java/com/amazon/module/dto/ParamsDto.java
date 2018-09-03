@@ -19,6 +19,7 @@ public class ParamsDto {
     private String pid;
     private String parentId;
     private String aid;
+    private String userId;
 
     public String getUserId() {
         return userId;
@@ -27,10 +28,6 @@ public class ParamsDto {
     public void setUserId(String userId) {
         this.userId = userId;
     }
-
-    private String userId
-
-            ;
 
     public String getAid() {
         return aid;

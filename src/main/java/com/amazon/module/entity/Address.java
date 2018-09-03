@@ -2,6 +2,8 @@ package com.amazon.module.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.Date;
+
 /**
  * @describe 地址实体类
  * */
@@ -17,6 +19,7 @@ public class Address {
     private String receiver;//收货人姓名
     private String zipCode;//地址邮编
     private String status;//是否是默认地址（1默认）
+    private Date createTime;//创建日期
 
     public String getAid() {
         return aid;
@@ -96,5 +99,13 @@ public class Address {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

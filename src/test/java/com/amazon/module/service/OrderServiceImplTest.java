@@ -10,7 +10,7 @@ public class OrderServiceImplTest extends BaseTestClass{
 
     @Test
     public void changeMyDefaultAddressTest() throws Exception{
-        os.changeMyDefaultAddress(null,"401484181D654F2FACF26AA0571C7D74");
+//        os.changeMyDefaultAddress(null,"401484181D654F2FACF26AA0571C7D74");
     }
 
 }

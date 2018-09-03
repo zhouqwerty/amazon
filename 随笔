@@ -35,3 +35,8 @@ dao：增：add*,insert*
      改：update*
      查：query*,select*
 3.git pull失败 error: RPC failed; curl 56 OpenSSL SSL_read: SSL_ERROR_SYSCALL, errfno 10054
+  可能原因:某些文件超过了默认的最大可提交文件大小，需要修改该值（找到配置文件C:\Users\admin\.gitconfig,添加配置
+            [http]
+                   postBuffer = 524288000
+  ）
+

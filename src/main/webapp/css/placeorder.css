@@ -43,6 +43,12 @@ div.order_address_selected{
 .store_order_wrap{
      margin-top: 30px;
 }
+.order_default_address{
+    height: 20px;
+    line-height: 20px;
+    width: 100%;
+    color: #ff5d00;
+}
 @media (max-width: 960px) {
 
 }
