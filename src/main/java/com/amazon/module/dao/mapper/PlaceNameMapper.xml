@@ -3,12 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.amazon.module.dao.PlaceNameDao">
+
+    <!--表名-->
+    <sql id="placeName"> PLACENAME </sql>
+
     <!--插入地名-->
     <insert id="addPlaceName" parameterType="com.alibaba.fastjson.JSONObject">
         <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="pnId">
             select sys_guid() from dual
         </selectKey>
-        insert into PLACENAME(pnid,name,type,parent_id)
+        insert into <include refid="placeName"/> (pnid,name,type,parent_id)
         values(#{pnId},#{name},#{type},#{parent_id})
     </insert>
 
@@ -17,7 +21,7 @@
         select
               pnid as pnId,name as name,
               type as type,parent_id as parentId
-        from PLACENAME WHERE parent_id
+        from <include refid="placeName"/>  WHERE parent_id
         <choose>
             <when test="parentId==null">
                 is null

@@ -53,4 +53,10 @@ public class OrderServiceImpl implements OrderService{
             return false;
         }
     }
+
+    @Override
+    public boolean deleteMyAddress(ParamsDto params) {
+        int i=ad.deleteMyAddressByAid(params);
+        return false;
+    }
 }

@@ -2,7 +2,12 @@ Vue.component('top-user-info', function (resolve, reject) {
     GL.Http.load('./module/topUserInfo/topUserInfo.html', function (responseText) {
         resolve({
             template: responseText,
-            props: {},
+            props: {
+                forceLogin:{
+                    type:Boolean,
+                    default:false
+                }
+            },
             data: function () {
                 const validatePassword2 =(rule,value,callback)=>{
                     if(value!=this.register.registerInfo.password){
@@ -129,6 +134,10 @@ Vue.component('top-user-info', function (resolve, reject) {
                     if(data){
                         this.login.loginSuccess=true;
                         this.userInfo=data;
+                    }else{
+                        if(this.forceLogin){
+                            this.clickLogin();
+                        }
                     }
                 })
             },
@@ -161,6 +170,7 @@ Vue.component('top-user-info', function (resolve, reject) {
                                     this.login.loginSuccess=true;
                                     this.login.loginModal=false;
                                     this.$Message.success('登录成功');
+                                    temp.$emit('loginStatus',CommonValue.SUCCESS);
                                 }else{
                                     this.login.loginResult='账号密码不匹配';
                                 }
@@ -191,6 +201,10 @@ Vue.component('top-user-info', function (resolve, reject) {
                     callApi(this.interfaces.cancelLogin,{},(data)=>{
                         if(data=='1'){
                             this.login.loginSuccess=false;
+                            temp.$emit('loginStatus',CommonValue.FAIL);
+                            if(this.forceLogin){
+                                this.clickLogin();
+                            }
                         }
                     })
                 }

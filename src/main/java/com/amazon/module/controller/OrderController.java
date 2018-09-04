@@ -163,4 +163,34 @@ public class OrderController {
         return baseResp;
     }
 
+    /**
+     * @function 删除用户的地址
+     * @param user session中的用户信息
+     * @param baseReq 要删除的地址id
+     * @return 更新结果
+     * @datetime 2018.9.4 18:39
+     * */
+    @ApiOperation(value = "删除收货地址")
+    @RequestMapping(value = "/deleteMyAddress",method = RequestMethod.POST)
+    @ResponseBody
+    public BaseResponseDto<String> deleteMyAddress(@RequestBody BaseRequestDto<ParamsDto> baseReq,@SessionAttribute(CommonValue.USER)User user){
+        BaseResponseDto<String> baseResp=new BaseResponseDto<>();
+        baseResp.setTime(System.currentTimeMillis());
+        try{
+            ParamsDto params=baseReq.getData();
+            params.setUserId(user.getUser_id());
+            boolean result=os.deleteMyAddress(params);
+            if(result){
+                baseResp.setData(CommonValue.DESIRED);
+            }else {
+                baseResp.setData(CommonValue.UNDESIRED);
+
+            }
+            baseResp.setSuccess(true);
+        }catch (Exception e){
+            e.printStackTrace();
+            baseResp.setSuccess(false);
+        }
+        return baseResp;
+    }
 }

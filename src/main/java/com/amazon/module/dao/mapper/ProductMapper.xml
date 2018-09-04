@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.amazon.module.dao.ProductDao">
 
+    <!--表名-->
+    <sql id="product"> PRODUCT </sql>
+
     <resultMap type="product" id="productMapper">
         <id property="pid" column="pid"/>
         <result property="name" column="pname"/>
@@ -19,7 +22,7 @@
     </resultMap>
     <!--模糊查询商品总数-->
     <select id="queryProductCountBySearch" parameterType="String" resultType="int">
-        select count(1) from product where pname like '%${search}%' or description like '%${search}%'
+        select count(1) from <include refid="product"/> where pname like '%${search}%' or description like '%${search}%'
     </select>
 
     <!--模糊查询商品（分页）-->
@@ -27,13 +30,13 @@
         select
                 *
         from
-            (select rownum as r,t.* from product t where pname like '%${search}%' or description like '%${search}%')
+            (select rownum as r,t.* from <include refid="product"/> t where pname like '%${search}%' or description like '%${search}%')
         where r between #{start} and #{end}
     </select>
 
     <!--一级商品分类Id查询商品总数-->
     <select id="queryProductCountByPcid" parameterType="String" resultType="int">
-        select count(1) from product where pc_id=#{cid}
+        select count(1) from <include refid="product"/> where pc_id=#{cid}
     </select>
 
     <!--一级商品分类Id查询商品（分页）-->
@@ -41,13 +44,13 @@
         select
                 *
         from
-            (select rownum as r,t.* from product t where pc_id=#{cid})
+            (select rownum as r,t.* from <include refid="product"/> t where pc_id=#{cid})
         where r between #{start} and #{end}
     </select>
 
     <!--二级商品分类Id查询商品总数-->
     <select id="queryProductCountByCpcid" parameterType="String" resultType="int">
-        select count(1) from product where pc_child_id=#{cid}
+        select count(1) from <include refid="product"/> where pc_child_id=#{cid}
     </select>
 
     <!--二级商品分类Id查询商品（分页）-->
@@ -55,7 +58,7 @@
         select
                 *
         from
-            (select rownum as r,t.* from product t where pc_child_id=#{cid})
+            (select rownum as r,t.* from <include refid="product"/> t where pc_child_id=#{cid})
         where r between #{start} and #{end}
     </select>
 
@@ -63,7 +66,7 @@
     <select id="queryProductByPid" parameterType="params" resultMap="productMapper">
         select
                 *
-        from product t where pid=#{pid}
+        from <include refid="product"/> t where pid=#{pid}
     </select>
 
 </mapper>

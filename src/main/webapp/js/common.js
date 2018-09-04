@@ -48,4 +48,8 @@ function getParamsFromUrl(Url) {
 CommonValue={
     SUCCESS:'1',
     FAIL:'0',
+    UNLOGIN:'unLogin'
 }
+
+/*事件总线*/
+let temp=new Vue();

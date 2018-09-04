@@ -46,4 +46,12 @@ public interface AddressDao {
      * @datetime 2018.8.12 19:06
      * */
     int updateAddressStatusToDefault(ParamsDto params);
+
+    /**
+     * @function 删除指定id的地址
+     * @param params 地址id 和 用户id
+     * @return 更新的行数
+     * @datetime 2018.9.4 18:43
+     * */
+    int deleteMyAddressByAid(ParamsDto params);
 }

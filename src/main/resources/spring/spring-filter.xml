@@ -9,6 +9,7 @@
 
     <bean id="identityFilter" class="org.springframework.security.web.FilterChainProxy">
         <security:filter-chain-map path-type="ant">
+            <security:filter-chain pattern="/core/order/getPlaceNameListByParentId" filters="none"/>
             <security:filter-chain pattern="/core/order/*" filters="authFilter"/>
         </security:filter-chain-map>
     </bean>

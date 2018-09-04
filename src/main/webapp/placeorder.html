@@ -25,7 +25,7 @@
 </head>
 <body style="overflow-y: auto">
 <div id="placeorder">
-    <top-user-info></top-user-info>
+    <top-user-info :force-login="true"></top-user-info>
     <div class="my_container">
         <div class="place_order_page_header">
             <step-header current="0"></step-header>
@@ -127,20 +127,7 @@
     var app=new Vue({
         el:'#placeorder',
         data:{
-            addrs:[
-                {
-                    aid:'111',
-                    country:'中国',
-                    province:'江苏',
-                    city:'连云港',
-                    detail:'测试地址',
-                    userId:'401484181D654F2FACF26AA0571C7D74',
-                    phone:'123123',
-                    receiver:'zhou',
-                    zipCode:'123123',
-                    selected:true
-                }
-            ],
+            addrs:[],
             selectedAddr:{},
             addAddr:{
                 modal:false,
@@ -234,10 +221,19 @@
                 getPlaceNameListByParentId:'/core/order/getPlaceNameListByParentId',
                 saveNewAddress:'/core/order/saveNewAddress',
                 getMyAddress:'/core/order/getMyAddress',
-                changeMyDefaultAddress:'/core/order/changeMyDefaultAddress'
+                changeMyDefaultAddress:'/core/order/changeMyDefaultAddress',
+                deleteMyAddress:'/core/order/deleteMyAddress'
             }
         },
         created:function () {
+            temp.$on('loginStatus',(status) =>{
+                if(status==CommonValue.SUCCESS){
+                    this.updateMyAddress();
+                }
+                if(status==CommonValue.FAIL){
+                    this.addrs=[];
+                }
+            })
             this.params=getParamsFromUrl(window.location.href);
             this.updateMyAddress();
             let params={};
@@ -327,14 +323,21 @@
                 return '';
             },
             updateMyAddress:function () {
+                this.selectedAddr={};
                 callApi(this.interfaces.getMyAddress,{},(data)=>{
-                    this.addrs=data;
-                    if(data[0]){
-                        for(let i in data){
-                            if(data[i].status=='1'){
-                                data[i].selected=true;
-                                this.selectedAddr=data[i];
-                                break;
+                    if(data!=CommonValue.UNLOGIN){
+                        this.addrs=data;
+                        if(data[0]){
+                            for(let i in data){
+                                if(data[i].status=='1'){
+                                    data[i].selected=true;
+                                    this.selectedAddr=data[i];
+                                    break;
+                                }
+                            }
+                            if(!this.selectedAddr.province){
+                                data[0].selected=true;
+                                this.selectedAddr=data[0]
                             }
                         }
                     }
@@ -350,7 +353,13 @@
                 })
             },
             deleteAddress:function () {
-
+                let params={};
+                params.aid=this.selectedAddr.aid;
+                callApi(this.interfaces.deleteMyAddress,params,(data)=>{
+                    if(data){
+                        this.updateMyAddress();
+                    }
+                })
             },
             changeAddressStatus:function () {
                 for(var i in this.addrs){

@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.amazon.module.dao.AddressDao">
 
+    <!--表名-->
+    <sql id="address"> ADDRESS </sql>
+
     <resultMap type="address" id="addressMapper">
         <id property="aid" column="aid"/>
         <result property="country" column="country"/>
@@ -23,18 +26,18 @@
         <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="aid">
             select sys_guid() from dual
         </selectKey>
-        insert into ADDRESS(aid,country,province,city,detail,user_id,phone,receiver,zip_code,status,createtime)
+        insert into <include refid="address"/>(aid,country,province,city,detail,user_id,phone,receiver,zip_code,status,createtime)
         values(#{aid},#{country},#{province},#{city},#{detail},#{userId},#{phone},#{receiver},#{zipCode},'0',sysdate)
     </insert>
 
     <!--将当前用户的所有地址状态设置成非默认-->
     <update id="updateAddressStatusToNull">
-        update ADDRESS set status='0' where user_id=#{userId}
+        update <include refid="address"/> set status='0' where user_id=#{userId}
     </update>
 
     <!--将指定地址的状态设置成默认地址-->
     <update id="updateAddressStatusToDefault">
-        update ADDRESS set status='1' where aid=#{aid} and user_id=#{userId}
+        update <include refid="address"/> set status='1' where aid=#{aid} and user_id=#{userId}
     </update>
 
 
@@ -42,7 +45,12 @@
     <select id="queryMyAddress"  resultMap="addressMapper">
         select
                 *
-        from ADDRESS t where user_id=#{userId} order by status desc,createtime desc
+        from <include refid="address"/> t where user_id=#{userId} order by status desc,createtime desc
     </select>
+
+    <!--删除指定id的地址-->
+    <delete id="deleteMyAddressByAid">
+        delete from <include refid="address"/> where aid=#{aid} and user_id=#{userId}
+    </delete>
 
 </mapper>

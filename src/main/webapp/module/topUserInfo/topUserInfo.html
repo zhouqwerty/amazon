@@ -10,7 +10,9 @@
                 <template v-else>
                     <span class="login_username_text">你好，{{userInfo.username}}</span>
                     <i-button type="primary" style="background: #4d91d94a;margin:0 0 5px 10px" @click="cancelLogin">注销</i-button>
+                    <i-button type="primary" style="background: #4d91d94a;margin:0 0 5px 0px" @click="register.registerModal=true">注册</i-button>
                 </template>
+
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <ul class="top_left_nav">
@@ -35,7 +37,7 @@
         </div>
     </div>
     <!--登录-->
-    <modal v-model="login.loginModal" width="360" @on-cancel="lrEnd('loginInfo')" @on-visible-change="lrEnd('loginInfo')" :mask-closable="false">
+    <modal v-model="login.loginModal" width="360" @on-cancel="lrEnd('loginInfo')" @on-visible-change="lrEnd('loginInfo')" :mask-closable="false" :closable="!forceLogin">
         <p slot="header" style="color:black;text-align:center">
             <span>登录</span>
         </p>

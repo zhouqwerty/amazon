@@ -53,4 +53,12 @@ public interface OrderService {
      * @datetime 2018.8.12 19:26
      * */
     boolean changeMyDefaultAddress(ParamsDto params);
+
+    /**
+     * @function 删除用户的地址
+     * @param params 要删除的地址id和user_id
+     * @return 更新结果
+     * @datetime 2018.9.4 18:40
+     * */
+    boolean deleteMyAddress(ParamsDto params);
 }
