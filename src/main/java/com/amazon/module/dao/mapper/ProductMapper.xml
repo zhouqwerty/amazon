@@ -63,10 +63,13 @@
     </select>
 
     <!--通过商品id查询商品-->
-    <select id="queryProductByPid" parameterType="params" resultMap="productMapper">
+    <select id="queryProductByPids"  resultMap="productMapper">
         select
                 *
-        from <include refid="product"/> t where pid=#{pid}
+        from <include refid="product"/> t where pid in
+        <foreach item="item" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
     </select>
 
 </mapper>

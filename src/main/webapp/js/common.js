@@ -53,3 +53,8 @@ CommonValue={
 
 /*事件总线*/
 let temp=new Vue();
+
+Array.prototype.containsStr=function(e){
+    var r=new RegExp(','+e+',');
+    return (r.test(','+this.join(this.S)+','));
+};

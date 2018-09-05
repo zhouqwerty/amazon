@@ -97,15 +97,15 @@ public class ProductController {
      * @datetime 2018.8.7 18:50
      * */
     @ApiOperation(value = "通过pid查询商品信息")
-    @RequestMapping(value = "/getProductInfoByPid",method = RequestMethod.POST)
+    @RequestMapping(value = "/getProductInfoByPids",method = RequestMethod.POST)
     @ResponseBody
-    public BaseResponseDto<Product> getProductInfoByPid(@RequestBody BaseRequestDto<ParamsDto> baseReq){
-        BaseResponseDto<Product> baseResp=new BaseResponseDto<>();
+    public BaseResponseDto<List<Product>> getProductInfoByPids(@RequestBody BaseRequestDto<ParamsDto> baseReq){
+        BaseResponseDto<List<Product>> baseResp=new BaseResponseDto<>();
         baseResp.setTime(System.currentTimeMillis());
         try{
             ParamsDto params=baseReq.getData();
-            Product product=ps.getProductInfoByPid(params);
-            baseResp.setData(product);
+            List<Product> products=ps.getProductInfoByPids(params);
+            baseResp.setData(products);
             baseResp.setSuccess(true);
         }catch (Exception e){
             e.printStackTrace();

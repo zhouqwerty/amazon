@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.amazon.module.dto.ParamsDto;
 import com.amazon.module.entity.Product;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -43,5 +44,5 @@ public interface ProductService {
      * @return 商品信息
      * @datetime 2018.8.7 18:53
      * */
-    Product getProductInfoByPid(ParamsDto params);
+    List<Product> getProductInfoByPids(ParamsDto params);
 }

@@ -64,8 +64,10 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product getProductInfoByPid(ParamsDto params) {
-        return pd.queryProductByPid(params);
+    public List<Product> getProductInfoByPids(ParamsDto params) {
+        String pids=params.getPids();
+        String[] pid=pids.split(",");
+        return pd.queryProductByPids(pid);
     }
 
     /*--------------------------------------分割线（私有方法）------------------------------------------*/

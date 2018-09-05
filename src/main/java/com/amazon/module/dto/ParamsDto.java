@@ -17,6 +17,7 @@ public class ParamsDto {
     private ProductPageParamsDto ppDto;
     private Page page;
     private String pid;
+    private String pids;
     private String parentId;
     private String aid;
     private String userId;
@@ -83,5 +84,13 @@ public class ParamsDto {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getPids() {
+        return pids;
+    }
+
+    public void setPids(String pids) {
+        this.pids = pids;
     }
 }

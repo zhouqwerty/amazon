@@ -33,11 +33,11 @@
     </div>
     <div class="my_container">
         <div class="cart_header">
-            <img src="images/icon/cartLogo.png" alt="" class="cart_header_icon">
+            <img src="assets/icon/cartLogo.png" alt="" class="cart_header_icon">
             <span style="position: relative;top: 10px;left: 15px">购物车</span>
         </div>
         <div v-for="storeInfo in orderList" class="cart_store">
-            <div><checkbox @on-change=checkStore(storeInfo) v-model="storeInfo.model"></checkbox><img src="images/icon/store.png" alt="">{{storeInfo.store}}</div>
+            <div><checkbox @on-change=checkStore(storeInfo) v-model="storeInfo.model"></checkbox><img src="assets/icon/store.png" alt="">{{storeInfo.store}}</div>
             <div>
                 <div class="order_info_headers">
                     <row>
@@ -94,7 +94,7 @@
                     model:false,
                     orders:[
                         {
-                            img:'images/product/1.jpg',
+                            img:'assets/product/1.jpg',
                             desc:'不拉不拉不拉',
                             category:'不拉不拉不拉',
                             price:1122.00,
@@ -109,7 +109,7 @@
                     model:false,
                     orders:[
                         {
-                            img:'images/product/1.jpg',
+                            img:'assets/product/1.jpg',
                             desc:'不拉不拉不拉',
                             category:'不拉不拉不拉',
                             price:1122.00,
@@ -118,7 +118,7 @@
                             model:false
                         },
                         {
-                            img:'images/product/1.jpg',
+                            img:'assets/product/1.jpg',
                             desc:'不拉不拉不拉',
                             category:'不拉不拉不拉',
                             price:1122.00,

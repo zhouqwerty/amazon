@@ -68,5 +68,5 @@ public interface ProductDao {
      * @return 商品信息
      * @datetime 2018.8.7 20:28
      * */
-    Product queryProductByPid(ParamsDto params);
+    List<Product> queryProductByPids(String[] params);
 }

@@ -6,18 +6,19 @@
     <!--框架css-->
     <!--<link rel="stylesheet" href="lib/iview/iview.css">-->
     <!--框架js-->
-    <!--<script src="lib/vue/vuePlus.js"></script>
-    <script src="lib/iview/iview.min.js"></script>-->
+    <script src="lib/vue/vuePlus.js"></script>
+    <!--<script src="lib/iview/iview.min.js"></script>-->
     <script src="lib/jquery/jquery.min.js"></script>
+    <script src="js/common.js"></script>
 </head>
 <body>
 <div id="demo" style="margin: 100px">
 
 </div>
 <script>
-    var params={};
-    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) =>{params[key] = decodeURI(value);});
-    console.log(params);
+    let obj={'1':'1'};
+    let arr=[{'1':'1'},{'1':'1'},{'1':'1'},obj];
+    console.log(arr.containsStr());
 </script>
 </body>
 </html>
