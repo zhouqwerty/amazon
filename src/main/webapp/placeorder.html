@@ -126,69 +126,71 @@
 <script>
     var app=new Vue({
         el:'#placeorder',
-        data:{
-            addrs:[],
-            selectedAddr:{},
-            addAddr:{
-                modal:false,
-                info:{
-                    country:'1',
-                    province:'',
-                    city:'',
-                    address:'',
-                    postalCode:'',
-                    receiverName:'',
-                    phone:''
+        data: {
+            addrs: [],
+            selectedAddr: {},
+            addAddr: {
+                modal: false,
+                info: {
+                    country: '1',
+                    province: '',
+                    city: '',
+                    address: '',
+                    postalCode: '',
+                    receiverName: '',
+                    phone: ''
                 },
-                rules:{
+                rules: {
                     country: [
-                        { required:true , message:'国家'}
+                        {required: true, message: '国家'}
                     ],
                     province: [
-                        { required:true , message:'省份'}
+                        {required: true, message: '省份'}
                     ],
                     city: [
-                        { required:true , message:'城市'}
+                        {required: true, message: '城市'}
                     ],
                     address: [
-                        { required:true , message:'填写详细地址'}
+                        {required: true, message: '填写详细地址'}
                     ],
                     postalCode: [
-                        { message:'邮政编码错误'}
+                        {message: '邮政编码错误'}
                     ],
                     receiverName: [
-                        { required:true , message:'收件人姓名为空'}
+                        {required: true, message: '收件人姓名为空'}
                     ],
                     phone: [
-                        { required:true , message:'请填写正确的联系方式'}
+                        {required: true, message: '请填写正确的联系方式'}
                     ],
                 },
-                saveFlag:false
+                saveFlag: false
             },
-            countryList:[
-                {pnId:'1',name:'中国'}
+            countryList: [
+                {pnId: '1', name: '中国'}
             ],
-            provinceList:[
-                {pnId:'1',name:'江苏省'}
+            provinceList: [
+                {pnId: '1', name: '江苏省'}
             ],
-            cityList:[
-                {pnId:'1',name:'连云港市'}
+            cityList: [
+                {pnId: '1', name: '连云港市'}
             ],
-            orderList:[
-                /*{
+            orderList: {
+            /*"sid":{
                     store:'京天华盛',
                     orders:[
                         {
-                            img:'assets/product/1.jpg',
-                            desc:'不拉不拉不拉',
-                            category:'不拉不拉不拉',
-                            price:1122.00,
-                            count:1,
-                            cost:1122.00,
+                            describe:"108.00",
+                            fileName:"assets/product/1.jpg",
+                            name:"德菲丝巧克力",
+                            pc_child_id:4,
+                            pc_id:1,
+                            pid:"FC2973C5104B46BBA9B43E468971C88F",
+                            price:100,
+                            stock:111
                         },
                     ]
                 }*/
-            ],
+            },
             sumCost:9999.99,
             params:{},
             interfaces:{
@@ -231,9 +233,18 @@
                     if(data){
                         let pid=items.pid.split(",");
                         let count=items.count.split(",");
-                        let stores=[];
+                        let temp=this.orderList;
                         for(let i in data){
-
+                            data[i].count=count[pid.indexOf(data[i].pid)]
+                            let sid=data[i].store.sid;
+                            if(temp[sid]){
+                                temp[sid].orders.push(data[i]);
+                            }else{
+                                temp[sid]={};
+                                temp[sid].store=data[i].store.sName;
+                                temp[sid].orders=[];
+                                temp[sid].orders.push(data[i]);
+                            }
                         }
                     }
                 })

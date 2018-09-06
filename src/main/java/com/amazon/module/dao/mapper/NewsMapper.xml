@@ -5,4 +5,11 @@
 <mapper namespace="com.amazon.module.dao.NewsDao">
     <!--表名-->
     <sql id="news"> NEWS </sql>
+
+    <resultMap type="news" id="newsMapper">
+        <id property="nid" column="nid"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="createTime" column="createtime"/>
+    </resultMap>
 </mapper>

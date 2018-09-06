@@ -11,8 +11,12 @@ Vue.component('order-unit', function (resolve, reject) {
             },
             data: function () {
                 return {
-                    productCount:1
                 }
+            },
+            computed:{
+              orderCost:function () {
+                  return this.orderInfo.count;
+              }
             },
             watch: {},
             created: function () {},

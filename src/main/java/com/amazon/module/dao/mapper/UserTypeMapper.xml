@@ -6,4 +6,8 @@
     <!--表名-->
     <sql id="userType"> USER_TYPE </sql>
 
+    <resultMap type="userType" id="userTypeMapper">
+        <id property="tid" column="tid"/>
+        <result property="name" column="type"/>
+    </resultMap>
 </mapper>

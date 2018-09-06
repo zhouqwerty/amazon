@@ -7,6 +7,13 @@
     <!--表名-->
     <sql id="placeName"> PLACENAME </sql>
 
+    <resultMap type="placeName" id="pnMapper">
+        <id property="pnId" column="pnid"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="parentId" column="parent_id"/>
+    </resultMap>
+
     <!--插入地名-->
     <insert id="addPlaceName" parameterType="com.alibaba.fastjson.JSONObject">
         <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="pnId">
@@ -17,10 +24,9 @@
     </insert>
 
     <!--根据父类id查询地名集合-->
-    <select id="queryPlaceNameListByParentId" resultType="placeName">
+    <select id="queryPlaceNameListByParentId" resultMap="pnMapper">
         select
-              pnid as pnId,name as name,
-              type as type,parent_id as parentId
+              *
         from <include refid="placeName"/>  WHERE parent_id
         <choose>
             <when test="parentId==null">

@@ -52,9 +52,13 @@ CommonValue={
 }
 
 /*事件总线*/
-let temp=new Vue();
+let temp=new Vue({
+    data:{
+        demo:8
+    }
+});
 
-Array.prototype.containsStr=function(e){
+/*Array.prototype.containsStr=function(e){
     var r=new RegExp(','+e+',');
     return (r.test(','+this.join(this.S)+','));
-};
+};*/

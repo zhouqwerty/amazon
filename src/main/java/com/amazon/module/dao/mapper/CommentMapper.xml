@@ -5,4 +5,14 @@
 <mapper namespace="com.amazon.module.dao.CommentDao">
     <!--表名-->
     <sql id="comments"> COMMENTS </sql>
+
+    <resultMap type="comment" id="commentMapper">
+        <id property="cid" column="cid"/>
+        <result property="reply" column="reply"/>
+        <result property="content" column="content"/>
+        <result property="createTime" column="createtime"/>
+        <result property="replyTime" column="replytime"/>
+        <result property="nickName" column="nickname"/>
+        <result property="state" column="state"/>
+    </resultMap>
 </mapper>

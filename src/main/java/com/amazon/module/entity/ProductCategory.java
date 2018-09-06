@@ -34,4 +34,6 @@ public class ProductCategory {
     public void setPc_parent_id(String pc_parent_id) {
         this.pc_parent_id = pc_parent_id;
     }
+
+
 }

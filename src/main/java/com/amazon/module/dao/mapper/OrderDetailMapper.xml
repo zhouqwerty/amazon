@@ -5,4 +5,13 @@
 <mapper namespace="com.amazon.module.dao.OrderDetailDao">
     <!--表名-->
     <sql id="orderDetail"> ORDER_DETAIL </sql>
+
+    <resultMap type="orderDetail" id="odMapper">
+        <id property="od_id" column="od_id"/>
+        <result property="oid" column="oid"/>
+        <result property="pid" column="pid"/>
+        <result property="count" column="quantity"/>
+        <result property="cost" column="cost"/>
+    </resultMap>
+
 </mapper>

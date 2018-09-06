@@ -21,6 +21,15 @@
         <result property="createTime" column="createtime"/>
     </resultMap>
 
+
+    <!--根据aid查询地址信息-->
+    <select id=" queryAddressByAid" parameterType="String" resultMap="addressMapper">
+        select
+                *
+        from <include refid="address"/>
+        where aid =#{aid}
+    </select>
+
     <!--插入新的地址-->
     <insert id="addNewAddress" parameterType="address">
         <selectKey resultType="java.lang.String" order="BEFORE" keyProperty="aid">

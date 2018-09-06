@@ -3,14 +3,14 @@
     <div class="order_info_content">
         <row>
             <i-col span="3">
-                <img :src="orderInfo.img" alt="">
+                <img :src="orderInfo.fileName" alt="">
             </i-col>
             <i-col span="3">
-                <div class="order_info_text">{{orderInfo.desc}}</div>
+                <div class="order_info_text">{{orderInfo.describe}}</div>
             </i-col>
             <i-col span="6">
                 <div class="order_info_text">
-                    {{orderInfo.category}}
+                    {{orderInfo.pCate.name}}({{orderInfo.pcCate.name}})
                 </div>
             </i-col>
             <i-col span="3">
@@ -24,7 +24,7 @@
                 </div>
             </i-col>
             <i-col span="3">
-                <div class="order_info_text price_text">￥{{orderInfo.cost}}</div>
+                <div class="order_info_text price_text">￥{{orderInfo.count}}</div>
             </i-col>
         </row>
     </div>

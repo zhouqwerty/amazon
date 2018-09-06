@@ -2,6 +2,7 @@ package com.amazon.module.dao;
 
 import com.amazon.module.dto.ParamsDto;
 import com.amazon.module.entity.Address;
+import com.amazon.module.entity.Store;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.security.access.method.P;
 
@@ -14,6 +15,14 @@ import java.util.List;
  * @describe 该dao处理地址表的操作
  * */
 public interface AddressDao {
+
+    /**
+     * @function 通过地址id查询地址
+     * @param aid 地址id
+     * @return 地址信息
+     * @datetime 2018.9.6 20:05
+     * */
+    Address queryAddressByAid(@Param("aid") String aid);
 
     /**
      * @function 存储新的地址

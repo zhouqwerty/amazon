@@ -5,4 +5,12 @@
 <mapper namespace="com.amazon.module.dao.CartDao">
     <!--表名-->
     <sql id="cart"> CART </sql>
+
+    <resultMap type="cart" id="cartMapper">
+        <id property="cid" column="cid"/>
+        <result property="pid" column="pid"/>
+        <result property="count" column="quantity"/>
+        <result property="user_id" column="user_id"/>
+    </resultMap>
+
 </mapper>

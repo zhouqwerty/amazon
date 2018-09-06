@@ -4,16 +4,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.amazon.module.dao.StoreDao">
 
-
     <!--表名-->
     <sql id="store"> STORE </sql>
 
+    <resultMap type="store" id="storeMapper">
+        <id property="sid" column="sid"/>
+        <result property="sName" column="sname"/>
+        <result property="address" column="address"/>
+        <result property="managerId" column="managerid"/>
+        <result property="sLevel" column="slevel"/>
+        <result property="rate" column="rate"/>
+    </resultMap>
+
     <!--根据sid查询商铺信息-->
-    <select id="queryStoreBySid" parameterType="String" resultType="store">
+    <select id="queryStoreBySid" parameterType="String" resultMap="storeMapper">
         select
-            sid as sid,sname as sName,
-            address as address,managerid as managerId,
-            slevel as sLevel,rate as rate
+            *
         from <include refid="store"/>
         where sid =#{sid}
     </select>

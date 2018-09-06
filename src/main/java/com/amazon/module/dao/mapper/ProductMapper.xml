@@ -16,9 +16,12 @@
         <result property="pc_id" column="pc_id"/>
         <result property="pc_child_id" column="pc_child_id"/>
         <result property="fileName" column="p_file_name"/>
+        <association property="pCate" column="pc_id"
+                     select="com.amazon.module.dao.ProductCategoryDao.queryProductCategoryByPcid" javaType="productCategory"/>
+        <association property="pcCate" column="pc_child_id"
+                     select="com.amazon.module.dao.ProductCategoryDao.queryProductCategoryByPcid" javaType="productCategory"/>
         <association property="store" column="sid"
-        select="com.amazon.module.dao.StoreDao.queryStoreBySid"
-        javaType="store"/>
+                     select="com.amazon.module.dao.StoreDao.queryStoreBySid" javaType="store"/>
     </resultMap>
     <!--模糊查询商品总数-->
     <select id="queryProductCountBySearch" parameterType="String" resultType="int">

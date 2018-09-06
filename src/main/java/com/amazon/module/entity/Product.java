@@ -13,9 +13,28 @@ public class Product {
     private double price;
     private int stock;
     private int pc_id;
+    private ProductCategory pCate;
     private int pc_child_id;
+    private ProductCategory pcCate;
     private String fileName;
     private Store store;
+
+
+    public ProductCategory getpCate() {
+        return pCate;
+    }
+
+    public void setpCate(ProductCategory pCate) {
+        this.pCate = pCate;
+    }
+
+    public ProductCategory getPcCate() {
+        return pcCate;
+    }
+
+    public void setPcCate(ProductCategory pcCate) {
+        this.pcCate = pcCate;
+    }
 
     public Store getStore() {
         return store;
@@ -88,4 +107,5 @@ public class Product {
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
 }
